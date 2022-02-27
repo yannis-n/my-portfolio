@@ -10,12 +10,14 @@ import { Controls } from './Controls'
 import { Navbar } from './Navbar'
 import { AboutMe } from './AboutMe'
 import { Projects } from './Projects'
+import { SocialLinksNav } from './SocialLinksNav'
+import { Logo } from './Logo'
 
 
 function App() {
   const [gradientOn, setGradientOn] = useState(false);
   const [siteEntered, setsiteEntered] = useState(false);
-  const [intro, setIntro] = useState(false); // this is to determine if the enter screen will appear
+  const [intro, setIntro] = useState(true); // this is to determine if the enter screen will appear
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
   const [topOfPage, setTopOFPage] = useState(true);
 
@@ -66,13 +68,14 @@ function App() {
   return (
       
       <div className={"app-container relative w-screen "+(siteEntered ? '' : 'h-screen')}>
-
+        {/* <Logo visible={siteEntered}/> */}
         <Navbar isMobile={isMobileFunction(windowDimensions)} gradientOn={siteEntered}/>
+        <SocialLinksNav visible={siteEntered && topOfPage}/>
 
-        <Controls gradientOn={siteEntered} topOfPage={topOfPage} />
+        {/* <Controls gradientOn={siteEntered} topOfPage={topOfPage} /> */}
         <main className=''>
 
-        <div id="home" className="relative min-h-screen h-screen">
+        <div id="home" className="fixed w-screen min-h-screen h-screen">
           <div className="canvas-container">
             <HomeCanvas loop={intro} toggleGradient={toggleGradient} gradientOn={siteEntered} />
             <div             
@@ -83,13 +86,13 @@ function App() {
           </div>
     
 
-          <button ref={enterTag} 
+          
+        </div>
+        <button ref={enterTag} 
                   onClick={changeIntro} 
                   className={"container z-20 animate-pulse cursor-pointer absolute flex w-fit top-2/3 left-1/2 transform -translate-x-1/2 faded" + (!intro ? ' hidden' : '' )}>
             Enter
           </button>
-        </div>
-
         <AboutMe siteEntered={siteEntered}/>
         <Projects siteEntered={siteEntered}/>
         </main>

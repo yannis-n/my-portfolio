@@ -41,7 +41,7 @@ export function SocialLinksNav(props) {
   }
 
   return (
-    <ul ref={socialLinkNav} className={"social-links-nav absolute flex flex-col md:flex-row bottom-custom-gap w-auto list-none " + (props.visible ? '' : 'faded-right')}>
+    <ul ref={socialLinkNav} className={"social-links-nav fixed flex flex-col md:flex-row z-10 bottom-custom-gap w-auto list-none " + (props.visible ? '' : 'faded-right')}>
       <React.StrictMode>
         {itemList}
       </React.StrictMode>

@@ -14,7 +14,7 @@ return Math.floor(Math.random() * (max - min + 1)) + min;
 
 let itemList=[];
 
-for (let index = 0; index < 1000; index++) {
+for (let index = 0; index < 200; index++) {
 itemList.push( <Star key={index}    
     position={[getRandomInt(-100,100), getRandomInt(-40,40), getRandomInt(-400,-10)]} />)
 

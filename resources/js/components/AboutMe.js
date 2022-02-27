@@ -6,12 +6,7 @@ export function AboutMe(props) {
     function handleScroll(e){
         
         let distance = ( window.pageYOffset - section.current.offsetTop )/ threshold * 100
-        console.log('----')
-        console.log('----')
-        console.log('----')
-        console.log(window.innerHeight)
-        console.log(1 - 4 *distance / 100)
-        console.log(distance)
+       
         let opacity = (distance > 1) ? (1 -2 * distance / 100 ): 1 + 2 * distance / 100
         let introduction = section.current.children[0];
         introduction.style.transform = 'translate(' + distance + '%)'
@@ -36,9 +31,19 @@ export function AboutMe(props) {
         window.addEventListener('resize', handleScroll);
     })
 
+    useEffect(() => {
+        if (!props.siteEntered) return
+        for (let i = 0; i < section.current.children.length; i++) {
+            setTimeout(() => {
+                let element = section.current.children[i];
+                   element.style.opacity = 1
+            }, 400 * i);
+        }
+    },[props.siteEntered])
+
     
     return (
-        <section id="introduction" ref={section} className={" lg:px-40 relative flex justify-center flex-col items-start"+(props.siteEntered ? '' : ' opacity-0')}>
+        <section id="introduction" ref={section} className={" lg:px-40 relative flex justify-center flex-col items-start"+(props.siteEntered ? ' moved-in' : ' opacity-0')}>
             <h1 className="w-full text-6xl font-bold opacity-0 details-color">
                 Hi,
             </h1>
@@ -50,7 +55,7 @@ export function AboutMe(props) {
             <h3 className="heading mt-10 font-bold flex h-fit opacity-0">
                 I build stuff for the web. (Currently)
             </h3>
-            <p className="">
+            <p className="opacity-0">
             I work as a Full Stack Developer, expanding the skills attained through rigorous training and hands-on experience as well as various courses. 
 
             </p>

@@ -26,11 +26,11 @@
 
 
 $mobileGap : 24px;
-// $detailsColor: #EC255A;
-// $secondaryColor: #292C6D;
+$detailsColor: #EC255A;
+$secondaryColor: #292C6D;
 
-$detailsColor: #4717f6;
-$secondaryColor: #0e0b16;
+// $detailsColor: #4717f6;
+// $secondaryColor: #0e0b16;
 
 .left-custom-gap{
   left: $mobileGap;
@@ -106,8 +106,42 @@ $secondaryColor: #0e0b16;
     }
    }
 
+
+  //  Logo
+   svg {
+    width: 80px;
+    max-height: 80vh;
+    overflow: visible;
+  }
+  .eins {
+    transform-origin: 60px 60px;
+    transform: rotateZ(60deg);
+  }
+  .zwei {
+    transform-origin: 60px 60px;
+    transform: rotateZ(-60deg);
+  }
+  .all {
+    transform-origin: 60px 60px;
+    transform: scaleX(.32);
+  }
+  .group {
+    animation: turnIt 5s linear infinite;
+    transform-origin: 60px 60px;
+    transform-box: content-box;
+  }
+  .go {
+    // transform: translateY(4px);
+  }
+  @keyframes turnIt {
+    100% {
+        transform: rotate3d(1, 1, 1, 360deg);
+  
+    }
+  }
+  
   .container{
-    transition: all 1.5s ease-in;
+    transition: all 1s ease-in;
   }
 
   .faded-right{
@@ -247,13 +281,26 @@ $secondaryColor: #0e0b16;
   }
 
   #introduction {
-    background:linear-gradient(180deg, black 30%, transparent);
-    background-color: #292C6D;
+    background:linear-gradient(340deg, $secondaryColor 30%, transparent 30%);
+    background-position-x: 100vw;
     min-height:100vh;
+    transition: background-position-x 1s ease-in;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    &.moved-in{
+      background-position-x: 0;
+    }
+  }
+  
+
+  #introduction *{
+    transition: opacity 1s ease-in-out;
+    will-change: opacity;
+
   }
 
   #projects{
-    background:#292C6D;
+    background:$secondaryColor;
     min-height:100vh;
   }
 

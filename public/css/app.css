@@ -31,12 +31,12 @@
 }
 
 .my-pink-bg {
-  background-color: #4717f6;
-  box-shadow: 0 2px 8px #4717f6;
+  background-color: #EC255A;
+  box-shadow: 0 2px 8px #EC255A;
 }
 
 .details-color {
-  color: #4717f6;
+  color: #EC255A;
 }
 
 * {
@@ -89,8 +89,47 @@
     transform: translateX(50%);
   }
 }
+svg {
+  width: 80px;
+  max-height: 80vh;
+  overflow: visible;
+}
+
+.eins {
+  transform-origin: 60px 60px;
+  transform: rotateZ(60deg);
+}
+
+.zwei {
+  transform-origin: 60px 60px;
+  transform: rotateZ(-60deg);
+}
+
+.all {
+  transform-origin: 60px 60px;
+  transform: scaleX(0.32);
+}
+
+.group {
+  -webkit-animation: turnIt 5s linear infinite;
+          animation: turnIt 5s linear infinite;
+  transform-origin: 60px 60px;
+  transform-box: content-box;
+}
+
+@-webkit-keyframes turnIt {
+  100% {
+    transform: rotate3d(1, 1, 1, 360deg);
+  }
+}
+
+@keyframes turnIt {
+  100% {
+    transform: rotate3d(1, 1, 1, 360deg);
+  }
+}
 .container {
-  transition: all 1.5s ease-in;
+  transition: all 1s ease-in;
 }
 
 .faded-right {
@@ -129,9 +168,9 @@
   }
 }
 .links-nav .menu-toggle {
-  background-color: #4717f6;
+  background-color: #EC255A;
   border-radius: 50%;
-  box-shadow: 0 2px 8px #4717f6;
+  box-shadow: 0 2px 8px #EC255A;
   cursor: pointer;
   height: 56px;
   right: 24px;
@@ -163,11 +202,11 @@
 }
 .links-nav .menu-toggle.toggled .menu-toggle-bar:first-child {
   transform: rotate(135deg) translate3d(0, 0, 0);
-  background-color: #4717f6;
+  background-color: #EC255A;
 }
 .links-nav .menu-toggle.toggled .menu-toggle-bar:last-child {
   transform: rotate(-135deg) translate3d(0, 0, 0);
-  background-color: #4717f6;
+  background-color: #EC255A;
 }
 .links-nav .menu-toggle.toggled .menu-toggle-bar:nth-child(2) {
   opacity: 0;
@@ -175,7 +214,7 @@
 .links-nav ul {
   height: 100vh;
   background: black;
-  background-color: #4717f6;
+  background-color: #EC255A;
   transform: translateX(100%);
   opacity: 0;
   width: 100vw;
@@ -221,9 +260,20 @@
 }
 
 #introduction {
-  background: linear-gradient(180deg, black 30%, transparent);
-  background-color: #292C6D;
+  background: linear-gradient(340deg, #292C6D 30%, transparent 30%);
+  background-position-x: 100vw;
   min-height: 100vh;
+  transition: background-position-x 1s ease-in;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+}
+#introduction.moved-in {
+  background-position-x: 0;
+}
+
+#introduction * {
+  transition: opacity 1s ease-in-out;
+  will-change: opacity;
 }
 
 #projects {

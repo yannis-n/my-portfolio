@@ -13,7 +13,7 @@ export function Controls(props) {
             Nikolaidis
             </span>
             </h1>
-            <SocialLinksNav visible={props.gradientOn && props.topOfPage}/>
+            {/* <SocialLinksNav visible={props.gradientOn && props.topOfPage}/> */}
 
             
             <div className={"container absolute flex w-fit left-custom-gap bottom-custom-gap " + ((props.gradientOn && props.topOfPage) ? '' : 'faded-left')}>

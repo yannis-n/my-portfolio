@@ -7234,12 +7234,6 @@ function AboutMe(props) {
 
   function handleScroll(e) {
     var distance = (window.pageYOffset - section.current.offsetTop) / threshold * 100;
-    console.log('----');
-    console.log('----');
-    console.log('----');
-    console.log(window.innerHeight);
-    console.log(1 - 4 * distance / 100);
-    console.log(distance);
     var opacity = distance > 1 ? 1 - 2 * distance / 100 : 1 + 2 * distance / 100;
     var introduction = section.current.children[0];
     introduction.style.transform = 'translate(' + distance + '%)';
@@ -7259,10 +7253,24 @@ function AboutMe(props) {
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleScroll);
   });
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!props.siteEntered) return;
+
+    var _loop = function _loop(i) {
+      setTimeout(function () {
+        var element = section.current.children[i];
+        element.style.opacity = 1;
+      }, 400 * i);
+    };
+
+    for (var i = 0; i < section.current.children.length; i++) {
+      _loop(i);
+    }
+  }, [props.siteEntered]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("section", {
     id: "introduction",
     ref: section,
-    className: " lg:px-40 relative flex justify-center flex-col items-start" + (props.siteEntered ? '' : ' opacity-0'),
+    className: " lg:px-40 relative flex justify-center flex-col items-start" + (props.siteEntered ? ' moved-in' : ' opacity-0'),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
       className: "w-full text-6xl font-bold opacity-0 details-color",
       children: "Hi,"
@@ -7273,7 +7281,7 @@ function AboutMe(props) {
       className: "heading mt-10 font-bold flex h-fit opacity-0",
       children: "I build stuff for the web. (Currently)"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-      className: "",
+      className: "opacity-0",
       children: "I work as a Full Stack Developer, expanding the skills attained through rigorous training and hands-on experience as well as various courses."
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
       className: "text-2xl flex rounded-full opacity-0 mt-10 p-5 my-pink-bg",
@@ -7302,7 +7310,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Navbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Navbar */ "./resources/js/components/Navbar.js");
 /* harmony import */ var _AboutMe__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AboutMe */ "./resources/js/components/AboutMe.js");
 /* harmony import */ var _Projects__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Projects */ "./resources/js/components/Projects.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _SocialLinksNav__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./SocialLinksNav */ "./resources/js/components/SocialLinksNav.js");
+/* harmony import */ var _Logo__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Logo */ "./resources/js/components/Logo.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -7326,6 +7336,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 function App() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -7337,7 +7349,7 @@ function App() {
       siteEntered = _useState4[0],
       setsiteEntered = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
       _useState6 = _slicedToArray(_useState5, 2),
       intro = _useState6[0],
       setIntro = _useState6[1]; // this is to determine if the enter screen will appear
@@ -7394,37 +7406,36 @@ function App() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     window.addEventListener('scroll', handleScroll);
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
     className: "app-container relative w-screen " + (siteEntered ? '' : 'h-screen'),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_4__.Navbar, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_4__.Navbar, {
       isMobile: isMobileFunction(windowDimensions),
       gradientOn: siteEntered
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Controls__WEBPACK_IMPORTED_MODULE_3__.Controls, {
-      gradientOn: siteEntered,
-      topOfPage: topOfPage
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("main", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_SocialLinksNav__WEBPACK_IMPORTED_MODULE_7__.SocialLinksNav, {
+      visible: siteEntered && topOfPage
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("main", {
       className: "",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
         id: "home",
-        className: "relative min-h-screen h-screen",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        className: "fixed w-screen min-h-screen h-screen",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
           className: "canvas-container",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_HomeCanvas__WEBPACK_IMPORTED_MODULE_2__.HomeCanvas, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_HomeCanvas__WEBPACK_IMPORTED_MODULE_2__.HomeCanvas, {
             loop: intro,
             toggleGradient: toggleGradient,
             gradientOn: siteEntered
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
             className: siteEntered ? 'gradient gradientOn' : 'gradient gradientOff'
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-          ref: enterTag,
-          onClick: changeIntro,
-          className: "container z-20 animate-pulse cursor-pointer absolute flex w-fit top-2/3 left-1/2 transform -translate-x-1/2 faded" + (!intro ? ' hidden' : ''),
-          children: "Enter"
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_AboutMe__WEBPACK_IMPORTED_MODULE_5__.AboutMe, {
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+        ref: enterTag,
+        onClick: changeIntro,
+        className: "container z-20 animate-pulse cursor-pointer absolute flex w-fit top-2/3 left-1/2 transform -translate-x-1/2 faded" + (!intro ? ' hidden' : ''),
+        children: "Enter"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AboutMe__WEBPACK_IMPORTED_MODULE_5__.AboutMe, {
         siteEntered: siteEntered
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Projects__WEBPACK_IMPORTED_MODULE_6__.Projects, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Projects__WEBPACK_IMPORTED_MODULE_6__.Projects, {
         siteEntered: siteEntered
       })]
     })]
@@ -7434,7 +7445,7 @@ function App() {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
 
 if (document.getElementById('app')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(App, {}), document.getElementById('app'));
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(App, {}), document.getElementById('app'));
 }
 
 function getWindowDimensions() {
@@ -7487,8 +7498,6 @@ function Controls(props) {
         className: "container " + (props.gradientOn && props.topOfPage ? '' : 'faded-right opacity-0'),
         children: "Nikolaidis"
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_SocialLinksNav__WEBPACK_IMPORTED_MODULE_0__.SocialLinksNav, {
-      visible: props.gradientOn && props.topOfPage
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "container absolute flex w-fit left-custom-gap bottom-custom-gap " + (props.gradientOn && props.topOfPage ? '' : 'faded-left'),
       children: "FullStack Developer"
@@ -7574,7 +7583,7 @@ function getRandomInt(min, max) {
 
 var itemList = [];
 
-for (var index = 0; index < 1000; index++) {
+for (var index = 0; index < 200; index++) {
   itemList.push( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Star__WEBPACK_IMPORTED_MODULE_2__.Star, {
     position: [getRandomInt(-100, 100), getRandomInt(-40, 40), getRandomInt(-400, -10)]
   }, index));
@@ -7608,6 +7617,171 @@ function HomeCanvas(props) {
       toggleGradient: props.toggleGradient,
       loop: props.loop,
       gradientOn: props.gradientOn
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Logo.js":
+/*!*****************************************!*\
+  !*** ./resources/js/components/Logo.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Logo": () => (/* binding */ Logo)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function Logo(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+    className: "fixed z-10",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 120 120",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("defs", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("g", {
+      className: "eins",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
+        className: "all",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("mask", {
+          id: "Mask",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+            className: "xmask",
+            cx: "60",
+            cy: "60",
+            r: "100",
+            fill: "#EC255A"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+            className: "xmask",
+            cx: "60",
+            cy: "60",
+            r: "50",
+            fill: "#000"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
+          className: "group",
+          mask: "url(#Mask)",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+            className: "go",
+            cx: "60",
+            cy: "65",
+            r: "48",
+            style: {
+              fill: '#EC255A'
+            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+            className: "go",
+            cx: "60",
+            cy: "55",
+            r: "48",
+            style: {
+              fill: '#EC255A'
+            }
+          })]
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("g", {
+      className: "zwei",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
+        className: "all",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("mask", {
+          id: "Mask2",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+            className: "xmask",
+            cx: "60",
+            cy: "60",
+            r: "100",
+            fill: "#EC255A"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+            className: "xmask",
+            cx: "60",
+            cy: "60",
+            r: "50",
+            fill: "#000"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
+          className: "group",
+          style: {
+            animationDelay: '-0.33s',
+            mask: "url(#Mask2)"
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+            className: "go",
+            cx: "60",
+            cy: "65",
+            r: "48",
+            style: {
+              fill: '#EC255A'
+            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+            className: "go",
+            cx: "60",
+            cy: "55",
+            r: "48",
+            style: {
+              fill: '#EC255A'
+            }
+          })]
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("g", {
+      className: "drei",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
+        className: "all",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("mask", {
+          id: "Mask3",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+            className: "xmask",
+            cx: "60",
+            cy: "60",
+            r: "100",
+            fill: "#EC255A"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+            className: "xmask",
+            cx: "60",
+            cy: "60",
+            r: "50",
+            fill: "#000"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
+          className: "group",
+          style: {
+            animationDelay: '-0.66s',
+            mask: "url(#Mask3)"
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+            className: "go",
+            cx: "60",
+            cy: "65",
+            r: "48",
+            style: {
+              fill: '#EC255A'
+            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+            className: "go",
+            cx: "60",
+            cy: "55",
+            r: "48",
+            style: {
+              fill: '#EC255A'
+            }
+          })]
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+      className: "go",
+      cx: "60",
+      cy: "60",
+      r: "2",
+      style: {
+        fill: '#EC255A'
+      }
     })]
   });
 }
@@ -7975,7 +8149,7 @@ function SocialLinksNav(props) {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("ul", {
     ref: socialLinkNav,
-    className: "social-links-nav absolute flex flex-col md:flex-row bottom-custom-gap w-auto list-none " + (props.visible ? '' : 'faded-right'),
+    className: "social-links-nav fixed flex flex-col md:flex-row z-10 bottom-custom-gap w-auto list-none " + (props.visible ? '' : 'faded-right'),
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.StrictMode, {
       children: itemList
     })
