@@ -109,7 +109,8 @@ $secondaryColor: #292C6D;
 
   //  Logo
    svg {
-    width: 80px;
+    width: 20px;
+    height: 40px;
     max-height: 80vh;
     overflow: visible;
   }
@@ -281,7 +282,7 @@ $secondaryColor: #292C6D;
   }
 
   #introduction {
-    background:linear-gradient(340deg, $secondaryColor 30%, transparent 30%);
+    background:linear-gradient(320deg, $secondaryColor 25%, transparent 25%);
     background-position-x: 100vw;
     min-height:100vh;
     transition: background-position-x 1s ease-in;
@@ -290,16 +291,36 @@ $secondaryColor: #292C6D;
     &.moved-in{
       background-position-x: 0;
     }
+
+    @media screen and (min-width: 608px) {
+      background:linear-gradient(340deg, $secondaryColor 30%, transparent 30%);
+      background-position-x: 100vw;
+      background-repeat: no-repeat;
+
+    }
   }
   
 
   #introduction *{
     transition: opacity 1s ease-in-out;
-    will-change: opacity;
 
   }
 
-  #projects{
+  #introduction {
+
+    h1, h2{
+      will-change: opacity;
+    }
+
+    button{
+      background: transparent;
+      border: 2px solid rgb(236, 37, 90);
+      color: rgb(236, 37, 90);
+      border-radius: 5px;
+    }
+  }
+
+  #about-me{
     background:$secondaryColor;
     min-height:100vh;
   }
@@ -312,6 +333,29 @@ $secondaryColor: #292C6D;
     }
   }
 
+  section{
+
+    
+    padding: 0 24px;
+
+    @media (min-width: 468px){
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    @media (min-width: 1024px){
+      padding-left: 10rem;
+      padding-right: 10rem;
+    }
+  }
+  
+  .section-heading{
+    font-size: clamp(20px, 4vw, 40px);
+    font-weight: 700;
+    color:$detailsColor
+  }
+
+  
   section p {
     line-height: 1.5;
     font-size: 18px;
@@ -319,8 +363,8 @@ $secondaryColor: #292C6D;
 
     @media screen and (min-width: 481px) {
       width: 50%;
-      min-width: 450px;
-      font-size: 16px;
+      // min-width: 450px;
+      font-size: 14px;
     }
   }
 
@@ -331,6 +375,3 @@ $secondaryColor: #292C6D;
     }
   }
 
-  section{
-    padding: 0 24px;
-  }

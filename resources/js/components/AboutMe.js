@@ -1,29 +1,32 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 export function AboutMe(props) {
+    const [distance, setDistance] = useState(0);
     let section = useRef(null)
     let threshold = window.innerHeight / 2
     function handleScroll(e){
         
-        let distance = ( window.pageYOffset - section.current.offsetTop )/ threshold * 100
-       
-        let opacity = (distance > 1) ? (1 -2 * distance / 100 ): 1 + 2 * distance / 100
-        let introduction = section.current.children[0];
-        introduction.style.transform = 'translate(' + distance + '%)'
-        introduction.style.opacity = opacity - 0.2
+        setDistance(( window.pageYOffset - section.current.offsetTop )/ threshold * 100)
+        // console.log('----')
+        // console.log('----')
+        // console.log('----')
+        // console.log(window.innerHeight)
+        // console.log(distance)
+        // console.log(section.current.children)
+        // let opacity = (distance > 20) ? ((120 - distance) / 100 ): 1
+        // let introduction = section.current.children[0];
+        // introduction.style.left = 50 + distance + '%'
+        // introduction.style.opacity = opacity
 
-        let introduction2 = section.current.children[1];
-        introduction2.style.transform = 'translate(' + -distance + '%)'
-        introduction2.style.opacity = opacity - 0.2
+        // let introduction2 = section.current.children[1];
+        // introduction2.style.right = 50 + distance + '%'
+        // introduction2.style.opacity = opacity
 
-        let introduction3 = section.current.children[2];
-        introduction3.style.opacity = opacity + 0.5
+        // let introduction3 = section.current.children[2];
+        // introduction3.style.opacity = opacity + 0.5
 
-        let introduction4 = section.current.children[3];
-        introduction4.style.opacity = opacity + 0.5
-
-        let introduction5 = section.current.children[4];
-        introduction5.style.opacity = opacity + 0.5
+        // let introduction4 = section.current.children[3];
+        // introduction4.style.opacity = opacity + 0.5
     }
     
     useEffect(() => {
@@ -31,38 +34,35 @@ export function AboutMe(props) {
         window.addEventListener('resize', handleScroll);
     })
 
-    useEffect(() => {
-        if (!props.siteEntered) return
-        for (let i = 0; i < section.current.children.length; i++) {
-            setTimeout(() => {
-                let element = section.current.children[i];
-                   element.style.opacity = 1
-            }, 400 * i);
-        }
-    },[props.siteEntered])
-
     
     return (
-        <section id="introduction" ref={section} className={" lg:px-40 relative flex justify-center flex-col items-start"+(props.siteEntered ? ' moved-in' : ' opacity-0')}>
-            <h1 className="w-full text-6xl font-bold opacity-0 details-color">
-                Hi,
-            </h1>
+        <section id="about-me" ref={section} className={" lg:px-40 relative flex justify-center flex-col items-start"+(props.siteEntered ? ' moved-in' : ' opacity-0')}>
+            <div  className="section-heading">
+                About Me
+            </div>
 
-            <h2  className="w-full text-6xl font-bold opacity-0 whitespace-nowrap details-color">
-                I am Yannis.
-            </h2>
-
-            <h3 className="heading mt-10 font-bold flex h-fit opacity-0">
-                I build stuff for the web. (Currently)
-            </h3>
-            <p className="opacity-0">
-            I work as a Full Stack Developer, expanding the skills attained through rigorous training and hands-on experience as well as various courses. 
-
+            <p>
+            Two years ago, I delved into the fundamentals of computer science and started learning various
+programming languages (including Python, PHP, and Javascript) through every possible
+channel, seminar and University course I could lay my hands on and I haven't stopped ever
+since. As my interest in the field grew, even more, I quickly realized that this is something I
+would love to do professionally.
             </p>
+<p>
+Since then, I started creating web apps of my own to gain practical knowledge using the Django
+framework. I have also freelanced and created or redesigned various WordPress Projects, thus
+coming in contact and learning PHP as well. You can view a few of my projects, on my GitHub
+account, of which I realized the value from the beginning of my journey as a developer. A year
+ago, I started working for a start-up company as a Full-Stack Developer. 
+</p>
 
-            <button className="text-2xl flex rounded-full opacity-0 mt-10 p-5 my-pink-bg">
-                Make it happen
-            </button>
+<div>
+    <ul>
+    <li>JavaScript (ES6+)</li>
+    <li>PHP</li>
+    </ul>
+</div>
+
         </section>
     );
   }

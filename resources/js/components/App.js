@@ -8,8 +8,9 @@ import {
 import { HomeCanvas } from './HomeCanvas'
 import { Controls } from './Controls'
 import { Navbar } from './Navbar'
-import { AboutMe } from './AboutMe'
+import { Introduction } from './Introduction'
 import { Projects } from './Projects'
+import { AboutMe } from './AboutMe'
 import { SocialLinksNav } from './SocialLinksNav'
 import { Logo } from './Logo'
 
@@ -17,7 +18,7 @@ import { Logo } from './Logo'
 function App() {
   const [gradientOn, setGradientOn] = useState(false);
   const [siteEntered, setsiteEntered] = useState(false);
-  const [intro, setIntro] = useState(true); // this is to determine if the enter screen will appear
+  const [intro, setIntro] = useState(false); // this is to determine if the enter screen will appear
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
   const [topOfPage, setTopOFPage] = useState(true);
 
@@ -93,6 +94,7 @@ function App() {
                   className={"container z-20 animate-pulse cursor-pointer absolute flex w-fit top-2/3 left-1/2 transform -translate-x-1/2 faded" + (!intro ? ' hidden' : '' )}>
             Enter
           </button>
+        <Introduction siteEntered={siteEntered}/>
         <AboutMe siteEntered={siteEntered}/>
         <Projects siteEntered={siteEntered}/>
         </main>

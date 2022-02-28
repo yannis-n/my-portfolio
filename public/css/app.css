@@ -90,7 +90,8 @@
   }
 }
 svg {
-  width: 80px;
+  width: 20px;
+  height: 40px;
   max-height: 80vh;
   overflow: visible;
 }
@@ -260,7 +261,7 @@ svg {
 }
 
 #introduction {
-  background: linear-gradient(340deg, #292C6D 30%, transparent 30%);
+  background: linear-gradient(320deg, #292C6D 25%, transparent 25%);
   background-position-x: 100vw;
   min-height: 100vh;
   transition: background-position-x 1s ease-in;
@@ -270,13 +271,29 @@ svg {
 #introduction.moved-in {
   background-position-x: 0;
 }
+@media screen and (min-width: 608px) {
+  #introduction {
+    background: linear-gradient(340deg, #292C6D 30%, transparent 30%);
+    background-position-x: 100vw;
+    background-repeat: no-repeat;
+  }
+}
 
 #introduction * {
   transition: opacity 1s ease-in-out;
-  will-change: opacity;
 }
 
-#projects {
+#introduction h1, #introduction h2 {
+  will-change: opacity;
+}
+#introduction button {
+  background: transparent;
+  border: 2px solid #ec255a;
+  color: #ec255a;
+  border-radius: 5px;
+}
+
+#about-me {
   background: #292C6D;
   min-height: 100vh;
 }
@@ -285,6 +302,28 @@ svg {
   font-size: clamp(40px, 8vw, 80px);
   line-height: 1;
 }
+section {
+  padding: 0 24px;
+}
+@media (min-width: 468px) {
+  section {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  section {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+}
+
+.section-heading {
+  font-size: clamp(20px, 4vw, 40px);
+  font-weight: 700;
+  color: #EC255A;
+}
+
 section p {
   line-height: 1.5;
   font-size: 18px;
@@ -293,8 +332,7 @@ section p {
 @media screen and (min-width: 481px) {
   section p {
     width: 50%;
-    min-width: 450px;
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
@@ -308,9 +346,6 @@ section p {
   100% {
     transform: rotate(360deg);
   }
-}
-section {
-  padding: 0 24px;
 }
 /*
 ! tailwindcss v3.0.15 | MIT License | https://tailwindcss.com
@@ -789,6 +824,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .right-0 {
   right: 0px;
 }
+.top-2\/3 {
+  top: 66.666667%;
+}
+.left-1\/2 {
+  left: 50%;
+}
 .left-0 {
   left: 0px;
 }
@@ -797,12 +838,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .right-1\/2 {
   right: 50%;
-}
-.top-2\/3 {
-  top: 66.666667%;
-}
-.left-1\/2 {
-  left: 50%;
 }
 .z-20 {
   z-index: 20;
@@ -817,10 +852,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mx-5 {
   margin-left: 1.25rem;
   margin-right: 1.25rem;
-}
-.mx-40 {
-  margin-left: 10rem;
-  margin-right: 10rem;
 }
 .ml-1 {
   margin-left: 0.25rem;
@@ -890,6 +921,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-auto {
   width: auto;
 }
+.w-full {
+  width: 100%;
+}
 .w-screen {
   width: 100vw;
 }
@@ -897,9 +931,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-}
-.w-full {
-  width: 100%;
 }
 .max-w-6xl {
   max-width: 72rem;
@@ -1019,10 +1050,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
-.px-40 {
-  padding-left: 10rem;
-  padding-right: 10rem;
-}
 .pt-8 {
   padding-top: 2rem;
 }
@@ -1044,10 +1071,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
-}
-.text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
 }
 .text-4xl {
   font-size: 2.25rem;
@@ -1150,6 +1173,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 @media (min-width: 768px) {
 
+  .md\:mt-10 {
+    margin-top: 2.5rem;
+  }
+
+  .md\:mt-8 {
+    margin-top: 2rem;
+  }
+
   .md\:hidden {
     display: none;
   }
@@ -1157,12 +1188,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   .md\:flex-row {
     flex-direction: row;
   }
+
+  .md\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
 }
 @media (min-width: 1024px) {
-
-  .lg\:w-6\/12 {
-    width: 50%;
-  }
 
   .lg\:px-8 {
     padding-left: 2rem;
@@ -1177,10 +1209,5 @@ Ensure the default browser behavior of the `hidden` attribute.
   .lg\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
-  }
-
-  .lg\:text-6xl {
-    font-size: 3.75rem;
-    line-height: 1;
   }
 }
