@@ -7241,57 +7241,96 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function AboutMe(props) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
-      _useState2 = _slicedToArray(_useState, 2),
-      distance = _useState2[0],
-      setDistance = _useState2[1];
-
   var section = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var portrait = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var skillList = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      onScreen = _useState2[0],
+      setOnScreen = _useState2[1];
+
   var threshold = window.innerHeight / 2;
 
-  function handleScroll(e) {
-    setDistance((window.pageYOffset - section.current.offsetTop) / threshold * 100); // console.log('----')
-    // console.log('----')
-    // console.log('----')
-    // console.log(window.innerHeight)
-    // console.log(distance)
-    // console.log(section.current.children)
-    // let opacity = (distance > 20) ? ((120 - distance) / 100 ): 1
-    // let introduction = section.current.children[0];
-    // introduction.style.left = 50 + distance + '%'
-    // introduction.style.opacity = opacity
-    // let introduction2 = section.current.children[1];
-    // introduction2.style.right = 50 + distance + '%'
-    // introduction2.style.opacity = opacity
-    // let introduction3 = section.current.children[2];
-    // introduction3.style.opacity = opacity + 0.5
-    // let introduction4 = section.current.children[3];
-    // introduction4.style.opacity = opacity + 0.5
+  function handleScroll() {
+    var distance = Math.abs(window.pageYOffset - section.current.offsetTop);
+
+    if (distance < threshold) {
+      setOnScreen(true);
+    }
   }
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
-  });
+    if (!onScreen) {
+      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('resize', handleScroll);
+    } else {
+      var title = section.current.children[0];
+      var content = section.current.children[1].children[0];
+      var portraitDiv = portrait.current;
+      title.classList.remove('faded');
+      portraitDiv.classList.remove('faded-right');
+      content.classList.remove('faded');
+
+      var _loop = function _loop(i) {
+        var element = skillList.current.children[i];
+        setTimeout(function () {
+          element.children[0].classList.remove('faded-right');
+        }, 400 * (1 + i % 2));
+      };
+
+      for (var i = 0; i < skillList.current.children.length; i++) {
+        _loop(i);
+      }
+    }
+  }, [onScreen]);
+  var itemList = [];
+  var itemNames = ['JavaScript (ES6+)', 'Laravel', 'Jquery', 'PHP', 'React', 'WordPress'];
+
+  for (var index = 0; index < itemNames.length; index++) {
+    itemList.push( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+        className: "faded-right inline-block",
+        children: itemNames[index]
+      })
+    }, index));
+  }
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("section", {
     id: "about-me",
     ref: section,
-    className: " lg:px-40 relative flex justify-center flex-col items-start" + (props.siteEntered ? ' moved-in' : ' opacity-0'),
+    className: "relative flex justify-center flex-col items-start" + (props.siteEntered ? '' : ' opacity-0'),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "section-heading",
+      className: "section-heading faded",
       children: "About Me"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-      children: "Two years ago, I delved into the fundamentals of computer science and started learning various programming languages (including Python, PHP, and Javascript) through every possible channel, seminar and University course I could lay my hands on and I haven't stopped ever since. As my interest in the field grew, even more, I quickly realized that this is something I would love to do professionally."
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-      children: "Since then, I started creating web apps of my own to gain practical knowledge using the Django framework. I have also freelanced and created or redesigned various WordPress Projects, thus coming in contact and learning PHP as well. You can view a few of my projects, on my GitHub account, of which I realized the value from the beginning of my journey as a developer. A year ago, I started working for a start-up company as a Full-Stack Developer."
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("ul", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
-          children: "JavaScript (ES6+)"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
-          children: "PHP"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "section-container",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "faded",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          children: "Two years ago, I delved into the fundamentals of computer science and started learning various programming languages (including Python, PHP, and Javascript) through every possible channel, seminar and University course I could lay my hands on and I haven't stopped ever since. As my interest in the field grew, even more, I quickly realized that this is something I would love to do professionally."
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          children: "Since then, I started creating web apps of my own to gain practical knowledge using the Django framework. I have also freelanced and created or redesigned various WordPress Projects, thus coming in contact and learning PHP as well. You can view a few of my projects, on my GitHub account, of which I realized the value from the beginning of my journey as a developer. A year ago, I started working for a start-up company as a Full-Stack Developer."
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("ul", {
+            ref: skillList,
+            children: itemList
+          })
         })]
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "image-container",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "portrait faded-right",
+          ref: portrait,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+            width: "200",
+            height: "200",
+            "data-main-image": "",
+            sizes: "(min-width: 200px) 200px, 100vw",
+            src: '../../storage/images/portrait.png'
+          })
+        })
+      })]
     })]
   });
 }
@@ -7416,7 +7455,9 @@ function App() {
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
     className: "app-container relative w-screen " + (siteEntered ? '' : 'h-screen'),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_4__.Navbar, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Logo__WEBPACK_IMPORTED_MODULE_9__.Logo, {
+      visible: siteEntered
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_4__.Navbar, {
       isMobile: isMobileFunction(windowDimensions),
       gradientOn: siteEntered
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_SocialLinksNav__WEBPACK_IMPORTED_MODULE_8__.SocialLinksNav, {
@@ -7651,37 +7692,40 @@ __webpack_require__.r(__webpack_exports__);
 
 function Introduction(props) {
   var section = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  var threshold = window.innerHeight / 2;
+  var threshold = window.innerHeight / 4;
 
   function handleScroll(e) {
     var distance = (window.pageYOffset - section.current.offsetTop) / threshold * 100;
-    var opacity = distance > 1 ? 1 - 2 * distance / 100 : 1 + 2 * distance / 100;
-    var introduction = section.current.children[0];
-    introduction.style.transform = 'translate(' + distance + '%)'; // introduction.style.opacity = opacity - 0.2
 
-    var introduction2 = section.current.children[1];
-    introduction2.style.transform = 'translate(' + -distance + '%)'; // introduction2.style.opacity = opacity - 0.2
+    if (Math.abs(distance) > threshold) {
+      for (var i = 2; i < section.current.children.length; i++) {
+        var element = section.current.children[i];
+        element.classList.add('faded');
+      }
+    } else {
+      for (var _i = 2; _i < section.current.children.length; _i++) {
+        var _element = section.current.children[_i];
 
-    var introduction3 = section.current.children[2];
-    introduction3.style.opacity = opacity + 0.5;
-    var introduction4 = section.current.children[3];
-    introduction4.style.opacity = opacity + 0.5;
-    var introduction5 = section.current.children[4];
-    introduction5.style.opacity = opacity + 0.5;
+        _element.classList.remove('faded');
+      }
+    }
   }
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
-  });
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (!props.siteEntered) return;
 
     var _loop = function _loop(i) {
+      var timeOut = i < 2 ? 400 : 400 * (i - 1);
       setTimeout(function () {
         var element = section.current.children[i];
-        element.style.opacity = 1;
-      }, 400 * i);
+
+        if (i < 2) {
+          element.classList.remove('faded-right');
+          element.classList.remove('faded-left');
+        } else {
+          element.classList.remove('faded');
+        }
+      }, timeOut);
     };
 
     for (var i = 0; i < section.current.children.length; i++) {
@@ -7693,19 +7737,19 @@ function Introduction(props) {
     ref: section,
     className: " relative flex justify-center flex-col items-start" + (props.siteEntered ? ' moved-in' : ' opacity-0'),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
-      className: "w-full  text-4xl md:text-6xl font-bold opacity-0 details-color",
+      className: "w-full  text-4xl md:text-6xl font-bold faded-right details-color",
       children: "Hi,"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
-      className: "w-full text-4xl md:text-6xl font-bold opacity-0 whitespace-nowrap details-color",
+      className: "w-full text-4xl md:text-6xl faded-left font-bold whitespace-nowrap details-color",
       children: "I am Yannis."
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
-      className: "heading mt-4 md:mt-8 font-bold flex h-fit opacity-0",
+      className: "heading mt-4 md:mt-8 faded font-bold flex h-fit ",
       children: "I build stuff for the web."
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-      className: "opacity-0 mt-4 md:mt-8",
+      className: " faded  mt-4 md:mt-8",
       children: "I work as a Full Stack Developer, expanding the skills attained through rigorous training and hands-on experience as well as various courses."
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-      className: "text-2xl flex rounded-full opacity-0 mt-4 md:mt-8 p-5 my-pink-bg",
+      className: "text-2xl faded flex rounded-full  mt-4 md:mt-8 p-5 my-pink-bg",
       children: "Contact Me"
     })]
   });
@@ -8026,6 +8070,91 @@ function Navbar(props) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Project.js":
+/*!********************************************!*\
+  !*** ./resources/js/components/Project.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Project": () => (/* binding */ Project)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+function Project(props) {
+  var project = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      onScreen = _useState2[0],
+      setOnScreen = _useState2[1];
+
+  var threshold = window.innerHeight + 50;
+
+  function handleScroll() {
+    var distance = window.pageYOffset - project.current.offsetTop;
+    console.log(distance);
+    console.log(threshold);
+
+    if (distance > threshold) {
+      setOnScreen(true);
+    }
+  }
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!onScreen) {
+      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('resize', handleScroll);
+    } else {
+      console.log(project.current.children);
+      var element = project.current.children[0].classList.add('turned-on');
+    }
+  }, [onScreen]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    ref: project,
+    className: "section-container--project",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "image-container",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+        width: "100%",
+        height: "200",
+        "data-main-image": "",
+        alt: "project-image",
+        sizes: "(min-width: 200px) 200px, 100vw",
+        src: '../../storage/images/' + props.info.image
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "section-container--project-info",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "section-container--project-info--title",
+        children: props.info.title
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "section-container--project-info--links",
+        children: props.info.description
+      })]
+    })]
+  });
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/Projects.js":
 /*!*********************************************!*\
   !*** ./resources/js/components/Projects.js ***!
@@ -8038,60 +8167,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Projects": () => (/* binding */ Projects)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Project__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Project */ "./resources/js/components/Project.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
 function Projects(props) {
-  var section = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  var threshold = window.innerHeight / 2;
-
-  function handleScroll(e) {// let distance = ( window.pageYOffset - section.current.offsetTop )/ threshold * 100
-    // console.log('----')
-    // console.log('----')
-    // console.log('----')
-    // console.log(window.innerHeight)
-    // console.log(distance)
-    // console.log(section.current.children)
-    // let opacity = (distance > 20) ? ((120 - distance) / 100 ): 1
-    // let introduction = section.current.children[0];
-    // introduction.style.left = 50 + distance + '%'
-    // introduction.style.opacity = opacity
-    // let introduction2 = section.current.children[1];
-    // introduction2.style.right = 50 + distance + '%'
-    // introduction2.style.opacity = opacity
-    // let introduction3 = section.current.children[2];
-    // introduction3.style.opacity = opacity + 0.5
-    // let introduction4 = section.current.children[3];
-    // introduction4.style.opacity = opacity + 0.5
-  }
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
+  var items = [{
+    title: 'Jetpack VC',
+    description: 'My best work yet',
+    image: 'jeptack.png'
+  }, {
+    title: 'Athens Rhythm Hop',
+    description: 'My best work yet',
+    image: 'arh.png'
+  }, {
+    title: 'Rhythm Hoppers',
+    description: 'My best work yet',
+    image: 'rhythmhoppers.png'
+  }];
+  var projects = [];
+  items.forEach(function (element, i) {
+    console.log(i);
+    projects.push( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Project__WEBPACK_IMPORTED_MODULE_1__.Project, {
+      info: element
+    }, i));
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("section", {
     id: "projects",
-    ref: section,
     className: "w-screen relative flex justify-center flex-col items-center" + (props.siteEntered ? '' : ' opacity-0'),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      style: {
-        top: '15%'
-      },
-      className: "text-6xl fixed flex left-0 opacity-0 -translate-x-1/2",
-      children: "Hi,"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      style: {
-        top: '25%'
-      },
-      className: "text-6xl fixed flex right-0 opacity-0 whitespace-nowrap translate-x-1/2",
-      children: "I am Yannis."
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "text-2xl mt-10 lg:text-4xl flex text-center top-1/4 right-1/2 whitespace-nowrap -translate-1/2 h-fit opacity-0",
-      children: ["I create beautiful  web apps ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), " your users will love"]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-      className: "text-2xl flex rounded-full opacity-0 mt-10 p-5 my-pink-bg",
-      children: "Make it happen"
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "section-heading",
+      children: "Projects"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "section-container",
+      children: projects
     })]
   });
 }

@@ -27,7 +27,7 @@
     <body class="antialiased">
         <div id="app">
         </div>
-    
+        
         <!-- React JS -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </body>

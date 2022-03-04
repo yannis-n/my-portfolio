@@ -69,7 +69,7 @@ function App() {
   return (
       
       <div className={"app-container relative w-screen "+(siteEntered ? '' : 'h-screen')}>
-        {/* <Logo visible={siteEntered}/> */}
+        <Logo visible={siteEntered}/>
         <Navbar isMobile={isMobileFunction(windowDimensions)} gradientOn={siteEntered}/>
         <SocialLinksNav visible={siteEntered && topOfPage}/>
 
