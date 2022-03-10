@@ -7358,7 +7358,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AboutMe__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AboutMe */ "./resources/js/components/AboutMe.js");
 /* harmony import */ var _SocialLinksNav__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./SocialLinksNav */ "./resources/js/components/SocialLinksNav.js");
 /* harmony import */ var _Logo__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Logo */ "./resources/js/components/Logo.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Contact__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Contact */ "./resources/js/components/Contact.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -7370,6 +7371,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -7453,40 +7455,42 @@ function App() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     window.addEventListener('scroll', handleScroll);
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
-    className: "app-container relative w-screen " + (siteEntered ? '' : 'h-screen'),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Logo__WEBPACK_IMPORTED_MODULE_9__.Logo, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+    className: "app-container relative w-full " + (siteEntered ? '' : 'h-screen'),
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Logo__WEBPACK_IMPORTED_MODULE_9__.Logo, {
       visible: siteEntered
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_4__.Navbar, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_4__.Navbar, {
       isMobile: isMobileFunction(windowDimensions),
       gradientOn: siteEntered
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_SocialLinksNav__WEBPACK_IMPORTED_MODULE_8__.SocialLinksNav, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_SocialLinksNav__WEBPACK_IMPORTED_MODULE_8__.SocialLinksNav, {
       visible: siteEntered && topOfPage
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("main", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("main", {
       className: "",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
         id: "home",
         className: "fixed w-screen min-h-screen h-screen",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
           className: "canvas-container",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_HomeCanvas__WEBPACK_IMPORTED_MODULE_2__.HomeCanvas, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_HomeCanvas__WEBPACK_IMPORTED_MODULE_2__.HomeCanvas, {
             loop: intro,
             toggleGradient: toggleGradient,
             gradientOn: siteEntered
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
             className: siteEntered ? 'gradient gradientOn' : 'gradient gradientOff'
           })]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
         ref: enterTag,
         onClick: changeIntro,
         className: "container z-20 animate-pulse cursor-pointer absolute flex w-fit top-2/3 left-1/2 transform -translate-x-1/2 faded" + (!intro ? ' hidden' : ''),
         children: "Enter"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Introduction__WEBPACK_IMPORTED_MODULE_5__.Introduction, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Introduction__WEBPACK_IMPORTED_MODULE_5__.Introduction, {
         siteEntered: siteEntered
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_AboutMe__WEBPACK_IMPORTED_MODULE_7__.AboutMe, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_AboutMe__WEBPACK_IMPORTED_MODULE_7__.AboutMe, {
         siteEntered: siteEntered
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Projects__WEBPACK_IMPORTED_MODULE_6__.Projects, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Projects__WEBPACK_IMPORTED_MODULE_6__.Projects, {
+        siteEntered: siteEntered
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Contact__WEBPACK_IMPORTED_MODULE_10__.Contact, {
         siteEntered: siteEntered
       })]
     })]
@@ -7496,7 +7500,7 @@ function App() {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
 
 if (document.getElementById('app')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(App, {}), document.getElementById('app'));
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(App, {}), document.getElementById('app'));
 }
 
 function getWindowDimensions() {
@@ -7517,6 +7521,31 @@ function isMobileFunction(windowDimensions) {
 }
 
 ;
+
+/***/ }),
+
+/***/ "./resources/js/components/Contact.js":
+/*!********************************************!*\
+  !*** ./resources/js/components/Contact.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Contact": () => (/* binding */ Contact)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function Contact(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("section", {
+    id: "contact"
+  });
+}
 
 /***/ }),
 
@@ -7611,12 +7640,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "HomeCanvas": () => (/* binding */ HomeCanvas)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_three_fiber__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-three-fiber */ "./node_modules/@react-three/fiber/dist/react-three-fiber.esm.js");
+/* harmony import */ var react_three_fiber__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-three-fiber */ "./node_modules/@react-three/fiber/dist/react-three-fiber.esm.js");
+/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! three */ "./node_modules/three/build/three.module.js");
 /* harmony import */ var _Sphere__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Sphere */ "./resources/js/components/Sphere.js");
 /* harmony import */ var _Star__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Star */ "./resources/js/components/Star.js");
 /* harmony import */ var _Dolly__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Dolly */ "./resources/js/components/Dolly.js");
 /* harmony import */ var _Ring__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Ring */ "./resources/js/components/Ring.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -7640,9 +7671,27 @@ for (var index = 0; index < 200; index++) {
   }, index));
 }
 
+function Rig(_ref) {
+  var children = _ref.children;
+  var ref = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+  var vec = new three__WEBPACK_IMPORTED_MODULE_6__.Vector3();
+  (0,react_three_fiber__WEBPACK_IMPORTED_MODULE_7__.useFrame)(function (_ref2) {
+    var camera = _ref2.camera,
+        mouse = _ref2.mouse;
+    console.log(ref);
+    ref.current.children.forEach(function (element) {
+      element.position.lerp(vec.set(mouse.x * 1, mouse.y * 1, element.position.z), 0.2); // element.rotation.y = THREE.MathUtils.lerp(element.rotation.y, (-mouse.x * Math.PI) / 20, 0.1)
+    }); // camera.position.lerp(vec.set(mouse.x * 2, 0, 3.5), 0.05)
+  });
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("group", {
+    ref: ref,
+    children: children
+  });
+}
+
 function HomeCanvas(props) {
   var cameraZ = props.intro ? 100 : 0;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_three_fiber__WEBPACK_IMPORTED_MODULE_6__.Canvas, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_three_fiber__WEBPACK_IMPORTED_MODULE_7__.Canvas, {
     pixelRatio: window.devicePixelRatio,
     camera: {
       position: [0, 0, cameraZ],
@@ -7662,9 +7711,14 @@ function HomeCanvas(props) {
       position: [0, 0, 0],
       args: [2.2, 2.4, 300],
       dx: .01
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
+      fallback: null,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(Rig, {
+        children: itemList
+      })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Sphere__WEBPACK_IMPORTED_MODULE_1__.Sphere, {
       position: [0, 0, 0]
-    }), itemList, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Dolly__WEBPACK_IMPORTED_MODULE_3__.Dolly, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Dolly__WEBPACK_IMPORTED_MODULE_3__.Dolly, {
       toggleGradient: props.toggleGradient,
       loop: props.loop,
       gradientOn: props.gradientOn
@@ -8110,8 +8164,6 @@ function Project(props) {
 
   function handleScroll() {
     var distance = window.pageYOffset - project.current.offsetTop;
-    console.log(distance);
-    console.log(threshold);
 
     if (distance > threshold) {
       setOnScreen(true);
@@ -8123,7 +8175,6 @@ function Project(props) {
       window.addEventListener('scroll', handleScroll);
       window.addEventListener('resize', handleScroll);
     } else {
-      console.log(project.current.children);
       var element = project.current.children[0].classList.add('turned-on');
     }
   }, [onScreen]);
@@ -8146,8 +8197,17 @@ function Project(props) {
         className: "section-container--project-info--title",
         children: props.info.title
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "section-container--project-info--links",
+        className: "section-container--project-info--description",
         children: props.info.description
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+        href: props.info.link,
+        target: "_blank",
+        className: "section-container--project-info--link",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+          "data-main-image": "",
+          alt: "project-image",
+          src: '../../storage/images/link.svg'
+        })
       })]
     })]
   });
@@ -8176,16 +8236,19 @@ __webpack_require__.r(__webpack_exports__);
 function Projects(props) {
   var items = [{
     title: 'Jetpack VC',
-    description: 'My best work yet',
-    image: 'jeptack.png'
+    description: 'My best work yet My best work yet My best work yet  My best work yet  My best work yet My best work yet  My best work yet  My best work yet ',
+    image: 'jeptack.png',
+    link: "https://jetpack.vc/"
   }, {
     title: 'Athens Rhythm Hop',
-    description: 'My best work yet',
-    image: 'arh.png'
+    description: 'My best work yet My best work yet My best work yet  My best work yet  My best work yet My best work yet  My best work yet  My best work yet ',
+    image: 'arh.png',
+    link: "https://athensrhythmhop.com"
   }, {
     title: 'Rhythm Hoppers',
-    description: 'My best work yet',
-    image: 'rhythmhoppers.png'
+    description: 'My best work yet My best work yet My best work yet  My best work yet  My best work yet My best work yet  My best work yet  My best work yet ',
+    image: 'rhythmhoppers.png',
+    link: "https://rhythmhoppers.com/"
   }];
   var projects = [];
   items.forEach(function (element, i) {

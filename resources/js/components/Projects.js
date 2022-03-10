@@ -5,18 +5,21 @@ export function Projects(props) {
     let items = [
         {
             title: 'Jetpack VC',
-            description: 'My best work yet',
-            image: 'jeptack.png'
+            description: 'My best work yet My best work yet My best work yet  My best work yet  My best work yet My best work yet  My best work yet  My best work yet ',
+            image: 'jeptack.png',
+            link: "https://jetpack.vc/"
         },
         {
             title: 'Athens Rhythm Hop',
-            description: 'My best work yet',
-            image: 'arh.png'
+            description: 'My best work yet My best work yet My best work yet  My best work yet  My best work yet My best work yet  My best work yet  My best work yet ',
+            image: 'arh.png',
+            link: "https://athensrhythmhop.com"
         },
         {
             title: 'Rhythm Hoppers',
-            description: 'My best work yet',
-            image: 'rhythmhoppers.png'
+            description: 'My best work yet My best work yet My best work yet  My best work yet  My best work yet My best work yet  My best work yet  My best work yet ',
+            image: 'rhythmhoppers.png',
+            link: "https://rhythmhoppers.com/"
         },
     ]
 

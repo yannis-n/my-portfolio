@@ -13,6 +13,7 @@ import { Projects } from './Projects'
 import { AboutMe } from './AboutMe'
 import { SocialLinksNav } from './SocialLinksNav'
 import { Logo } from './Logo'
+import { Contact } from './Contact'
 
 
 function App() {
@@ -68,7 +69,7 @@ function App() {
     })
   return (
       
-      <div className={"app-container relative w-screen "+(siteEntered ? '' : 'h-screen')}>
+      <div className={"app-container relative w-full "+(siteEntered ? '' : 'h-screen')}>
         <Logo visible={siteEntered}/>
         <Navbar isMobile={isMobileFunction(windowDimensions)} gradientOn={siteEntered}/>
         <SocialLinksNav visible={siteEntered && topOfPage}/>
@@ -97,6 +98,8 @@ function App() {
         <Introduction siteEntered={siteEntered}/>
         <AboutMe siteEntered={siteEntered}/>
         <Projects siteEntered={siteEntered}/>
+        <Contact siteEntered={siteEntered}/>
+
         </main>
       </div>
   );

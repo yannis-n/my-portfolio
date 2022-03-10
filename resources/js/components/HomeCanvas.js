@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
-import { Canvas } from 'react-three-fiber';
+import React, { useRef, Suspense } from 'react';
+import { Canvas, useThree, useFrame } from 'react-three-fiber';
+import * as THREE from 'three'
 
 import { Sphere } from './Sphere'
 import { Star } from './Star'
@@ -18,6 +19,21 @@ for (let index = 0; index < 200; index++) {
 itemList.push( <Star key={index}    
     position={[getRandomInt(-100,100), getRandomInt(-40,40), getRandomInt(-400,-10)]} />)
 
+}
+
+function Rig({ children }) {
+  const ref = useRef()
+  const vec = new THREE.Vector3()
+  useFrame(({camera, mouse}) => {
+    console.log(ref)
+    ref.current.children.forEach(element => {
+      element.position.lerp(vec.set(mouse.x * 1, mouse.y * 1, element.position.z), 0.2)
+      // element.rotation.y = THREE.MathUtils.lerp(element.rotation.y, (-mouse.x * Math.PI) / 20, 0.1)
+    });
+    // camera.position.lerp(vec.set(mouse.x * 2, 0, 3.5), 0.05)
+
+  })
+  return <group ref={ref}>{children}</group>
 }
 
 export function HomeCanvas(props) {
@@ -45,9 +61,17 @@ export function HomeCanvas(props) {
       args={[2.2, 2.4, 300]} 
       dx={.01}
     />
+      <Suspense fallback={null}>
+      <Rig>
+        {itemList}
 
+      </Rig>
+        {/* <EffectComposer>
+          <Bloom luminanceThreshold={0} luminanceSmoothing={0.4} intensity={0.6} />
+        </EffectComposer> */}
+      </Suspense>
     <Sphere position={[0, 0, 0]} />
-    {itemList}
+    
     <Dolly toggleGradient={props.toggleGradient} loop={props.loop} gradientOn={props.gradientOn} />
 
     </Canvas>

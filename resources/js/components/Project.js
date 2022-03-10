@@ -8,8 +8,6 @@ export function Project(props) {
     function handleScroll(){
         
         let distance = window.pageYOffset - project.current.offsetTop 
-        console.log(distance)
-        console.log(threshold)
         if (distance > threshold){
         
             setOnScreen(true)
@@ -25,7 +23,6 @@ export function Project(props) {
             window.addEventListener('resize', handleScroll);      
         }else{
         
-          console.log(project.current.children)
                 
                     const element = project.current.children[0].classList.add('turned-on')
         }
@@ -47,9 +44,16 @@ export function Project(props) {
                             {props.info.title}
                         </div>
 
-                        <div className='section-container--project-info--links'>
+                        <div className='section-container--project-info--description'>
                             {props.info.description}
                         </div>
+
+                        <a href={props.info.link} target="_blank" className='section-container--project-info--link'>
+                        <img 
+                            
+                            data-main-image="" alt="project-image" 
+                            src={'../../storage/images/link.svg'}/>
+                        </a>
                     </div>
                 </div>
     );
