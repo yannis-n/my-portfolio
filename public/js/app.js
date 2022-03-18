@@ -7250,13 +7250,27 @@ function AboutMe(props) {
       onScreen = _useState2[0],
       setOnScreen = _useState2[1];
 
-  var threshold = window.innerHeight / 2;
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      listOnScreen = _useState4[0],
+      setListOnScreen = _useState4[1];
+
+  var threshold = window.innerHeight;
+  var thresholdForList = window.innerHeight / 2;
 
   function handleScroll() {
     var distance = Math.abs(window.pageYOffset - section.current.offsetTop);
 
     if (distance < threshold) {
       setOnScreen(true);
+    }
+  }
+
+  function handleListScroll() {
+    var distance = Math.abs(window.pageYOffset - section.current.offsetTop);
+
+    if (distance < thresholdForList) {
+      setListOnScreen(true);
     }
   }
 
@@ -7271,7 +7285,13 @@ function AboutMe(props) {
       title.classList.remove('faded');
       portraitDiv.classList.remove('faded-right');
       content.classList.remove('faded');
-
+    }
+  }, [onScreen]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!onScreen) {
+      window.addEventListener('scroll', handleListScroll);
+      window.addEventListener('resize', handleListScroll);
+    } else {
       var _loop = function _loop(i) {
         var element = skillList.current.children[i];
         setTimeout(function () {
@@ -7283,7 +7303,7 @@ function AboutMe(props) {
         _loop(i);
       }
     }
-  }, [onScreen]);
+  }, [listOnScreen]);
   var itemList = [];
   var itemNames = ['JavaScript (ES6+)', 'Laravel', 'Jquery', 'PHP', 'React', 'WordPress'];
 
@@ -7357,9 +7377,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Projects__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Projects */ "./resources/js/components/Projects.js");
 /* harmony import */ var _AboutMe__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AboutMe */ "./resources/js/components/AboutMe.js");
 /* harmony import */ var _SocialLinksNav__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./SocialLinksNav */ "./resources/js/components/SocialLinksNav.js");
-/* harmony import */ var _Logo__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Logo */ "./resources/js/components/Logo.js");
-/* harmony import */ var _Contact__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Contact */ "./resources/js/components/Contact.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Contact__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Contact */ "./resources/js/components/Contact.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -7386,7 +7405,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 function App() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -7398,7 +7416,7 @@ function App() {
       siteEntered = _useState4[0],
       setsiteEntered = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
       _useState6 = _slicedToArray(_useState5, 2),
       intro = _useState6[0],
       setIntro = _useState6[1]; // this is to determine if the enter screen will appear
@@ -7455,42 +7473,41 @@ function App() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     window.addEventListener('scroll', handleScroll);
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
     className: "app-container relative w-full " + (siteEntered ? '' : 'h-screen'),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Logo__WEBPACK_IMPORTED_MODULE_9__.Logo, {
-      visible: siteEntered
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_4__.Navbar, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_4__.Navbar, {
       isMobile: isMobileFunction(windowDimensions),
+      topOfPage: topOfPage,
       gradientOn: siteEntered
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_SocialLinksNav__WEBPACK_IMPORTED_MODULE_8__.SocialLinksNav, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_SocialLinksNav__WEBPACK_IMPORTED_MODULE_8__.SocialLinksNav, {
       visible: siteEntered && topOfPage
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("main", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("main", {
       className: "",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
         id: "home",
         className: "fixed w-screen min-h-screen h-screen",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
           className: "canvas-container",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_HomeCanvas__WEBPACK_IMPORTED_MODULE_2__.HomeCanvas, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_HomeCanvas__WEBPACK_IMPORTED_MODULE_2__.HomeCanvas, {
             loop: intro,
             toggleGradient: toggleGradient,
             gradientOn: siteEntered
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
             className: siteEntered ? 'gradient gradientOn' : 'gradient gradientOff'
           })]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
         ref: enterTag,
         onClick: changeIntro,
         className: "container z-20 animate-pulse cursor-pointer absolute flex w-fit top-2/3 left-1/2 transform -translate-x-1/2 faded" + (!intro ? ' hidden' : ''),
         children: "Enter"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Introduction__WEBPACK_IMPORTED_MODULE_5__.Introduction, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Introduction__WEBPACK_IMPORTED_MODULE_5__.Introduction, {
         siteEntered: siteEntered
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_AboutMe__WEBPACK_IMPORTED_MODULE_7__.AboutMe, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_AboutMe__WEBPACK_IMPORTED_MODULE_7__.AboutMe, {
         siteEntered: siteEntered
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Projects__WEBPACK_IMPORTED_MODULE_6__.Projects, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Projects__WEBPACK_IMPORTED_MODULE_6__.Projects, {
         siteEntered: siteEntered
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Contact__WEBPACK_IMPORTED_MODULE_10__.Contact, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Contact__WEBPACK_IMPORTED_MODULE_9__.Contact, {
         siteEntered: siteEntered
       })]
     })]
@@ -7500,7 +7517,7 @@ function App() {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
 
 if (document.getElementById('app')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(App, {}), document.getElementById('app'));
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(App, {}), document.getElementById('app'));
 }
 
 function getWindowDimensions() {
@@ -7680,7 +7697,7 @@ function Rig(_ref) {
         mouse = _ref2.mouse;
     console.log(ref);
     ref.current.children.forEach(function (element) {
-      element.position.lerp(vec.set(mouse.x * 1, mouse.y * 1, element.position.z), 0.2); // element.rotation.y = THREE.MathUtils.lerp(element.rotation.y, (-mouse.x * Math.PI) / 20, 0.1)
+      element.position.lerp(vec.set(mouse.x * 1, mouse.y * 1, element.position.z), 0.3); // element.rotation.y = THREE.MathUtils.lerp(element.rotation.y, (-mouse.x * Math.PI) / 20, 0.1)
     }); // camera.position.lerp(vec.set(mouse.x * 2, 0, 3.5), 0.05)
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("group", {
@@ -7802,7 +7819,7 @@ function Introduction(props) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
       className: " faded  mt-4 md:mt-8",
       children: "I work as a Full Stack Developer, expanding the skills attained through rigorous training and hands-on experience as well as various courses."
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
       className: "text-2xl faded flex rounded-full  mt-4 md:mt-8 p-5 my-pink-bg",
       children: "Contact Me"
     })]
@@ -7827,150 +7844,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 function Logo(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
-    className: "fixed z-10",
-    xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 120 120",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("defs", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("g", {
-      className: "eins",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
-        className: "all",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("mask", {
-          id: "Mask",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
-            className: "xmask",
-            cx: "60",
-            cy: "60",
-            r: "100",
-            fill: "#EC255A"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
-            className: "xmask",
-            cx: "60",
-            cy: "60",
-            r: "50",
-            fill: "#000"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
-          className: "group",
-          mask: "url(#Mask)",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
-            className: "go",
-            cx: "60",
-            cy: "65",
-            r: "48",
-            style: {
-              fill: '#EC255A'
-            }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
-            className: "go",
-            cx: "60",
-            cy: "55",
-            r: "48",
-            style: {
-              fill: '#EC255A'
-            }
-          })]
-        })]
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("g", {
-      className: "zwei",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
-        className: "all",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("mask", {
-          id: "Mask2",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
-            className: "xmask",
-            cx: "60",
-            cy: "60",
-            r: "100",
-            fill: "#EC255A"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
-            className: "xmask",
-            cx: "60",
-            cy: "60",
-            r: "50",
-            fill: "#000"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
-          className: "group",
-          style: {
-            animationDelay: '-0.33s',
-            mask: "url(#Mask2)"
-          },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
-            className: "go",
-            cx: "60",
-            cy: "65",
-            r: "48",
-            style: {
-              fill: '#EC255A'
-            }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
-            className: "go",
-            cx: "60",
-            cy: "55",
-            r: "48",
-            style: {
-              fill: '#EC255A'
-            }
-          })]
-        })]
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("g", {
-      className: "drei",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
-        className: "all",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("mask", {
-          id: "Mask3",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
-            className: "xmask",
-            cx: "60",
-            cy: "60",
-            r: "100",
-            fill: "#EC255A"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
-            className: "xmask",
-            cx: "60",
-            cy: "60",
-            r: "50",
-            fill: "#000"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
-          className: "group",
-          style: {
-            animationDelay: '-0.66s',
-            mask: "url(#Mask3)"
-          },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
-            className: "go",
-            cx: "60",
-            cy: "65",
-            r: "48",
-            style: {
-              fill: '#EC255A'
-            }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
-            className: "go",
-            cx: "60",
-            cy: "55",
-            r: "48",
-            style: {
-              fill: '#EC255A'
-            }
-          })]
-        })]
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
-      className: "go",
-      cx: "60",
-      cy: "60",
-      r: "2",
-      style: {
-        fill: '#EC255A'
-      }
-    })]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    "class": "atom",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      "class": "electron"
+    })
   });
 }
 
@@ -7988,7 +7867,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Navbar": () => (/* binding */ Navbar)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Logo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Logo */ "./resources/js/components/Logo.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -8000,6 +7880,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -8033,9 +7914,11 @@ function Navbar(props) {
   var navList = [];
 
   for (var index = 0; index < links.length; index++) {
-    navList.push( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
+    navList.push( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
       className: "mx-5",
-      children: links[index].name
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+        children: links[index].name
+      })
     }, index));
   }
 
@@ -8098,25 +7981,30 @@ function Navbar(props) {
       }
     };
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("header", {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("nav", {
-      className: "links-nav z-20 flex list-none " + (props.gradientOn ? '' : 'md:faded-right opacity-0') + (menuToggled ? 'open' : ''),
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("header", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("nav", {
+      className: "links-nav z-20 flex list-none " + (props.gradientOn ? '' : 'md:faded-right opacity-0') + (menuToggled ? 'open' : '') + (!props.isMobile && !props.topOfPage ? 'background' : ''),
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Logo__WEBPACK_IMPORTED_MODULE_1__.Logo, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
         onClick: function onClick() {
           toggleMenu();
         },
         className: "menu-toggle md:hidden " + (menuToggled ? 'toggled' : ''),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
           className: "menu-toggle-bar"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
           className: "menu-toggle-bar"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
           className: "menu-toggle-bar"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("ul", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
         ref: navBar,
-        className: "flex flex-col md:flex-row " + (menuToggled ? 'open' : ''),
-        children: navList
+        className: "flex flex-col md:flex-row md:items-center " + (menuToggled ? 'open' : ''),
+        children: [navList, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
+          className: "mx-5 resume",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+            children: "Resume"
+          })
+        })]
       })]
     })
   });
@@ -8175,6 +8063,7 @@ function Project(props) {
       window.addEventListener('scroll', handleScroll);
       window.addEventListener('resize', handleScroll);
     } else {
+      project.current.children[1].classList.remove('faded-project');
       var element = project.current.children[0].classList.add('turned-on');
     }
   }, [onScreen]);
@@ -8192,7 +8081,7 @@ function Project(props) {
         src: '../../storage/images/' + props.info.image
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "section-container--project-info",
+      className: "section-container--project-info faded-project",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
         className: "section-container--project-info--title",
         children: props.info.title
@@ -8342,8 +8231,8 @@ var links = [{
     fill: "#ffffff",
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 50 50",
-    width: "50px",
-    height: "50px",
+    width: "25px",
+    height: "25px",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
       d: "M 8 3.0117188 C 6.3126093 3.0117188 4.8354789 3.4916328 3.7539062 4.3652344 C 2.6723337 5.238836 2.0117188 6.533218 2.0117188 7.9472656 C 2.0117188 10.690836 4.4687078 12.814467 7.7167969 12.941406 A 0.98809878 0.98809878 0 0 0 8 12.988281 C 9.753566 12.988281 11.246191 12.474267 12.3125 11.564453 C 13.378809 10.654639 13.988281 9.3429353 13.988281 7.9472656 A 0.98809878 0.98809878 0 0 0 13.986328 7.8925781 C 13.832307 5.1316834 11.374781 3.0117187 8 3.0117188 z M 8 4.9882812 C 10.60907 4.9882812 11.895883 6.2693448 12.005859 7.9726562 C 11.998759 8.8049335 11.676559 9.5118991 11.03125 10.0625 C 10.378809 10.619186 9.371434 11.011719 8 11.011719 C 5.3980542 11.011719 3.9882813 9.5991704 3.9882812 7.9472656 C 3.9882812 7.1213132 4.3276663 6.4422421 4.9960938 5.9023438 C 5.6645211 5.3624454 6.6873907 4.9882813 8 4.9882812 z M 3 15 A 1.0001 1.0001 0 0 0 2 16 L 2 45 A 1.0001 1.0001 0 0 0 3 46 L 13 46 A 1.0001 1.0001 0 0 0 14 45 L 14 35.664062 L 14 16 A 1.0001 1.0001 0 0 0 13 15 L 3 15 z M 18 15 A 1.0001 1.0001 0 0 0 17 16 L 17 45 A 1.0001 1.0001 0 0 0 18 46 L 28 46 A 1.0001 1.0001 0 0 0 29 45 L 29 29 L 29 28.75 L 29 28.5 C 29 26.555577 30.555577 25 32.5 25 C 34.444423 25 36 26.555577 36 28.5 L 36 45 A 1.0001 1.0001 0 0 0 37 46 L 47 46 A 1.0001 1.0001 0 0 0 48 45 L 48 28 C 48 23.873476 46.787888 20.604454 44.744141 18.375 C 42.700394 16.145546 39.849212 15 36.787109 15 C 32.882872 15 30.521631 16.426076 29 17.601562 L 29 16 A 1.0001 1.0001 0 0 0 28 15 L 18 15 z M 4 17 L 12 17 L 12 35.664062 L 12 44 L 4 44 L 4 17 z M 19 17 L 27 17 L 27 19.638672 A 1.0001 1.0001 0 0 0 28.744141 20.306641 C 28.744141 20.306641 31.709841 17 36.787109 17 C 39.360007 17 41.615528 17.922268 43.269531 19.726562 C 44.923534 21.530858 46 24.261524 46 28 L 46 44 L 38 44 L 38 28.5 A 1.0001 1.0001 0 0 0 37.916016 28.089844 C 37.694061 25.26411 35.38033 23 32.5 23 C 29.474423 23 27 25.474423 27 28.5 L 27 28.75 L 27 29 L 27 44 L 19 44 L 19 17 z"
     })
@@ -8354,8 +8243,8 @@ var links = [{
     fill: "#ffffff",
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 50 50",
-    width: "50px",
-    height: "50px",
+    width: "25px",
+    height: "25px",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
       d: "M 16 3 C 8.8324839 3 3 8.8324839 3 16 L 3 34 C 3 41.167516 8.8324839 47 16 47 L 34 47 C 41.167516 47 47 41.167516 47 34 L 47 16 C 47 8.8324839 41.167516 3 34 3 L 16 3 z M 16 5 L 34 5 C 40.086484 5 45 9.9135161 45 16 L 45 34 C 45 40.086484 40.086484 45 34 45 L 16 45 C 9.9135161 45 5 40.086484 5 34 L 5 16 C 5 9.9135161 9.9135161 5 16 5 z M 37 11 A 2 2 0 0 0 35 13 A 2 2 0 0 0 37 15 A 2 2 0 0 0 39 13 A 2 2 0 0 0 37 11 z M 25 14 C 18.936712 14 14 18.936712 14 25 C 14 31.063288 18.936712 36 25 36 C 31.063288 36 36 31.063288 36 25 C 36 18.936712 31.063288 14 25 14 z M 25 16 C 29.982407 16 34 20.017593 34 25 C 34 29.982407 29.982407 34 25 34 C 20.017593 34 16 29.982407 16 25 C 16 20.017593 20.017593 16 25 16 z"
     })
@@ -8366,8 +8255,8 @@ var links = [{
     fill: "#ffffff",
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 50 50",
-    width: "50px",
-    height: "50px",
+    width: "25px",
+    height: "25px",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
       d: "M 25 2 C 12.311335 2 2 12.311335 2 25 C 2 37.688665 12.311335 48 25 48 C 37.688665 48 48 37.688665 48 25 C 48 12.311335 37.688665 2 25 2 z M 25 4 C 36.607335 4 46 13.392665 46 25 C 46 25.071371 45.994849 25.141688 45.994141 25.212891 C 45.354527 25.153853 44.615508 25.097776 43.675781 25.064453 C 42.347063 25.017336 40.672259 25.030987 38.773438 25.125 C 38.843852 24.634651 38.893205 24.137377 38.894531 23.626953 C 38.991361 21.754332 38.362521 20.002464 37.339844 18.455078 C 37.586913 17.601352 37.876747 16.515218 37.949219 15.283203 C 38.031819 13.878925 37.910599 12.321765 36.783203 11.269531 L 36.494141 11 L 36.099609 11 C 33.416539 11 31.580023 12.12321 30.457031 13.013672 C 28.835529 12.386022 27.01222 12 25 12 C 22.976367 12 21.135525 12.391416 19.447266 13.017578 C 18.324911 12.126691 16.486785 11 13.800781 11 L 13.408203 11 L 13.119141 11.267578 C 12.020956 12.287321 11.919778 13.801759 11.988281 15.199219 C 12.048691 16.431506 12.321732 17.552142 12.564453 18.447266 C 11.524489 20.02486 10.900391 21.822018 10.900391 23.599609 C 10.900391 24.111237 10.947969 24.610071 11.017578 25.101562 C 9.2118173 25.017808 7.6020996 25.001668 6.3242188 25.046875 C 5.3845143 25.080118 4.6454422 25.135713 4.0058594 25.195312 C 4.0052628 25.129972 4 25.065482 4 25 C 4 13.392665 13.392665 4 25 4 z M 14.396484 13.130859 C 16.414067 13.322043 17.931995 14.222972 18.634766 14.847656 L 19.103516 15.261719 L 19.681641 15.025391 C 21.263092 14.374205 23.026984 14 25 14 C 26.973016 14 28.737393 14.376076 30.199219 15.015625 L 30.785156 15.273438 L 31.263672 14.847656 C 31.966683 14.222758 33.487184 13.321554 35.505859 13.130859 C 35.774256 13.575841 36.007486 14.208668 35.951172 15.166016 C 35.883772 16.311737 35.577304 17.559658 35.345703 18.300781 L 35.195312 18.783203 L 35.494141 19.191406 C 36.483616 20.540691 36.988121 22.000937 36.902344 23.544922 L 36.900391 23.572266 L 36.900391 23.599609 C 36.900391 26.095064 36.00178 28.092339 34.087891 29.572266 C 32.174048 31.052199 29.152663 32 24.900391 32 C 20.648118 32 17.624827 31.052192 15.710938 29.572266 C 13.797047 28.092339 12.900391 26.095064 12.900391 23.599609 C 12.900391 22.134903 13.429308 20.523599 14.40625 19.191406 L 14.699219 18.792969 L 14.558594 18.318359 C 14.326866 17.530484 14.042825 16.254103 13.986328 15.101562 C 13.939338 14.14294 14.166221 13.537027 14.396484 13.130859 z M 8.8847656 26.021484 C 9.5914575 26.03051 10.40146 26.068656 11.212891 26.109375 C 11.290419 26.421172 11.378822 26.727898 11.486328 27.027344 C 8.178972 27.097092 5.7047309 27.429674 4.1796875 27.714844 C 4.1152068 27.214494 4.0638483 26.710021 4.0351562 26.199219 C 5.1622058 26.092262 6.7509972 25.994233 8.8847656 26.021484 z M 41.115234 26.037109 C 43.247527 26.010033 44.835728 26.108156 45.962891 26.214844 C 45.934234 26.718328 45.883749 27.215664 45.820312 27.708984 C 44.24077 27.41921 41.699674 27.086688 38.306641 27.033203 C 38.411945 26.739677 38.499627 26.438219 38.576172 26.132812 C 39.471291 26.084833 40.344564 26.046896 41.115234 26.037109 z M 11.912109 28.019531 C 12.508849 29.215327 13.361516 30.283019 14.488281 31.154297 C 16.028825 32.345531 18.031623 33.177838 20.476562 33.623047 C 20.156699 33.951698 19.86578 34.312595 19.607422 34.693359 L 19.546875 34.640625 C 19.552375 34.634325 19.04975 34.885878 18.298828 34.953125 C 17.547906 35.020374 16.621615 35 15.800781 35 C 14.575781 35 14.03621 34.42121 13.173828 33.367188 C 12.696283 32.72356 12.114101 32.202331 11.548828 31.806641 C 10.970021 31.401475 10.476259 31.115509 9.8652344 31.013672 L 9.7832031 31 L 9.6992188 31 C 9.2325521 31 8.7809835 31.03379 8.359375 31.515625 C 8.1485707 31.756544 8.003277 32.202561 8.0976562 32.580078 C 8.1920352 32.957595 8.4308563 33.189581 8.6445312 33.332031 C 10.011254 34.24318 10.252795 36.046511 11.109375 37.650391 C 11.909298 39.244315 13.635662 40 15.400391 40 L 18 40 L 18 44.802734 C 10.967811 42.320535 5.6646795 36.204613 4.3320312 28.703125 C 5.8629338 28.414776 8.4265387 28.068108 11.912109 28.019531 z M 37.882812 28.027344 C 41.445538 28.05784 44.08105 28.404061 45.669922 28.697266 C 44.339047 36.201504 39.034072 42.31987 32 44.802734 L 32 39.599609 C 32 38.015041 31.479642 36.267712 30.574219 34.810547 C 30.299322 34.368135 29.975945 33.949736 29.615234 33.574219 C 31.930453 33.11684 33.832364 32.298821 35.3125 31.154297 C 36.436824 30.284907 37.287588 29.220424 37.882812 28.027344 z M 23.699219 34.099609 L 26.5 34.099609 C 27.312821 34.099609 28.180423 34.7474 28.875 35.865234 C 29.569577 36.983069 30 38.484177 30 39.599609 L 30 45.398438 C 28.397408 45.789234 26.72379 46 25 46 C 23.27621 46 21.602592 45.789234 20 45.398438 L 20 39.599609 C 20 38.508869 20.467828 37.011307 21.208984 35.888672 C 21.950141 34.766037 22.886398 34.099609 23.699219 34.099609 z M 12.308594 35.28125 C 13.174368 36.179258 14.222525 37 15.800781 37 C 16.579948 37 17.552484 37.028073 18.476562 36.945312 C 18.479848 36.945018 18.483042 36.943654 18.486328 36.943359 C 18.36458 37.293361 18.273744 37.645529 18.197266 38 L 15.400391 38 C 14.167057 38 13.29577 37.55443 12.894531 36.751953 L 12.886719 36.738281 L 12.880859 36.726562 C 12.716457 36.421191 12.500645 35.81059 12.308594 35.28125 z"
     })
@@ -8378,8 +8267,8 @@ var links = [{
     fill: "#ffffff",
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 50 50",
-    width: "50px",
-    height: "50px",
+    width: "25px",
+    height: "25px",
     children: ["    ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
       d: "M25,2C12.318,2,2,12.317,2,25s10.318,23,23,23c12.683,0,23-10.317,23-23S37.683,2,25,2z M32,16h-3.29 C26.772,16,26,16.455,26,17.806V21h6l-1,5h-5v13h-6V26h-3v-5h3v-2.774C20,14.001,21.686,11,26.581,11C29.203,11,32,12,32,12V16z"
     })]
@@ -8390,10 +8279,10 @@ var links = [{
     fill: "#ffffff",
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 50 50",
-    width: "50px",
-    height: "50px",
+    width: "25px",
+    height: "25px",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-      d: "M 25 2.8125 L 24.464844 3.15625 L 3 16.796875 L 3 33.203125 L 25 47.1875 L 47 33.203125 L 47 16.796875 Z M 25 5.1875 L 45 17.894531 L 45 32.105469 L 25 44.8125 L 5 32.105469 L 5 17.894531 Z M 24 8.128906 L 7.761719 18.449219 L 15.582031 23.871094 L 24 18.136719 Z M 26 8.128906 L 26 18.136719 L 26.4375 18.433594 L 34.417969 23.871094 L 42.238281 18.449219 Z M 22 11.769531 L 22 17.078125 L 15.59375 21.445313 L 11.375 18.519531 Z M 28 11.769531 L 38.625 18.519531 L 34.40625 21.441406 L 28 17.078125 Z M 25 19.8125 L 17.300781 25.0625 L 25 30.398438 L 25.570313 30.003906 L 32.699219 25.0625 Z M 7 20.292969 L 7 29.722656 L 13.859375 25.046875 L 12.660156 24.21875 Z M 43 20.296875 L 36.140625 25.046875 L 37.34375 25.871094 L 43 29.722656 Z M 25 22.234375 L 29.167969 25.078125 L 25 27.964844 L 20.832031 25.078125 Z M 9 24.113281 L 10.328125 25.035156 L 9 25.9375 Z M 41 24.113281 L 41 25.9375 L 39.671875 25.035156 Z M 15.574219 26.238281 L 15.003906 26.625 L 7.773438 31.558594 L 24 41.871094 L 24 32.078125 Z M 34.425781 26.238281 L 26 32.078125 L 26 41.871094 L 42.226563 31.558594 Z M 15.5625 28.667969 L 22 33.125 L 22 38.230469 L 11.40625 31.5 Z M 34.4375 28.667969 L 38.59375 31.5 L 28 38.230469 L 28 33.125 Z"
+      d: "M 25 2.8125 L 24.464844 3.15625 L 3 16.796875 L 3 33.203125 L 25 47.1875 L 47 33.203125 L 47 16.796875 Z M 25 5.1875 L 45 17.894531 L 45 32.105469 L 25 44.8125 L 5 32.105469 L 5 17.894531 Z M 24 8.128906 L 7.761719 18.449219 L 15.582031 23.871094 L 24 18.136719 Z M 26 8.128906 L 26 18.136719 L 26.4375 18.433594 L 34.417969 23.871094 L 42.238281 18.449219 Z M 22 11.769531 L 22 17.078125 L 15.59375 21.445313 L 11.375 18.519531 Z M 28 11.769531 L 38.625 18.519531 L 34.40625 21.441406 L 28 17.078125 Z M 25 19.8125 L 17.300781 25.0625 L 25 30.398438 L 25.570313 30.003906 L 32.699219 25.0625 Z M 7 20.292969 L 7 29.722656 L 13.859375 25.046875 L 12.660156 24.21875 Z M 43 20.296875 L 36.140650 50.046875 L 37.34375 25.871094 L 43 29.722656 Z M 25 22.234375 L 29.167969 25.078125 L 25 27.964844 L 20.832031 25.078125 Z M 9 24.113281 L 10.328150 50.035156 L 9 25.9375 Z M 41 24.113281 L 41 25.9375 L 39.671875 25.035156 Z M 15.574219 26.238281 L 15.003906 26.625 L 7.773438 31.558594 L 24 41.871094 L 24 32.078125 Z M 34.425781 26.238281 L 26 32.078125 L 26 41.871094 L 42.226563 31.558594 Z M 15.5625 28.667969 L 22 33.125 L 22 38.230469 L 11.40625 31.5 Z M 34.4375 28.667969 L 38.59375 31.5 L 28 38.230469 L 28 33.125 Z"
     })
   })
 }];

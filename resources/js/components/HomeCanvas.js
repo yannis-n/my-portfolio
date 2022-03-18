@@ -27,7 +27,7 @@ function Rig({ children }) {
   useFrame(({camera, mouse}) => {
     console.log(ref)
     ref.current.children.forEach(element => {
-      element.position.lerp(vec.set(mouse.x * 1, mouse.y * 1, element.position.z), 0.2)
+      element.position.lerp(vec.set(mouse.x * 1, mouse.y * 1, element.position.z), 0.3)
       // element.rotation.y = THREE.MathUtils.lerp(element.rotation.y, (-mouse.x * Math.PI) / 20, 0.1)
     });
     // camera.position.lerp(vec.set(mouse.x * 2, 0, 3.5), 0.05)

@@ -23,6 +23,7 @@ export function Project(props) {
             window.addEventListener('resize', handleScroll);      
         }else{
         
+            project.current.children[1].classList.remove('faded-project')
                 
                     const element = project.current.children[0].classList.add('turned-on')
         }
@@ -39,7 +40,7 @@ export function Project(props) {
                             data-main-image="" alt="project-image" sizes="(min-width: 200px) 200px, 100vw" 
                             src={'../../storage/images/'+props.info.image}/>
                     </div>
-                    <div className='section-container--project-info'>
+                    <div className='section-container--project-info faded-project'>
                         <div className='section-container--project-info--title'>
                             {props.info.title}
                         </div>

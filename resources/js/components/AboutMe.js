@@ -5,13 +5,26 @@ export function AboutMe(props) {
     let portrait = useRef(null)
     let skillList = useRef(null)
     let [onScreen, setOnScreen] = useState(false)
-    let threshold = window.innerHeight / 2
+    let [listOnScreen, setListOnScreen] = useState(false)
+    let threshold = window.innerHeight
+    let thresholdForList = window.innerHeight / 2
     function handleScroll(){
         
         let distance = Math.abs( window.pageYOffset - section.current.offsetTop )
         if (distance < threshold){
         
             setOnScreen(true)
+        }
+
+        
+    }
+
+    function handleListScroll(){
+        
+        let distance = Math.abs( window.pageYOffset - section.current.offsetTop )
+        if (distance < thresholdForList){
+        
+            setListOnScreen(true)
         }
 
         
@@ -29,16 +42,24 @@ export function AboutMe(props) {
                 title.classList.remove('faded')
                 portraitDiv.classList.remove('faded-right')  
                 content.classList.remove('faded')
-                
-                for (let i = 0; i < skillList.current.children.length; i++) {
-                    const element = skillList.current.children[i];
-                    setTimeout(() => {
-                        element.children[0].classList.remove('faded-right')  
-                    }, 400 * (1 + i % 2));
-                }
         }
 
     },[onScreen])
+
+    useEffect(() => {
+        if (!onScreen){
+            window.addEventListener('scroll', handleListScroll);
+            window.addEventListener('resize', handleListScroll);      
+        }else{                
+            for (let i = 0; i < skillList.current.children.length; i++) {
+                const element = skillList.current.children[i];
+                setTimeout(() => {
+                    element.children[0].classList.remove('faded-right')  
+                }, 400 * (1 + i % 2));
+            }
+        }
+
+    },[listOnScreen])
     let itemList = [
 
     ]

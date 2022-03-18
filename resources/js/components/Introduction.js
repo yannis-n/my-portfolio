@@ -67,9 +67,9 @@ export function Introduction(props) {
 
             </p>
 
-            <button className="text-2xl faded flex rounded-full  mt-4 md:mt-8 p-5 my-pink-bg">
+            <a className="text-2xl faded flex rounded-full  mt-4 md:mt-8 p-5 my-pink-bg">
                 Contact Me
-            </button>
+            </a>
         </section>
     );
   }

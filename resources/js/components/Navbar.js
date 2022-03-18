@@ -2,6 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import {
     NavLink,
   } from "react-router-dom";
+
+import { Logo } from './Logo'
+
 export function Navbar(props) {
   const [menuToggled, setMenuToggled] = useState(false);
   let navBar = useRef([])
@@ -28,7 +31,7 @@ export function Navbar(props) {
   let navList=[];
 
   for (let index = 0; index < links.length; index++) {
-    navList.push( <li key={index} className="mx-5">{links[index].name}</li> )
+    navList.push( <li key={index} className="mx-5"><a>{links[index].name}</a></li> )
 
   }
 
@@ -87,7 +90,9 @@ export function Navbar(props) {
   });
     return (
       <header>
-        <nav className={"links-nav z-20 flex list-none "+ (props.gradientOn ? '' : 'md:faded-right opacity-0') + (menuToggled ? 'open' : '')}>
+        <nav className={"links-nav z-20 flex list-none "+ (props.gradientOn ? '' : 'md:faded-right opacity-0') + (menuToggled ? 'open' : '')  + ((!props.isMobile && !props.topOfPage) ? 'background' : '')}>
+        <Logo />
+
   {/* //       <li><NavLink to="/">Home</NavLink></li>
   //       <li><NavLink to="/">Stuff</NavLink></li>
   //       <li><NavLink to="/">Contact</NavLink></li> */}
@@ -96,8 +101,9 @@ export function Navbar(props) {
           <span className="menu-toggle-bar"></span>
           <span className="menu-toggle-bar"></span>
         </button>
-        <ul ref={navBar} className={"flex flex-col md:flex-row "+ (menuToggled ? 'open' : '')}>
+        <ul ref={navBar} className={"flex flex-col md:flex-row md:items-center "+ (menuToggled ? 'open' : '')}>
           {navList}
+          <li className="mx-5 resume"><a>Resume</a></li> 
         </ul>
       </nav>
       </header>
