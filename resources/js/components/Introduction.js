@@ -59,15 +59,15 @@ export function Introduction(props) {
                 I am Yannis.
             </h2>
 
-            <h3 className="heading mt-4 md:mt-8 faded font-bold flex h-fit ">
+            <h3 className="heading faded font-bold flex h-fit ">
                 I build stuff for the web.
             </h3>
-            <p className=" faded  mt-4 md:mt-8">
+            <p className="faded">
             I work as a Full Stack Developer, expanding the skills attained through rigorous training and hands-on experience as well as various courses. 
 
             </p>
 
-            <a className="text-2xl faded flex rounded-full  mt-4 md:mt-8 p-5 my-pink-bg">
+            <a className="text-2xl faded flex rounded-full p-5 my-pink-bg">
                 Contact Me
             </a>
         </section>

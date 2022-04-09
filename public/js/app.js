@@ -7256,7 +7256,7 @@ function AboutMe(props) {
       setListOnScreen = _useState4[1];
 
   var threshold = window.innerHeight;
-  var thresholdForList = window.innerHeight / 2;
+  var thresholdForList = props.isMobile ? window.innerHeight / 8 : window.innerHeight / 4;
 
   function handleScroll() {
     var distance = Math.abs(window.pageYOffset - section.current.offsetTop);
@@ -7282,10 +7282,15 @@ function AboutMe(props) {
       var title = section.current.children[0];
       var content = section.current.children[1].children[0];
       var portraitDiv = portrait.current;
-      title.classList.remove('faded');
+      title.classList.remove('faded-left');
       portraitDiv.classList.remove('faded-right');
       content.classList.remove('faded');
     }
+
+    return function () {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, [onScreen]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (!onScreen) {
@@ -7303,6 +7308,11 @@ function AboutMe(props) {
         _loop(i);
       }
     }
+
+    return function () {
+      window.removeEventListener('scroll', handleListScroll);
+      window.removeEventListener('resize', handleListScroll);
+    };
   }, [listOnScreen]);
   var itemList = [];
   var itemNames = ['JavaScript (ES6+)', 'Laravel', 'Jquery', 'PHP', 'React', 'WordPress'];
@@ -7321,7 +7331,7 @@ function AboutMe(props) {
     ref: section,
     className: "relative flex justify-center flex-col items-start" + (props.siteEntered ? '' : ' opacity-0'),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "section-heading faded",
+      className: "section-heading faded-left",
       children: "About Me"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
       className: "section-container",
@@ -7416,7 +7426,7 @@ function App() {
       siteEntered = _useState4[0],
       setsiteEntered = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState6 = _slicedToArray(_useState5, 2),
       intro = _useState6[0],
       setIntro = _useState6[1]; // this is to determine if the enter screen will appear
@@ -7432,14 +7442,22 @@ function App() {
       topOfPage = _useState10[0],
       setTopOFPage = _useState10[1];
 
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState12 = _slicedToArray(_useState11, 2),
+      bottomOfPage = _useState12[0],
+      setBottomOfPage = _useState12[1];
+
   var toggleGradient = function toggleGradient() {
     // setGradientOn(!gradientOn)
     setsiteEntered(!gradientOn);
   };
 
   function handleScroll(e) {
-    var top = e.target;
-    setTopOFPage(window.pageYOffset < 150);
+    var top = window.pageYOffset < 150;
+    var bottom = Math.ceil(window.innerHeight + document.documentElement.scrollTop) >= document.body.offsetHeight;
+    var condition = top || bottom;
+    if (condition != topOfPage) setTopOFPage(condition);
+    if (bottom != bottomOfPage) setBottomOfPage(bottom);
   }
 
   function changeIntro() {
@@ -7485,28 +7503,33 @@ function App() {
       className: "",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
         id: "home",
-        className: "fixed w-screen min-h-screen h-screen",
+        className: "fixed w-screen min-h-screen h-screen" + (siteEntered ? '' : ' z-10'),
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
           className: "canvas-container",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_HomeCanvas__WEBPACK_IMPORTED_MODULE_2__.HomeCanvas, {
-            loop: intro,
-            toggleGradient: toggleGradient,
-            gradientOn: siteEntered
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.StrictMode, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_HomeCanvas__WEBPACK_IMPORTED_MODULE_2__.HomeCanvas, {
+              loop: intro,
+              toggleGradient: toggleGradient,
+              gradientOn: siteEntered
+            })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
             className: siteEntered ? 'gradient gradientOn' : 'gradient gradientOff'
           })]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
         ref: enterTag,
+        id: "enter-button",
         onClick: changeIntro,
         className: "container z-20 animate-pulse cursor-pointer absolute flex w-fit top-2/3 left-1/2 transform -translate-x-1/2 faded" + (!intro ? ' hidden' : ''),
         children: "Enter"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Introduction__WEBPACK_IMPORTED_MODULE_5__.Introduction, {
         siteEntered: siteEntered
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_AboutMe__WEBPACK_IMPORTED_MODULE_7__.AboutMe, {
-        siteEntered: siteEntered
+        siteEntered: siteEntered,
+        isMobile: isMobileFunction(windowDimensions)
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Projects__WEBPACK_IMPORTED_MODULE_6__.Projects, {
-        siteEntered: siteEntered
+        siteEntered: siteEntered,
+        isMobile: isMobileFunction(windowDimensions)
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Contact__WEBPACK_IMPORTED_MODULE_9__.Contact, {
         siteEntered: siteEntered
       })]
@@ -7554,13 +7577,70 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
 
 function Contact(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("section", {
-    id: "contact"
+  var section = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      onScreen = _useState2[0],
+      setOnScreen = _useState2[1];
+
+  var threshold = 1;
+
+  function handleScroll() {
+    var distance = Math.floor(Math.abs(window.pageYOffset - section.current.offsetTop));
+    console.log(threshold);
+    console.log(window.pageYOffset);
+    console.log(section.current.offsetTop);
+
+    if (distance < threshold) {
+      setOnScreen(true);
+    }
+  }
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!onScreen) {
+      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('resize', handleScroll);
+    } else {
+      for (var i = 0; i < section.current.children.length; i++) {
+        var element = section.current.children[i];
+        element.classList.remove('faded');
+      }
+    }
+
+    return function () {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [onScreen]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("section", {
+    id: "contact",
+    ref: section,
+    className: "w-screen relative flex justify-center flex-col items-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+      className: " text-4xl md:text-6xl faded font-bold whitespace-nowrap ",
+      children: "Get In Touch"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+      className: "text-2xl faded flex rounded-full  mt-4 md:mt-8 p-5 my-pink-bg",
+      children: "Contact Me"
+    })]
   });
 }
 
@@ -7684,7 +7764,7 @@ var itemList = [];
 
 for (var index = 0; index < 200; index++) {
   itemList.push( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Star__WEBPACK_IMPORTED_MODULE_2__.Star, {
-    position: [getRandomInt(-100, 100), getRandomInt(-40, 40), getRandomInt(-400, -10)]
+    position: [getRandomInt(-100, 100), getRandomInt(-40, 40), getRandomInt(-400, -50)]
   }, index));
 }
 
@@ -7695,7 +7775,6 @@ function Rig(_ref) {
   (0,react_three_fiber__WEBPACK_IMPORTED_MODULE_7__.useFrame)(function (_ref2) {
     var camera = _ref2.camera,
         mouse = _ref2.mouse;
-    console.log(ref);
     ref.current.children.forEach(function (element) {
       element.position.lerp(vec.set(mouse.x * 1, mouse.y * 1, element.position.z), 0.3); // element.rotation.y = THREE.MathUtils.lerp(element.rotation.y, (-mouse.x * Math.PI) / 20, 0.1)
     }); // camera.position.lerp(vec.set(mouse.x * 2, 0, 3.5), 0.05)
@@ -7724,17 +7803,17 @@ function HomeCanvas(props) {
       lookAt: [0, 0, 0],
       penumbra: 1,
       castShadow: true
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Ring__WEBPACK_IMPORTED_MODULE_4__.Ring, {
-      position: [0, 0, 0],
-      args: [2.2, 2.4, 300],
-      dx: .01
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
       fallback: null,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(Rig, {
-        children: itemList
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Sphere__WEBPACK_IMPORTED_MODULE_1__.Sphere, {
-      position: [0, 0, 0]
+      children: itemList
+    }), !props.gradientOn && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Sphere__WEBPACK_IMPORTED_MODULE_1__.Sphere, {
+        position: [0, 0, 0]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Ring__WEBPACK_IMPORTED_MODULE_4__.Ring, {
+        position: [0, 0, 0],
+        args: [2.2, 2.4, 300],
+        dx: .01
+      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Dolly__WEBPACK_IMPORTED_MODULE_3__.Dolly, {
       toggleGradient: props.toggleGradient,
       loop: props.loop,
@@ -7814,13 +7893,13 @@ function Introduction(props) {
       className: "w-full text-4xl md:text-6xl faded-left font-bold whitespace-nowrap details-color",
       children: "I am Yannis."
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
-      className: "heading mt-4 md:mt-8 faded font-bold flex h-fit ",
+      className: "heading faded font-bold flex h-fit ",
       children: "I build stuff for the web."
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-      className: " faded  mt-4 md:mt-8",
+      className: "faded",
       children: "I work as a Full Stack Developer, expanding the skills attained through rigorous training and hands-on experience as well as various courses."
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-      className: "text-2xl faded flex rounded-full  mt-4 md:mt-8 p-5 my-pink-bg",
+      className: "text-2xl faded flex rounded-full p-5 my-pink-bg",
       children: "Contact Me"
     })]
   });
@@ -7846,9 +7925,9 @@ __webpack_require__.r(__webpack_exports__);
 
 function Logo(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    "class": "atom",
+    className: "atom",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      "class": "electron"
+      className: "electron"
     })
   });
 }
@@ -8066,10 +8145,15 @@ function Project(props) {
       project.current.children[1].classList.remove('faded-project');
       var element = project.current.children[0].classList.add('turned-on');
     }
+
+    return function () {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, [onScreen]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     ref: project,
-    className: "section-container--project",
+    className: 'section-container--project' + (props.isMobile && !onScreen ? ' faded-project-container' : ''),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "image-container",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
@@ -8081,7 +8165,7 @@ function Project(props) {
         src: '../../storage/images/' + props.info.image
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "section-container--project-info faded-project",
+      className: 'section-container--project-info' + (props.isMobile && !onScreen ? '' : ' faded-project'),
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
         className: "section-container--project-info--title",
         children: props.info.title
@@ -8118,6 +8202,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _Project__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Project */ "./resources/js/components/Project.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -8141,16 +8237,48 @@ function Projects(props) {
   }];
   var projects = [];
   items.forEach(function (element, i) {
-    console.log(i);
     projects.push( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Project__WEBPACK_IMPORTED_MODULE_1__.Project, {
-      info: element
+      info: element,
+      isMobile: props.isMobile
     }, i));
   });
+  var section = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      onScreen = _useState2[0],
+      setOnScreen = _useState2[1];
+
+  var threshold = window.innerHeight;
+
+  function handleScroll() {
+    var distance = Math.abs(window.pageYOffset - section.current.offsetTop);
+
+    if (distance < threshold) {
+      setOnScreen(true);
+    }
+  }
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!onScreen) {
+      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('resize', handleScroll);
+    } else {
+      var title = section.current.children[0];
+      title.classList.remove('faded-right');
+    }
+
+    return function () {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [onScreen]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("section", {
     id: "projects",
+    ref: section,
     className: "w-screen relative flex justify-center flex-col items-center" + (props.siteEntered ? '' : ' opacity-0'),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "section-heading",
+      className: "section-heading faded-right",
       children: "Projects"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: "section-container",
@@ -8185,6 +8313,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 function Ring(props) {
   var mesh = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   (0,react_three_fiber__WEBPACK_IMPORTED_MODULE_2__.useFrame)(function () {
@@ -8198,7 +8327,7 @@ function Ring(props) {
       args: props.args
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("meshStandardMaterial", {
       attach: "material",
-      color: "#9BB9D0",
+      color: "#E42C64",
       transparent: true,
       roughness: 0.1,
       metalness: 0.1
@@ -8354,7 +8483,7 @@ function Sphere(props) {
       attach: "geometry"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("meshStandardMaterial", {
       attach: "material",
-      color: "#f9d71c",
+      color: "#E42C64",
       transparent: true,
       roughness: 0.1,
       metalness: 0.1,
@@ -8411,13 +8540,13 @@ function Star(props) {
   (0,react_three_fiber__WEBPACK_IMPORTED_MODULE_2__.useFrame)(function (_ref) {
     var clock = _ref.clock,
         camera = _ref.camera;
-    if (mesh.current.material.opacity < 1) mesh.current.material.opacity += 0.002;
+    if (mesh.current.material.opacity < 0.7) mesh.current.material.opacity += 0.002;
 
     if (camera.position.z < 0) {
       mesh.current.visible = true;
       mesh.current.position.z -= zSpeed;
 
-      if (mesh.current.position.z > -10 || mesh.current.position.z < -100) {
+      if (mesh.current.position.z > -50 || mesh.current.position.z < -100) {
         zSpeed = -zSpeed;
       }
     } else {
@@ -8443,7 +8572,8 @@ function Star(props) {
       attach: "material",
       color: color,
       transparent: true,
-      opacity: 0
+      opacity: 0,
+      brightness: 10
     })]
   }));
 }

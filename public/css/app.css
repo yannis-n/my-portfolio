@@ -67,19 +67,19 @@ body {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
   background-color: transparent;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #E42C64;
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 /* Handle on hover */
@@ -93,6 +93,12 @@ body {
 
 .app-container {
   background-color: #000000;
+}
+
+#enter-button {
+  color: #E42C64;
+  font-weight: 700;
+  font-size: 18px;
 }
 
 .canvas-container {
@@ -494,10 +500,15 @@ body {
   border-radius: 50px;
 }
 
+.social-links-nav li, .links-nav li {
+  margin: 6px 0;
+}
+
 .links-nav {
   top: 0;
   position: fixed;
   right: 0;
+  transition: all 0.4s ease-in-out;
 }
 @media screen and (max-width: 768px) {
   .links-nav {
@@ -519,6 +530,7 @@ body {
     background-color: #121B74;
     padding: 6px 36px;
     font-size: 12px;
+    will-change: background-color;
   }
 }
 .links-nav .menu-toggle {
@@ -621,7 +633,7 @@ body {
 }
 
 .links-nav.background li {
-  font-size: 11px;
+  font-size: 12px;
 }
 
 #introduction {
@@ -631,7 +643,7 @@ body {
   transition: background-position-x 1s ease-in-out;
   min-height: 100vh;
   background-repeat: no-repeat;
-  pointer-events: none;
+  pointer-events: all;
 }
 #introduction.moved-in {
   background-position-x: 0;
@@ -651,6 +663,9 @@ body {
 #introduction h1, #introduction h2 {
   will-change: opacity;
 }
+#introduction h3 {
+  margin-top: 1rem;
+}
 #introduction a {
   pointer-events: all;
   cursor: pointer;
@@ -658,6 +673,12 @@ body {
   border: 2px solid #E42C64;
   color: #E42C64;
   border-radius: 5px;
+  margin-top: 2rem;
+}
+#introduction a:hover {
+  background-color: rgba(228, 44, 100, 0.2);
+  color: #FAEDF0;
+  box-shadow: 0 0 2px #E42C64, 0 0 8px #E42C64, 0 0 16px #E42C64;
 }
 
 #about-me {
@@ -701,7 +722,7 @@ section {
 section p {
   line-height: 1.5;
   font-size: 18px;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
 }
 @media screen and (min-width: 481px) {
   section p {
@@ -716,6 +737,7 @@ section p {
 #about-me * ul {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin-top: 2rem;
 }
 #about-me * li {
   padding-left: 20px;
@@ -805,6 +827,11 @@ section p {
   min-height: 100vh;
   background-color: #121B74;
 }
+#projects .section-heading {
+  align-self: self-end;
+  margin-bottom: 0.5rem;
+  transition: 1s opacity ease-in-out, 1s transform ease-in-out;
+}
 #projects .section-container {
   width: 100%;
 }
@@ -813,7 +840,11 @@ section p {
   height: 40vh;
   width: 100%;
   overflow: hidden;
-  margin: 1.5rem 0;
+  margin: 2rem 0;
+}
+#projects .section-container--project.faded-project-container:nth-of-type(even) {
+  transform: translateX(200%);
+  opacity: 0;
 }
 #projects .section-container--project:nth-of-type(even) .image-container {
   left: 0;
@@ -956,136 +987,152 @@ section p {
   padding: 0;
   height: 100vh;
 }
+#contact * {
+  transition: 1s opacity ease-in-out, 1s transform ease-in-out;
+}
+#contact a {
+  pointer-events: all;
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid #E42C64;
+  color: #E42C64;
+  border-radius: 5px;
+}
+#contact a:hover {
+  background-color: rgba(228, 44, 100, 0.2);
+  color: #FAEDF0;
+  box-shadow: 0 0 2px #E42C64, 0 0 8px #E42C64, 0 0 16px #E42C64;
+}
 
 @-webkit-keyframes flicker {
   0% {
-    opacity: 0.123605203;
+    opacity: 0.3758516672;
   }
   5% {
-    opacity: 0.2846544265;
+    opacity: 0.3732843378;
   }
   10% {
-    opacity: 0.2517933953;
+    opacity: 0.5408123386;
   }
   15% {
-    opacity: 0.555854741;
+    opacity: 0.4858162001;
   }
   20% {
-    opacity: 0.2908687016;
+    opacity: 0.0239821598;
   }
   25% {
-    opacity: 0.199278589;
+    opacity: 0.7748454493;
   }
   30% {
-    opacity: 0.5415196362;
+    opacity: 0.0548262365;
   }
   35% {
-    opacity: 0.8376050516;
+    opacity: 0.6207713293;
   }
   40% {
-    opacity: 0.8676818027;
+    opacity: 0.5069680294;
   }
   45% {
-    opacity: 0.9497973898;
+    opacity: 0.3609830454;
   }
   50% {
-    opacity: 0.2366209112;
+    opacity: 0.8590489655;
   }
   55% {
-    opacity: 0.82937528;
+    opacity: 0.3321126488;
   }
   60% {
-    opacity: 0.9470023041;
+    opacity: 0.5418772718;
   }
   65% {
-    opacity: 0.2503016471;
+    opacity: 0.3107532934;
   }
   70% {
-    opacity: 0.1716726541;
+    opacity: 0.5098843908;
   }
   75% {
-    opacity: 0.6150263504;
+    opacity: 0.7228280846;
   }
   80% {
-    opacity: 0.0844202801;
+    opacity: 0.3488256199;
   }
   85% {
-    opacity: 0.3600020207;
+    opacity: 0.4575212078;
   }
   90% {
-    opacity: 0.6573141673;
+    opacity: 0.6993665839;
   }
   95% {
-    opacity: 0.4863333498;
+    opacity: 0.8790943805;
   }
   100% {
-    opacity: 0.4696677803;
+    opacity: 0.6799072009;
   }
 }
 
 @keyframes flicker {
   0% {
-    opacity: 0.123605203;
+    opacity: 0.3758516672;
   }
   5% {
-    opacity: 0.2846544265;
+    opacity: 0.3732843378;
   }
   10% {
-    opacity: 0.2517933953;
+    opacity: 0.5408123386;
   }
   15% {
-    opacity: 0.555854741;
+    opacity: 0.4858162001;
   }
   20% {
-    opacity: 0.2908687016;
+    opacity: 0.0239821598;
   }
   25% {
-    opacity: 0.199278589;
+    opacity: 0.7748454493;
   }
   30% {
-    opacity: 0.5415196362;
+    opacity: 0.0548262365;
   }
   35% {
-    opacity: 0.8376050516;
+    opacity: 0.6207713293;
   }
   40% {
-    opacity: 0.8676818027;
+    opacity: 0.5069680294;
   }
   45% {
-    opacity: 0.9497973898;
+    opacity: 0.3609830454;
   }
   50% {
-    opacity: 0.2366209112;
+    opacity: 0.8590489655;
   }
   55% {
-    opacity: 0.82937528;
+    opacity: 0.3321126488;
   }
   60% {
-    opacity: 0.9470023041;
+    opacity: 0.5418772718;
   }
   65% {
-    opacity: 0.2503016471;
+    opacity: 0.3107532934;
   }
   70% {
-    opacity: 0.1716726541;
+    opacity: 0.5098843908;
   }
   75% {
-    opacity: 0.6150263504;
+    opacity: 0.7228280846;
   }
   80% {
-    opacity: 0.0844202801;
+    opacity: 0.3488256199;
   }
   85% {
-    opacity: 0.3600020207;
+    opacity: 0.4575212078;
   }
   90% {
-    opacity: 0.6573141673;
+    opacity: 0.6993665839;
   }
   95% {
-    opacity: 0.4863333498;
+    opacity: 0.8790943805;
   }
   100% {
-    opacity: 0.4696677803;
+    opacity: 0.6799072009;
   }
 }
 @-webkit-keyframes turn-on {
@@ -1675,11 +1722,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .left-1\/2 {
   left: 50%;
 }
-.z-20 {
-  z-index: 20;
-}
 .z-10 {
   z-index: 10;
+}
+.z-20 {
+  z-index: 20;
 }
 .mx-auto {
   margin-left: auto;

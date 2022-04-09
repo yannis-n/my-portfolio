@@ -7,27 +7,20 @@ export function AboutMe(props) {
     let [onScreen, setOnScreen] = useState(false)
     let [listOnScreen, setListOnScreen] = useState(false)
     let threshold = window.innerHeight
-    let thresholdForList = window.innerHeight / 2
-    function handleScroll(){
-        
+    let thresholdForList = (props.isMobile) ? window.innerHeight / 8 : window.innerHeight / 4
+    
+    function handleScroll(){        
         let distance = Math.abs( window.pageYOffset - section.current.offsetTop )
-        if (distance < threshold){
-        
+        if (distance < threshold){        
             setOnScreen(true)
-        }
-
-        
+        }        
     }
 
-    function handleListScroll(){
-        
+    function handleListScroll(){        
         let distance = Math.abs( window.pageYOffset - section.current.offsetTop )
-        if (distance < thresholdForList){
-        
+        if (distance < thresholdForList){        
             setListOnScreen(true)
-        }
-
-        
+        }        
     }
     
     useEffect(() => {
@@ -39,11 +32,15 @@ export function AboutMe(props) {
             let content = section.current.children[1].children[0];
             let portraitDiv = portrait.current;
           
-                title.classList.remove('faded')
+                title.classList.remove('faded-left')
                 portraitDiv.classList.remove('faded-right')  
                 content.classList.remove('faded')
         }
 
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleScroll);      
+        }
     },[onScreen])
 
     useEffect(() => {
@@ -59,6 +56,10 @@ export function AboutMe(props) {
             }
         }
 
+        return () => {
+            window.removeEventListener('scroll', handleListScroll);
+            window.removeEventListener('resize', handleListScroll);      
+        }
     },[listOnScreen])
     let itemList = [
 
@@ -82,7 +83,7 @@ export function AboutMe(props) {
     
     return (
         <section id="about-me" ref={section} className={"relative flex justify-center flex-col items-start"+(props.siteEntered ? '' : ' opacity-0')}>
-            <div  className="section-heading faded">
+            <div  className="section-heading faded-left">
                 About Me
             </div>
             

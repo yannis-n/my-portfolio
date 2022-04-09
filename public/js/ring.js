@@ -7213,6 +7213,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 function Ring(props) {
   var mesh = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   (0,react_three_fiber__WEBPACK_IMPORTED_MODULE_2__.useFrame)(function () {
@@ -7226,7 +7227,7 @@ function Ring(props) {
       args: props.args
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("meshStandardMaterial", {
       attach: "material",
-      color: "#9BB9D0",
+      color: "#E42C64",
       transparent: true,
       roughness: 0.1,
       metalness: 0.1

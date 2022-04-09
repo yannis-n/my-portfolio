@@ -18,9 +18,10 @@ import { Contact } from './Contact'
 function App() {
   const [gradientOn, setGradientOn] = useState(false);
   const [siteEntered, setsiteEntered] = useState(false);
-  const [intro, setIntro] = useState(true); // this is to determine if the enter screen will appear
+  const [intro, setIntro] = useState(false); // this is to determine if the enter screen will appear
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
   const [topOfPage, setTopOFPage] = useState(true);
+  const [bottomOfPage, setBottomOfPage] = useState(false);
 
 
   const toggleGradient = function(){
@@ -29,8 +30,11 @@ function App() {
   }
 
   function handleScroll(e){
-    const top = e.target;
-    setTopOFPage(window.pageYOffset < 150)
+    let top = window.pageYOffset < 150
+    let bottom =  Math.ceil(window.innerHeight + document.documentElement.scrollTop) >= document.body.offsetHeight
+    let condition = top || bottom
+    if (condition != topOfPage) setTopOFPage(condition)
+    if (bottom != bottomOfPage) setBottomOfPage(bottom)
   }
 
     function changeIntro(){
@@ -75,10 +79,12 @@ function App() {
         {/* <Controls gradientOn={siteEntered} topOfPage={topOfPage} /> */}
         <main className=''>
 
-        <div id="home" className="fixed w-screen min-h-screen h-screen">
+        <div id="home" className={"fixed w-screen min-h-screen h-screen" + (siteEntered ? '' : ' z-10')}>
           <div className="canvas-container">
+          <React.StrictMode>
             <HomeCanvas loop={intro} toggleGradient={toggleGradient} gradientOn={siteEntered} />
-            <div             
+            </React.StrictMode>
+           <div             
               className={
                 siteEntered ? 'gradient gradientOn' : 'gradient gradientOff'
               }>      
@@ -89,13 +95,14 @@ function App() {
           
         </div>
         <button ref={enterTag} 
+        id ="enter-button"
                   onClick={changeIntro} 
                   className={"container z-20 animate-pulse cursor-pointer absolute flex w-fit top-2/3 left-1/2 transform -translate-x-1/2 faded" + (!intro ? ' hidden' : '' )}>
             Enter
           </button>
         <Introduction siteEntered={siteEntered}/>
-        <AboutMe siteEntered={siteEntered}/>
-        <Projects siteEntered={siteEntered}/>
+        <AboutMe siteEntered={siteEntered} isMobile={isMobileFunction(windowDimensions)}/>
+        <Projects siteEntered={siteEntered} isMobile={isMobileFunction(windowDimensions)}/>
         <Contact siteEntered={siteEntered}/>
 
         </main>

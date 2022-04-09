@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { useFrame } from 'react-three-fiber';
+import * as THREE from 'three'
 
 export function Ring(props) {
   const mesh = useRef();
@@ -13,7 +14,7 @@ export function Ring(props) {
            <ringBufferGeometry args={props.args} />
            <meshStandardMaterial
               attach="material"
-              color="#9BB9D0"
+              color="#E42C64"
               transparent
               roughness={0.1}
               metalness={0.1}

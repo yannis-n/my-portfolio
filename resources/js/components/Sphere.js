@@ -18,7 +18,7 @@ export function Sphere(props) {
              
             <meshStandardMaterial
                 attach="material"
-                color="#f9d71c"
+                color="#E42C64"
                 transparent
                 roughness={0.1}
                 metalness={0.1}

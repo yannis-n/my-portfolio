@@ -8,8 +8,8 @@ export function Logo(props) {
 
   return (
         
-    <div class="atom">
-        <div class="electron"></div>
+    <div className="atom">
+        <div className="electron"></div>
     </div>
   );
 }

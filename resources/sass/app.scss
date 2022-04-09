@@ -23,20 +23,34 @@
   font-weight: 700;
 }
 
-
-
 $mobileGap : 24px;
 // $detailsColor: #EC255A;
 // $secondaryColor: #292C6D;
 // $subdetails: #0027ff;
 $detailsColor: #E42C64;
+$detailsColorRgb: '228, 44, 100';
 $secondaryColor: #121B74;
 $subdetails: #070608;
 $white: #FAEDF0;
 $black : #062743;
 // $detailsColor: #4717f6;
 // $secondaryColor: #0e0b16;
-$scrollbar-size:10px;
+$scrollbar-size:6px;
+
+@mixin button-link {
+  pointer-events: all;
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid $detailsColor;
+  color: $detailsColor;
+  border-radius: 5px;
+
+  &:hover{
+    background-color: rgb(228, 44, 100 , 0.2);
+         color: $white;
+      box-shadow: 0 0 2px $detailsColor, 0 0 8px $detailsColor, 0 0 16px $detailsColor;
+  }
+}
 
 :root {
   --atom-size: 40px;
@@ -117,6 +131,12 @@ body{
 
   .app-container{
     background-color: #000000;
+  }
+
+  #enter-button{
+    color:$detailsColor;
+    font-weight: 700;
+    font-size: 18px;
   }
   
   .canvas-container {
@@ -378,10 +398,17 @@ body{
     }
   }
 
+  .social-links-nav, .links-nav{
+    li{
+      margin: 6px 0;
+    }
+  }
+
   .links-nav{
     top: 0;
     position: fixed;
     right: 0;
+    transition: all .4s ease-in-out;
 
     @media screen and (max-width: 768px) {
 
@@ -404,6 +431,7 @@ body{
         background-color: $secondaryColor;
         padding: 6px 36px;
         font-size: 12px;
+        will-change:  background-color;
       }
 
     }
@@ -516,7 +544,7 @@ body{
   }
 
   .links-nav.background li{
-    font-size: 11px;
+    font-size: 12px;
   }
 
   #introduction {
@@ -526,7 +554,7 @@ body{
     transition: background-position-x 1s ease-in-out;
     min-height: 100vh;
     background-repeat: no-repeat;
-    pointer-events: none;
+    pointer-events: all;
     &.moved-in{
       background-position-x: 0;
     }
@@ -538,12 +566,12 @@ body{
 
     }
   }
-  
 
   #introduction *{
     transition: 1s opacity ease-in-out, 1s transform ease-in-out;
 
   }
+  
 
   #introduction {
 
@@ -551,13 +579,13 @@ body{
       will-change: opacity;
     }
 
+    h3{
+      margin-top: 1rem;
+    }
+
     a{
-      pointer-events: all;
-      cursor: pointer;
-      background: transparent;
-      border: 2px solid $detailsColor;
-      color: $detailsColor;
-      border-radius: 5px;
+      @include button-link;
+      margin-top: 2rem;
     }
   }
 
@@ -607,7 +635,7 @@ body{
   section p {
     line-height: 1.5;
     font-size: 18px;
-    margin-top: 2.5rem;
+    margin-top: 2rem;
 
     @media screen and (min-width: 481px) {
       width: 50%;
@@ -623,6 +651,7 @@ body{
       ul{
         display: grid;
         grid-template-columns: 1fr 1fr;
+        margin-top: 2rem;
       }
       li {
         padding-left: 20px;
@@ -729,6 +758,12 @@ body{
     min-height: 100vh;
     background-color: $secondaryColor;
 
+    .section-heading{
+      align-self: self-end;
+      margin-bottom: 0.5rem;
+      transition: 1s opacity ease-in-out, 1s transform ease-in-out;
+    }
+
     .section-container{
       width: 100%;
 
@@ -738,8 +773,17 @@ body{
         height: 40vh;
         width: 100%;
         overflow: hidden;
-        margin:1.5rem 0;
-        &:nth-of-type(even){
+        margin:2rem 0;
+        &.faded-project-container{
+          &:nth-of-type(even){
+
+            transform: translateX(200%);
+            opacity: 0
+          }
+        }
+      &:nth-of-type(even){
+            
+          
           .image-container{
             left: 0
           }
@@ -896,6 +940,12 @@ body{
   #contact{
     padding: 0;
     height: 100vh;
+    *{
+      transition: 1s opacity ease-in-out, 1s transform ease-in-out;
+    }
+    a{
+      @include button-link
+    }
   }
 
   @keyframes flicker{

@@ -24,12 +24,12 @@ export function Star(props) {
     var t = 0;
     let zSpeed = 0.001
     useFrame(({ clock, camera }) => {
-    if( mesh.current.material.opacity < 1 ) mesh.current.material.opacity += 0.002
+    if( mesh.current.material.opacity < 0.7 ) mesh.current.material.opacity += 0.002
 
     if (camera.position.z < 0){
         mesh.current.visible = true
           mesh.current.position.z -= zSpeed 
-      if (mesh.current.position.z > -10 || mesh.current.position.z < -100) {
+      if (mesh.current.position.z > -50 || mesh.current.position.z < -100) {
         zSpeed = -zSpeed
     }
     }else{
@@ -59,7 +59,8 @@ export function Star(props) {
                color= {color}
                transparent
                opacity={0}
-           />
+               brightness={10}
+               />
       </mesh>
    );
  }

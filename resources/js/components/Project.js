@@ -28,11 +28,15 @@ export function Project(props) {
                     const element = project.current.children[0].classList.add('turned-on')
         }
 
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleScroll);      
+        }
     },[onScreen])
         
 
     return (
-        <div ref={project} className='section-container--project'>
+        <div ref={project} className={'section-container--project' + (props.isMobile && !onScreen ? ' faded-project-container' : '')}>
                     <div className='image-container'>
                         <img 
                             width="100%" 
@@ -40,7 +44,7 @@ export function Project(props) {
                             data-main-image="" alt="project-image" sizes="(min-width: 200px) 200px, 100vw" 
                             src={'../../storage/images/'+props.info.image}/>
                     </div>
-                    <div className='section-container--project-info faded-project'>
+                    <div className={'section-container--project-info' + (props.isMobile && !onScreen ? '' : ' faded-project')}>
                         <div className='section-container--project-info--title'>
                             {props.info.title}
                         </div>

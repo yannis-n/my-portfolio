@@ -17,7 +17,7 @@ let itemList=[];
 
 for (let index = 0; index < 200; index++) {
 itemList.push( <Star key={index}    
-    position={[getRandomInt(-100,100), getRandomInt(-40,40), getRandomInt(-400,-10)]} />)
+    position={[getRandomInt(-100,100), getRandomInt(-40,40), getRandomInt(-400,-50)]} />)
 
 }
 
@@ -25,7 +25,6 @@ function Rig({ children }) {
   const ref = useRef()
   const vec = new THREE.Vector3()
   useFrame(({camera, mouse}) => {
-    console.log(ref)
     ref.current.children.forEach(element => {
       element.position.lerp(vec.set(mouse.x * 1, mouse.y * 1, element.position.z), 0.3)
       // element.rotation.y = THREE.MathUtils.lerp(element.rotation.y, (-mouse.x * Math.PI) / 20, 0.1)
@@ -44,6 +43,7 @@ export function HomeCanvas(props) {
       camera={{ position: [0, 0, cameraZ], fov: 50 }} 
       dpr={window.devicePixelRatio}
     > 
+  {/* <fogExp2 attach="fog" color="#e2e8f0" density={0.3} /> */}
 
     <rectAreaLight
       width={5}
@@ -56,22 +56,29 @@ export function HomeCanvas(props) {
       castShadow
     />
 
-    <Ring 
-      position={[0, 0, 0]}  
-      args={[2.2, 2.4, 300]} 
-      dx={.01}
-    />
+
       <Suspense fallback={null}>
-      <Rig>
+      {/* <Rig> */}
         {itemList}
 
-      </Rig>
+      {/* </Rig> */}
         {/* <EffectComposer>
           <Bloom luminanceThreshold={0} luminanceSmoothing={0.4} intensity={0.6} />
         </EffectComposer> */}
       </Suspense>
-    <Sphere position={[0, 0, 0]} />
     
+    {!props.gradientOn && (
+      <Suspense>
+        <Sphere position={[0, 0, 0]} />
+            <Ring 
+              position={[0, 0, 0]}  
+              args={[2.2, 2.4, 300]} 
+              dx={.01}
+            />
+      </Suspense>
+            
+
+      )}
     <Dolly toggleGradient={props.toggleGradient} loop={props.loop} gradientOn={props.gradientOn} />
 
     </Canvas>
