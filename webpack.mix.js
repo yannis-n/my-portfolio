@@ -13,7 +13,6 @@ const tailwindcss = require('tailwindcss'); /* Add this line at the top */
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .js('resources/js/ring.js', 'public/js')
 
     .react()
     .sass('resources/sass/app.scss', 'public/css')

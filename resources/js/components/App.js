@@ -18,7 +18,7 @@ import { Contact } from './Contact'
 function App() {
   const [gradientOn, setGradientOn] = useState(false);
   const [siteEntered, setsiteEntered] = useState(false);
-  const [intro, setIntro] = useState(false); // this is to determine if the enter screen will appear
+  const [intro, setIntro] = useState(true); // this is to determine if the enter screen will appear
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
   const [topOfPage, setTopOFPage] = useState(true);
   const [bottomOfPage, setBottomOfPage] = useState(false);

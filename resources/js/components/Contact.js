@@ -10,9 +10,6 @@ export function Contact(props) {
 
     function handleScroll(){ 
       let distance = Math.floor(Math.abs( window.pageYOffset - section.current.offsetTop ))
-      console.log(threshold)
-      console.log(window.pageYOffset)
-      console.log(section.current.offsetTop)
       if (distance < threshold){
           setOnScreen(true)
       }        

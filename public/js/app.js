@@ -7426,7 +7426,7 @@ function App() {
       siteEntered = _useState4[0],
       setsiteEntered = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
       _useState6 = _slicedToArray(_useState5, 2),
       intro = _useState6[0],
       setIntro = _useState6[1]; // this is to determine if the enter screen will appear
@@ -7605,9 +7605,6 @@ function Contact(props) {
 
   function handleScroll() {
     var distance = Math.floor(Math.abs(window.pageYOffset - section.current.offsetTop));
-    console.log(threshold);
-    console.log(window.pageYOffset);
-    console.log(section.current.offsetTop);
 
     if (distance < threshold) {
       setOnScreen(true);
