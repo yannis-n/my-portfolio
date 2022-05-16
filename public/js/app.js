@@ -7381,14 +7381,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _HomeCanvas__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./HomeCanvas */ "./resources/js/components/HomeCanvas.js");
-/* harmony import */ var _Controls__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Controls */ "./resources/js/components/Controls.js");
-/* harmony import */ var _Navbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Navbar */ "./resources/js/components/Navbar.js");
-/* harmony import */ var _Introduction__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Introduction */ "./resources/js/components/Introduction.js");
-/* harmony import */ var _Projects__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Projects */ "./resources/js/components/Projects.js");
-/* harmony import */ var _AboutMe__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AboutMe */ "./resources/js/components/AboutMe.js");
-/* harmony import */ var _SocialLinksNav__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./SocialLinksNav */ "./resources/js/components/SocialLinksNav.js");
-/* harmony import */ var _Contact__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Contact */ "./resources/js/components/Contact.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Navbar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Navbar */ "./resources/js/components/Navbar.js");
+/* harmony import */ var _Introduction__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Introduction */ "./resources/js/components/Introduction.js");
+/* harmony import */ var _Projects__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Projects */ "./resources/js/components/Projects.js");
+/* harmony import */ var _AboutMe__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./AboutMe */ "./resources/js/components/AboutMe.js");
+/* harmony import */ var _SocialLinksNav__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./SocialLinksNav */ "./resources/js/components/SocialLinksNav.js");
+/* harmony import */ var _Contact__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Contact */ "./resources/js/components/Contact.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -7400,8 +7399,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
 
 
 
@@ -7491,46 +7488,46 @@ function App() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     window.addEventListener('scroll', handleScroll);
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
     className: "app-container relative w-full " + (siteEntered ? '' : 'h-screen'),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_4__.Navbar, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_3__.Navbar, {
       isMobile: isMobileFunction(windowDimensions),
       topOfPage: topOfPage,
       gradientOn: siteEntered
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_SocialLinksNav__WEBPACK_IMPORTED_MODULE_8__.SocialLinksNav, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_SocialLinksNav__WEBPACK_IMPORTED_MODULE_7__.SocialLinksNav, {
       visible: siteEntered && topOfPage
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("main", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("main", {
       className: "",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
         id: "home",
         className: "fixed w-screen min-h-screen h-screen" + (siteEntered ? '' : ' z-10'),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
           className: "canvas-container",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.StrictMode, {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_HomeCanvas__WEBPACK_IMPORTED_MODULE_2__.HomeCanvas, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.StrictMode, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_HomeCanvas__WEBPACK_IMPORTED_MODULE_2__.HomeCanvas, {
               loop: intro,
               toggleGradient: toggleGradient,
               gradientOn: siteEntered
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
             className: siteEntered ? 'gradient gradientOn' : 'gradient gradientOff'
           })]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
         ref: enterTag,
         id: "enter-button",
         onClick: changeIntro,
         className: "container z-20 animate-pulse cursor-pointer absolute flex w-fit top-2/3 left-1/2 transform -translate-x-1/2 faded" + (!intro ? ' hidden' : ''),
         children: "Enter"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Introduction__WEBPACK_IMPORTED_MODULE_5__.Introduction, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Introduction__WEBPACK_IMPORTED_MODULE_4__.Introduction, {
         siteEntered: siteEntered
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_AboutMe__WEBPACK_IMPORTED_MODULE_7__.AboutMe, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_AboutMe__WEBPACK_IMPORTED_MODULE_6__.AboutMe, {
         siteEntered: siteEntered,
         isMobile: isMobileFunction(windowDimensions)
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Projects__WEBPACK_IMPORTED_MODULE_6__.Projects, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Projects__WEBPACK_IMPORTED_MODULE_5__.Projects, {
         siteEntered: siteEntered,
         isMobile: isMobileFunction(windowDimensions)
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Contact__WEBPACK_IMPORTED_MODULE_9__.Contact, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Contact__WEBPACK_IMPORTED_MODULE_8__.Contact, {
         siteEntered: siteEntered
       })]
     })]
@@ -7540,7 +7537,7 @@ function App() {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
 
 if (document.getElementById('app')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(App, {}), document.getElementById('app'));
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(App, {}), document.getElementById('app'));
 }
 
 function getWindowDimensions() {
@@ -7635,46 +7632,9 @@ function Contact(props) {
       className: " text-4xl md:text-6xl faded font-bold whitespace-nowrap ",
       children: "Get In Touch"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+      href: "mailto: yannis.nikolaidis.nt@gmail.com",
       className: "text-2xl faded flex rounded-full  mt-4 md:mt-8 p-5 my-pink-bg",
       children: "Contact Me"
-    })]
-  });
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/Controls.js":
-/*!*********************************************!*\
-  !*** ./resources/js/components/Controls.js ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Controls": () => (/* binding */ Controls)
-/* harmony export */ });
-/* harmony import */ var _SocialLinksNav__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SocialLinksNav */ "./resources/js/components/SocialLinksNav.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-function Controls(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    id: "home-controls",
-    className: "z-10 absolute w-screen h-screen",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h1", {
-      className: "flex-col container z-10 cursor-pointer absolute flex w-fit transform top-custom-gap left-custom-gap",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-        className: "container " + (props.gradientOn && props.topOfPage ? '' : 'faded-left opacity-0'),
-        children: "Yannis"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-        className: "container " + (props.gradientOn && props.topOfPage ? '' : 'faded-right opacity-0'),
-        children: "Nikolaidis"
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "container absolute flex w-fit left-custom-gap bottom-custom-gap " + (props.gradientOn && props.topOfPage ? '' : 'faded-left'),
-      children: "FullStack Developer"
     })]
   });
 }
@@ -7839,25 +7799,6 @@ __webpack_require__.r(__webpack_exports__);
 
 function Introduction(props) {
   var section = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  var threshold = window.innerHeight / 4;
-
-  function handleScroll(e) {
-    var distance = (window.pageYOffset - section.current.offsetTop) / threshold * 100;
-
-    if (Math.abs(distance) > threshold) {
-      for (var i = 2; i < section.current.children.length; i++) {
-        var element = section.current.children[i];
-        element.classList.add('faded');
-      }
-    } else {
-      for (var _i = 2; _i < section.current.children.length; _i++) {
-        var _element = section.current.children[_i];
-
-        _element.classList.remove('faded');
-      }
-    }
-  }
-
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (!props.siteEntered) return;
 
@@ -7896,6 +7837,7 @@ function Introduction(props) {
       className: "faded",
       children: "I work as a Full Stack Developer, expanding the skills attained through rigorous training and hands-on experience as well as various courses."
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+      href: "mailto: yannis.nikolaidis.nt@gmail.com",
       className: "text-2xl faded flex rounded-full p-5 my-pink-bg",
       children: "Contact Me"
     })]
@@ -7917,7 +7859,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
 
 
 function Logo(props) {
@@ -7961,7 +7902,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 function Navbar(props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -7976,16 +7916,16 @@ function Navbar(props) {
 
   var links = [{
     'name': 'Home',
-    'link': ''
+    'link': '#introduction'
   }, {
     'name': 'About me',
-    'link': ''
+    'link': '#about-me'
   }, {
     'name': 'Projects',
-    'link': ''
+    'link': '#projects'
   }, {
     'name': 'Contact',
-    'link': ''
+    'link': '#contact'
   }];
   var navList = [];
 
@@ -7993,6 +7933,7 @@ function Navbar(props) {
     navList.push( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
       className: "mx-5",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+        href: links[index].link,
         children: links[index].name
       })
     }, index));
@@ -8000,7 +7941,6 @@ function Navbar(props) {
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var timeouts = [];
-    var isMobile = props.isMobile;
     var links = navBar.current.children;
     if (!props.gradientOn) return;
 
@@ -8310,7 +8250,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
 function Ring(props) {
   var mesh = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   (0,react_three_fiber__WEBPACK_IMPORTED_MODULE_2__.useFrame)(function () {
@@ -8350,9 +8289,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var links = [{
-  'link': '',
+  'link': 'https://www.linkedin.com/in/yannis-nikolaidis/',
   'image': /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
     fill: "#ffffff",
     xmlns: "http://www.w3.org/2000/svg",
@@ -8364,7 +8302,7 @@ var links = [{
     })
   })
 }, {
-  'link': '',
+  'link': 'https://www.instagram.com/fiskaleon/',
   'image': /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
     fill: "#ffffff",
     xmlns: "http://www.w3.org/2000/svg",
@@ -8376,7 +8314,7 @@ var links = [{
     })
   })
 }, {
-  'link': '',
+  'link': 'https://github.com/yannis-n',
   'image': /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
     fill: "#ffffff",
     xmlns: "http://www.w3.org/2000/svg",
@@ -8388,7 +8326,7 @@ var links = [{
     })
   })
 }, {
-  'link': '',
+  'link': 'https://www.facebook.com/giannhs.nikolaidhs.14/',
   'image': /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
     fill: "#ffffff",
     xmlns: "http://www.w3.org/2000/svg",
@@ -8400,7 +8338,7 @@ var links = [{
     })]
   })
 }, {
-  'link': '',
+  'link': 'https://codepen.io/yannis-n',
   'image': /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
     fill: "#ffffff",
     xmlns: "http://www.w3.org/2000/svg",
@@ -8420,7 +8358,8 @@ function SocialLinksNav(props) {
     itemList.push( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
       className: "px-3",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-        href: "/",
+        target: "_blank",
+        href: links[index]['link'],
         children: links[index]['image']
       })
     }, index));

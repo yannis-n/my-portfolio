@@ -1,34 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 export function Introduction(props) {
     let section = useRef(null)
-    let threshold = window.innerHeight / 4
-    function handleScroll(e){
-        
-        let distance = ( window.pageYOffset - section.current.offsetTop )/ threshold * 100
-       
-
-    
-
-        if (Math.abs(distance) > threshold){
-
-            for (let i = 2; i < section.current.children.length; i++) {
-                let element = section.current.children[i];
-                element.classList.add('faded')  
-
-            }
-
-        }else{
-            for (let i = 2; i < section.current.children.length; i++) {
-                let element = section.current.children[i];
-                element.classList.remove('faded')  
-
-            }
-        }
-
-    }
-
-
     useEffect(() => {
         if (!props.siteEntered) return
 
@@ -67,7 +40,7 @@ export function Introduction(props) {
 
             </p>
 
-            <a className="text-2xl faded flex rounded-full p-5 my-pink-bg">
+            <a href="mailto: yannis.nikolaidis.nt@gmail.com" className="text-2xl faded flex rounded-full p-5 my-pink-bg">
                 Contact Me
             </a>
         </section>

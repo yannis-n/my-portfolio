@@ -1,8 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import {
-    NavLink,
-  } from "react-router-dom";
-
 import { Logo } from './Logo'
 
 export function Navbar(props) {
@@ -16,29 +12,27 @@ export function Navbar(props) {
   let links = [
     {
       'name': 'Home',
-      'link': ''
+      'link': '#introduction'
     },{
       'name': 'About me',
-      'link': ''
+      'link': '#about-me'
     },{
       'name': 'Projects',
-      'link': ''
+      'link': '#projects'
     },{
       'name': 'Contact',
-      'link': ''
+      'link': '#contact'
     }
   ]
   let navList=[];
 
   for (let index = 0; index < links.length; index++) {
-    navList.push( <li key={index} className="mx-5"><a>{links[index].name}</a></li> )
-
+    navList.push( <li key={index} className="mx-5"><a href={links[index].link}>{links[index].name}</a></li> )
   }
 
   useEffect(() => {
     let timeouts = []
 
-    let isMobile = props.isMobile
     let links = navBar.current.children
     if (!props.gradientOn) return 
     if (!props.isMobile){
@@ -73,11 +67,7 @@ export function Navbar(props) {
           }
         }, 1000);
         timeouts.push(timeoutId)
-
-        
-      }
-      
-      
+      }     
     }
 
     // in case the window is resized while timeout are in place clean them up
@@ -92,10 +82,6 @@ export function Navbar(props) {
       <header>
         <nav className={"links-nav z-20 flex list-none "+ (props.gradientOn ? '' : 'md:faded-right opacity-0') + (menuToggled ? 'open' : '')  + ((!props.isMobile && !props.topOfPage) ? 'background' : '')}>
         <Logo />
-
-  {/* //       <li><NavLink to="/">Home</NavLink></li>
-  //       <li><NavLink to="/">Stuff</NavLink></li>
-  //       <li><NavLink to="/">Contact</NavLink></li> */}
         <button onClick={() => {toggleMenu()}} className={"menu-toggle md:hidden "+ (menuToggled ? 'toggled' : '')}>
           <span className="menu-toggle-bar"></span>
           <span className="menu-toggle-bar"></span>

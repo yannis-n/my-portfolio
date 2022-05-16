@@ -1,12 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import {
-  Route,
-  NavLink,
-  HashRouter
-} from "react-router-dom";
+
 import { HomeCanvas } from './HomeCanvas'
-import { Controls } from './Controls'
 import { Navbar } from './Navbar'
 import { Introduction } from './Introduction'
 import { Projects } from './Projects'
@@ -71,42 +66,35 @@ function App() {
       window.addEventListener('scroll', handleScroll);
     })
   return (
-      
-      <div className={"app-container relative w-full "+(siteEntered ? '' : 'h-screen')}>
-        <Navbar isMobile={isMobileFunction(windowDimensions)} topOfPage={topOfPage} gradientOn={siteEntered}/>
-        <SocialLinksNav visible={siteEntered && topOfPage}/>
-
-        {/* <Controls gradientOn={siteEntered} topOfPage={topOfPage} /> */}
-        <main className=''>
-
-        <div id="home" className={"fixed w-screen min-h-screen h-screen" + (siteEntered ? '' : ' z-10')}>
-          <div className="canvas-container">
-          <React.StrictMode>
-            <HomeCanvas loop={intro} toggleGradient={toggleGradient} gradientOn={siteEntered} />
-            </React.StrictMode>
-           <div             
-              className={
-                siteEntered ? 'gradient gradientOn' : 'gradient gradientOff'
-              }>      
-            </div>
+    <div className={"app-container relative w-full "+(siteEntered ? '' : 'h-screen')}>
+      <Navbar isMobile={isMobileFunction(windowDimensions)} topOfPage={topOfPage} gradientOn={siteEntered}/>
+      <SocialLinksNav visible={siteEntered && topOfPage}/>
+      {/* <Controls gradientOn={siteEntered} topOfPage={topOfPage} /> */}
+      <main className=''>
+      <div id="home" className={"fixed w-screen min-h-screen h-screen" + (siteEntered ? '' : ' z-10')}>
+        <div className="canvas-container">
+        <React.StrictMode>
+          <HomeCanvas loop={intro} toggleGradient={toggleGradient} gradientOn={siteEntered} />
+          </React.StrictMode>
+          <div             
+            className={
+              siteEntered ? 'gradient gradientOn' : 'gradient gradientOff'
+            }>      
           </div>
-    
-
-          
-        </div>
-        <button ref={enterTag} 
-        id ="enter-button"
-                  onClick={changeIntro} 
-                  className={"container z-20 animate-pulse cursor-pointer absolute flex w-fit top-2/3 left-1/2 transform -translate-x-1/2 faded" + (!intro ? ' hidden' : '' )}>
-            Enter
-          </button>
-        <Introduction siteEntered={siteEntered}/>
-        <AboutMe siteEntered={siteEntered} isMobile={isMobileFunction(windowDimensions)}/>
-        <Projects siteEntered={siteEntered} isMobile={isMobileFunction(windowDimensions)}/>
-        <Contact siteEntered={siteEntered}/>
-
-        </main>
+        </div>      
       </div>
+      <button ref={enterTag} 
+      id ="enter-button"
+                onClick={changeIntro} 
+                className={"container z-20 animate-pulse cursor-pointer absolute flex w-fit top-2/3 left-1/2 transform -translate-x-1/2 faded" + (!intro ? ' hidden' : '' )}>
+          Enter
+        </button>
+      <Introduction siteEntered={siteEntered}/>
+      <AboutMe siteEntered={siteEntered} isMobile={isMobileFunction(windowDimensions)}/>
+      <Projects siteEntered={siteEntered} isMobile={isMobileFunction(windowDimensions)}/>
+      <Contact siteEntered={siteEntered}/>
+      </main>
+    </div>
   );
 }
 

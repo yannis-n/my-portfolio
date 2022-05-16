@@ -1,13 +1,8 @@
 
 
-import React, { useState, useEffect, useRef } from 'react';
-import { useFrame } from 'react-three-fiber';
-
+import React from 'react';
 export function Logo(props) {
-  
-
-  return (
-        
+  return (     
     <div className="atom">
         <div className="electron"></div>
     </div>

@@ -1,10 +1,7 @@
 import React, { useRef } from 'react';
-import { useFrame } from 'react-three-fiber';
 
 export function Sun(props) {
     const mesh = useRef();
-    
-
     return (
        <mesh
        {...props}

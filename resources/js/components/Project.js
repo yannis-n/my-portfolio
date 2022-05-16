@@ -9,32 +9,24 @@ export function Project(props) {
         
         let distance = window.pageYOffset - project.current.offsetTop 
         if (distance > threshold){
-        
             setOnScreen(true)
-        }
+        }      
+    }     
 
-        
-    }
-
-        
     useEffect(() => {
         if (!onScreen){
             window.addEventListener('scroll', handleScroll);
             window.addEventListener('resize', handleScroll);      
-        }else{
-        
-            project.current.children[1].classList.remove('faded-project')
-                
+        }else{ 
+            project.current.children[1].classList.remove('faded-project')    
                     const element = project.current.children[0].classList.add('turned-on')
         }
-
         return () => {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', handleScroll);      
         }
     },[onScreen])
         
-
     return (
         <div ref={project} className={'section-container--project' + (props.isMobile && !onScreen ? ' faded-project-container' : '')}>
                     <div className='image-container'>

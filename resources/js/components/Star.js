@@ -1,8 +1,7 @@
 
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, } from 'react';
 import { useFrame } from 'react-three-fiber';
-
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
