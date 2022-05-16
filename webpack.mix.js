@@ -23,4 +23,5 @@ mix.js('resources/js/app.js', 'public/js')
     //     require('tailwindcss'),
     // ])
     .version()
-    .copy('resources/fonts', 'public/fonts');
+    .copy('resources/fonts', 'public/fonts')
+    .copy('resources/icons', 'public/icons');
