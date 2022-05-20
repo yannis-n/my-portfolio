@@ -34,9 +34,7 @@ function App() {
 
     function changeIntro(){
       setIntro(false)
-      enterTag.current.classList.add('faded')
-      enterTag.current.classList.add('scale-150')
-      enterTag.current.classList.add('cursor-default')
+
       enterTag.current.classList.remove('cursor-pointer')
       setTimeout(() => {
         enterTag.current.classList.remove('animate-pulse')
@@ -86,7 +84,7 @@ function App() {
       <button ref={enterTag} 
       id ="enter-button"
                 onClick={changeIntro} 
-                className={"container z-20 animate-pulse cursor-pointer absolute flex w-fit top-2/3 left-1/2 transform -translate-x-1/2 faded" + (!intro ? ' hidden' : '' )}>
+                className={"container z-20 animate-pulse cursor-pointer absolute flex w-fit top-2/3 left-1/2 transform -translate-x-1/2 " + (!intro ? 'faded' : '' )}>
           Enter
         </button>
       <Introduction siteEntered={siteEntered}/>

@@ -99,6 +99,7 @@ body {
   color: #E42C64;
   font-weight: 700;
   font-size: 18px;
+  transition: all 0.5s ease-in-out;
 }
 
 .canvas-container {
@@ -1006,133 +1007,133 @@ section p {
 
 @-webkit-keyframes flicker {
   0% {
-    opacity: 0.7076692807;
+    opacity: 0.1395693041;
   }
   5% {
-    opacity: 0.0716708137;
+    opacity: 0.8743747407;
   }
   10% {
-    opacity: 0.3354129729;
+    opacity: 0.6849766165;
   }
   15% {
-    opacity: 0.5227923106;
+    opacity: 0.5132389012;
   }
   20% {
-    opacity: 0.8461294214;
+    opacity: 0.2217719653;
   }
   25% {
-    opacity: 0.8820825501;
+    opacity: 0.8881214079;
   }
   30% {
-    opacity: 0.9440353852;
+    opacity: 0.6182773439;
   }
   35% {
-    opacity: 0.8949866245;
+    opacity: 0.1867897896;
   }
   40% {
-    opacity: 0.5201434575;
+    opacity: 0.7270659263;
   }
   45% {
-    opacity: 0.7462456074;
+    opacity: 0.6985045854;
   }
   50% {
-    opacity: 0.6408254645;
+    opacity: 0.9241620174;
   }
   55% {
-    opacity: 0.4878184087;
+    opacity: 0.003005787;
   }
   60% {
-    opacity: 0.3675281438;
+    opacity: 0.8244062957;
   }
   65% {
-    opacity: 0.2034077751;
+    opacity: 0.1245300528;
   }
   70% {
-    opacity: 0.1119596319;
+    opacity: 0.0985919041;
   }
   75% {
-    opacity: 0.1371512467;
+    opacity: 0.6075820463;
   }
   80% {
-    opacity: 0.0208367383;
+    opacity: 0.1348769219;
   }
   85% {
-    opacity: 0.3548423805;
+    opacity: 0.2362351967;
   }
   90% {
-    opacity: 0.8394314539;
+    opacity: 0.8598892595;
   }
   95% {
-    opacity: 0.8587687425;
+    opacity: 0.3824958213;
   }
   100% {
-    opacity: 0.2928874827;
+    opacity: 0.2821587277;
   }
 }
 
 @keyframes flicker {
   0% {
-    opacity: 0.7076692807;
+    opacity: 0.1395693041;
   }
   5% {
-    opacity: 0.0716708137;
+    opacity: 0.8743747407;
   }
   10% {
-    opacity: 0.3354129729;
+    opacity: 0.6849766165;
   }
   15% {
-    opacity: 0.5227923106;
+    opacity: 0.5132389012;
   }
   20% {
-    opacity: 0.8461294214;
+    opacity: 0.2217719653;
   }
   25% {
-    opacity: 0.8820825501;
+    opacity: 0.8881214079;
   }
   30% {
-    opacity: 0.9440353852;
+    opacity: 0.6182773439;
   }
   35% {
-    opacity: 0.8949866245;
+    opacity: 0.1867897896;
   }
   40% {
-    opacity: 0.5201434575;
+    opacity: 0.7270659263;
   }
   45% {
-    opacity: 0.7462456074;
+    opacity: 0.6985045854;
   }
   50% {
-    opacity: 0.6408254645;
+    opacity: 0.9241620174;
   }
   55% {
-    opacity: 0.4878184087;
+    opacity: 0.003005787;
   }
   60% {
-    opacity: 0.3675281438;
+    opacity: 0.8244062957;
   }
   65% {
-    opacity: 0.2034077751;
+    opacity: 0.1245300528;
   }
   70% {
-    opacity: 0.1119596319;
+    opacity: 0.0985919041;
   }
   75% {
-    opacity: 0.1371512467;
+    opacity: 0.6075820463;
   }
   80% {
-    opacity: 0.0208367383;
+    opacity: 0.1348769219;
   }
   85% {
-    opacity: 0.3548423805;
+    opacity: 0.2362351967;
   }
   90% {
-    opacity: 0.8394314539;
+    opacity: 0.8598892595;
   }
   95% {
-    opacity: 0.8587687425;
+    opacity: 0.3824958213;
   }
   100% {
-    opacity: 0.2928874827;
+    opacity: 0.2821587277;
   }
 }
 @-webkit-keyframes turn-on {
@@ -1825,11 +1826,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-translate-x: -50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-.scale-150 {
-  --tw-scale-x: 1.5;
-  --tw-scale-y: 1.5;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
@@ -1848,9 +1844,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .animate-pulse {
   -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
           animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-.cursor-default {
-  cursor: default;
 }
 .cursor-pointer {
   cursor: pointer;

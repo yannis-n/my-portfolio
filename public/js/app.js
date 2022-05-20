@@ -7338,7 +7338,7 @@ function AboutMe(props) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         className: "faded",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          children: "Two years ago, I delved into the fundamentals of computer science and started learning various programming languages (including Python, PHP, and Javascript) through every possible channel, seminar and University course I could lay my hands on and I haven't stopped ever since. As my interest in the field grew, even more, I quickly realized that this is something I would love to do professionally."
+          children: "Two years ago, I delved into the fundamentals of computer science and started learning various programming languages (including Python, PHP, and Javascript) through every possible channel, seminar and University course I could lay my hands on and I haven't stopped ever since. As my interest in the field grew even more, I quickly realized that this is something I would love to do professionally."
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
           children: "Since then, I started creating web apps of my own to gain practical knowledge using the Django framework. I have also freelanced and created or redesigned various WordPress Projects, thus coming in contact and learning PHP as well. You can view a few of my projects, on my GitHub account, of which I realized the value from the beginning of my journey as a developer. A year ago, I started working for a start-up company as a Full-Stack Developer."
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -7357,7 +7357,7 @@ function AboutMe(props) {
             height: "200",
             "data-main-image": "",
             sizes: "(min-width: 200px) 200px, 100vw",
-            src: '../../storage/images/portrait.png'
+            src: '../../storage/images/portrait.svg'
           })
         })
       })]
@@ -7459,9 +7459,6 @@ function App() {
 
   function changeIntro() {
     setIntro(false);
-    enterTag.current.classList.add('faded');
-    enterTag.current.classList.add('scale-150');
-    enterTag.current.classList.add('cursor-default');
     enterTag.current.classList.remove('cursor-pointer');
     setTimeout(function () {
       enterTag.current.classList.remove('animate-pulse');
@@ -7517,7 +7514,7 @@ function App() {
         ref: enterTag,
         id: "enter-button",
         onClick: changeIntro,
-        className: "container z-20 animate-pulse cursor-pointer absolute flex w-fit top-2/3 left-1/2 transform -translate-x-1/2 faded" + (!intro ? ' hidden' : ''),
+        className: "container z-20 animate-pulse cursor-pointer absolute flex w-fit top-2/3 left-1/2 transform -translate-x-1/2 " + (!intro ? 'faded' : ''),
         children: "Enter"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Introduction__WEBPACK_IMPORTED_MODULE_4__.Introduction, {
         siteEntered: siteEntered
@@ -8159,17 +8156,17 @@ function Projects(props) {
   var items = [{
     title: 'Jetpack VC',
     description: 'My best work yet My best work yet My best work yet  My best work yet  My best work yet My best work yet  My best work yet  My best work yet ',
-    image: 'jeptack.png',
+    image: 'jeptack.svg',
     link: "https://jetpack.vc/"
   }, {
     title: 'Athens Rhythm Hop',
     description: 'My best work yet My best work yet My best work yet  My best work yet  My best work yet My best work yet  My best work yet  My best work yet ',
-    image: 'arh.png',
+    image: 'arh.svg',
     link: "https://athensrhythmhop.com"
   }, {
     title: 'Rhythm Hoppers',
     description: 'My best work yet My best work yet My best work yet  My best work yet  My best work yet My best work yet  My best work yet  My best work yet ',
-    image: 'rhythmhoppers.png',
+    image: 'rhythmhoppers.svg',
     link: "https://rhythmhoppers.com/"
   }];
   var projects = [];

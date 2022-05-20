@@ -94,7 +94,7 @@ export function AboutMe(props) {
                     Two years ago, I delved into the fundamentals of computer science and started learning various
                     programming languages (including Python, PHP, and Javascript) through every possible
                     channel, seminar and University course I could lay my hands on and I haven't stopped ever
-                    since. As my interest in the field grew, even more, I quickly realized that this is something I
+                    since. As my interest in the field grew even more, I quickly realized that this is something I
                     would love to do professionally.
                     </p>
                     <p>
@@ -118,7 +118,7 @@ export function AboutMe(props) {
                             width="200" 
                             height="200" 
                             data-main-image="" sizes="(min-width: 200px) 200px, 100vw" 
-                            src={'../../storage/images/portrait.png'}/>
+                            src={'../../storage/images/portrait.svg'}/>
                         </div>
                     </div>
             </div>
