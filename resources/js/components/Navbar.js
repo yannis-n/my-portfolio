@@ -89,7 +89,7 @@ export function Navbar(props) {
         </button>
         <ul ref={navBar} className={"flex flex-col md:flex-row md:items-center "+ (menuToggled ? 'open' : '')}>
           {navList}
-          <li className="mx-5 resume"><a>Resume</a></li> 
+          <li className="mx-5 resume"><a href="/storage/pdf/Yannis_Nikolaidis_CV.pdf">Resume</a></li> 
         </ul>
       </nav>
       </header>

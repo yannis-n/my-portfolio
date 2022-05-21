@@ -5,7 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="/css/app.css" rel="stylesheet">
         <link rel="icon" href="{{ url('icons/favicon.svg') }}?v={{ date('YmdHis') }}">
-    <link href="{{ asset('css/tw.css') }}" rel="stylesheet">
+        <link rel="canonical" href="https://yannisnikolaidis.com/"/>
+
+        <link href="{{ asset('css/tw.css') }}" rel="stylesheet">
 
     <meta name="description" content="Currently working as a Full Stack Developer, expanding the skills attained through rigorous training and hands-on experience as well as various courses. Started as a Back-End developer but fell equally in love with Front-End, trying to participate in the creation of a web app from inception to completion."/>
     <meta name="keywords" content="Yannis Nikolaidis, fullstack, web developer, web app, laravel, css, js, html" />

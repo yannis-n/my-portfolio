@@ -118,6 +118,7 @@ export function AboutMe(props) {
                             width="200" 
                             height="200" 
                             data-main-image="" sizes="(min-width: 200px) 200px, 100vw" 
+                            alt="photo of me"
                             src={'../../storage/images/portrait.svg'}/>
                         </div>
                     </div>

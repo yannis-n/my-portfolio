@@ -7,19 +7,22 @@ export function Projects(props) {
             title: 'Jetpack VC',
             description: 'My best work yet My best work yet My best work yet  My best work yet  My best work yet My best work yet  My best work yet  My best work yet ',
             image: 'jeptack.svg',
-            link: "https://jetpack.vc/"
+            link: "https://jetpack.vc/",
+            alt: 'jetpack site homepage'
         },
         {
             title: 'Athens Rhythm Hop',
             description: 'My best work yet My best work yet My best work yet  My best work yet  My best work yet My best work yet  My best work yet  My best work yet ',
             image: 'arh.svg',
-            link: "https://athensrhythmhop.com"
+            link: "https://athensrhythmhop.com",
+            alt: 'athensrhythmhop site homepage'
         },
         {
             title: 'Rhythm Hoppers',
             description: 'My best work yet My best work yet My best work yet  My best work yet  My best work yet My best work yet  My best work yet  My best work yet ',
             image: 'rhythmhoppers.svg',
-            link: "https://rhythmhoppers.com/"
+            link: "https://rhythmhoppers.com/",
+            alt: 'rhythmhoppers site homepage'
         },
     ]
 

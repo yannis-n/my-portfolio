@@ -24,4 +24,7 @@ mix.js('resources/js/app.js', 'public/js')
     // ])
     .version()
     .copy('resources/fonts', 'public/fonts')
-    .copy('resources/icons', 'public/icons');
+    .copy('resources/icons', 'public/icons')
+    .sourceMaps();
+
+    ;
