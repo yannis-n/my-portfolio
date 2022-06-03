@@ -10,7 +10,6 @@ const AboutMe = lazy(() => import('./AboutMe'));
 const SocialLinksNav = lazy(() => import('./SocialLinksNav'));
 const Contact = lazy(() => import('./Contact'))
 
-
 const Spinner = () => <div className="spinner"></div>
 
 function App() {
@@ -68,15 +67,19 @@ function App() {
     })
   return (
     <div className={"app-container relative w-full "+(siteEntered ? '' : 'h-screen')}>
-      <Suspense fallback={<Spinner/>}>
-        <Navbar isMobile={isMobileFunction(windowDimensions)} topOfPage={topOfPage} gradientOn={siteEntered}/>
-      </Suspense>
-      <Suspense fallback={<Spinner/>}>      
-        <SocialLinksNav visible={siteEntered && topOfPage}/>
-      </Suspense>
+
+      <>
+        { intro ? null : (
+          <Suspense fallback={<Spinner/>}>
+          <Navbar isMobile={isMobileFunction(windowDimensions)} topOfPage={topOfPage} gradientOn={siteEntered}/>
+ 
+          <SocialLinksNav visible={siteEntered && topOfPage}/>
+          </Suspense>
+          )}
+      </>
+
       {/* <Controls gradientOn={siteEntered} topOfPage={topOfPage} /> */}
-      <main className=''                 onClick={changeIntro} 
->
+      <main className='' onClick={changeIntro}>
       <div id="home" className={"fixed w-screen min-h-screen h-screen" + (siteEntered ? '' : ' z-10')}>
         <div className="canvas-container">
           <StrictMode>

@@ -4,16 +4,19 @@
   font-family: "OpenSans";
   src: url(/fonts/OpenSans-Medium.ttf?f0cdede053a22b990af8bba8841fe33a);
   font-weight: 500;
+  font-display: swap;
 }
 @font-face {
   font-family: "OpenSans";
   src: url(/fonts/OpenSans-Regular.ttf?d7d7b8359eeb9cddfba6cd4cef3c1702);
   font-weight: 400;
+  font-display: swap;
 }
 @font-face {
   font-family: "OpenSans";
   src: url(/fonts/OpenSans-Bold.ttf?6e27168fc8a5a200a0265a9ac39d04d7);
   font-weight: 700;
+  font-display: swap;
 }
 :root {
   --atom-size: 40px;
@@ -918,133 +921,133 @@ section p {
 
 @-webkit-keyframes flicker {
   0% {
-    opacity: 0.5649693928;
+    opacity: 0.7395628426;
   }
   5% {
-    opacity: 0.3555940959;
+    opacity: 0.7161037705;
   }
   10% {
-    opacity: 0.8172183161;
+    opacity: 0.1053925832;
   }
   15% {
-    opacity: 0.279936767;
+    opacity: 0.2438545915;
   }
   20% {
-    opacity: 0.3594898929;
+    opacity: 0.3951038428;
   }
   25% {
-    opacity: 0.7893615746;
+    opacity: 0.8690345908;
   }
   30% {
-    opacity: 0.8273469535;
+    opacity: 0.0807382688;
   }
   35% {
-    opacity: 0.3237896316;
+    opacity: 0.483760797;
   }
   40% {
-    opacity: 0.4503494438;
+    opacity: 0.4499718083;
   }
   45% {
-    opacity: 0.2496037624;
+    opacity: 0.419098066;
   }
   50% {
-    opacity: 0.278565174;
+    opacity: 0.3940401658;
   }
   55% {
-    opacity: 0.7062680481;
+    opacity: 0.6508361888;
   }
   60% {
-    opacity: 0.830357689;
+    opacity: 0.6189030838;
   }
   65% {
-    opacity: 0.810211144;
+    opacity: 0.2103066506;
   }
   70% {
-    opacity: 0.0870524709;
+    opacity: 0.7994249347;
   }
   75% {
-    opacity: 0.1255419222;
+    opacity: 0.8940559763;
   }
   80% {
-    opacity: 0.5835036799;
+    opacity: 0.9115247434;
   }
   85% {
-    opacity: 0.6151573637;
+    opacity: 0.6159477558;
   }
   90% {
-    opacity: 0.7813367771;
+    opacity: 0.5027288739;
   }
   95% {
-    opacity: 0.3699126299;
+    opacity: 0.5926373651;
   }
   100% {
-    opacity: 0.7796475073;
+    opacity: 0.1066249666;
   }
 }
 
 @keyframes flicker {
   0% {
-    opacity: 0.5649693928;
+    opacity: 0.7395628426;
   }
   5% {
-    opacity: 0.3555940959;
+    opacity: 0.7161037705;
   }
   10% {
-    opacity: 0.8172183161;
+    opacity: 0.1053925832;
   }
   15% {
-    opacity: 0.279936767;
+    opacity: 0.2438545915;
   }
   20% {
-    opacity: 0.3594898929;
+    opacity: 0.3951038428;
   }
   25% {
-    opacity: 0.7893615746;
+    opacity: 0.8690345908;
   }
   30% {
-    opacity: 0.8273469535;
+    opacity: 0.0807382688;
   }
   35% {
-    opacity: 0.3237896316;
+    opacity: 0.483760797;
   }
   40% {
-    opacity: 0.4503494438;
+    opacity: 0.4499718083;
   }
   45% {
-    opacity: 0.2496037624;
+    opacity: 0.419098066;
   }
   50% {
-    opacity: 0.278565174;
+    opacity: 0.3940401658;
   }
   55% {
-    opacity: 0.7062680481;
+    opacity: 0.6508361888;
   }
   60% {
-    opacity: 0.830357689;
+    opacity: 0.6189030838;
   }
   65% {
-    opacity: 0.810211144;
+    opacity: 0.2103066506;
   }
   70% {
-    opacity: 0.0870524709;
+    opacity: 0.7994249347;
   }
   75% {
-    opacity: 0.1255419222;
+    opacity: 0.8940559763;
   }
   80% {
-    opacity: 0.5835036799;
+    opacity: 0.9115247434;
   }
   85% {
-    opacity: 0.6151573637;
+    opacity: 0.6159477558;
   }
   90% {
-    opacity: 0.7813367771;
+    opacity: 0.5027288739;
   }
   95% {
-    opacity: 0.3699126299;
+    opacity: 0.5926373651;
   }
   100% {
-    opacity: 0.7796475073;
+    opacity: 0.1066249666;
   }
 }
 @-webkit-keyframes turn-on {

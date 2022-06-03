@@ -1,11 +1,11 @@
-import React, { useRef, Suspense } from 'react';
-import { Canvas, useFrame } from 'react-three-fiber';
-import * as THREE from 'three'
+import React, { Suspense } from 'react';
+import { Canvas } from 'react-three-fiber';
 
 import { Sphere } from './Sphere'
-import { Star } from './Star'
 import { Dolly } from './Dolly'
 import { Ring } from './Ring'
+
+const Star = lazy(() => import('./Star'));
 
 function getRandomInt(min, max) {
 min = Math.ceil(min);
@@ -19,20 +19,6 @@ for (let index = 0; index < 200; index++) {
 itemList.push( <Star key={index}    
     position={[getRandomInt(-100,100), getRandomInt(-40,40), getRandomInt(-400,-50)]} />)
 
-}
-
-function Rig({ children }) {
-  const ref = useRef()
-  const vec = new THREE.Vector3()
-  useFrame(({camera, mouse}) => {
-    ref.current.children.forEach(element => {
-      element.position.lerp(vec.set(mouse.x * 1, mouse.y * 1, element.position.z), 0.3)
-      // element.rotation.y = THREE.MathUtils.lerp(element.rotation.y, (-mouse.x * Math.PI) / 20, 0.1)
-    });
-    // camera.position.lerp(vec.set(mouse.x * 2, 0, 3.5), 0.05)
-
-  })
-  return <group ref={ref}>{children}</group>
 }
 
 export function HomeCanvas(props) {
@@ -55,15 +41,10 @@ export function HomeCanvas(props) {
       castShadow
     />
     <>
-        { props.LOOP ? null : (
+        { props.loop ? null : (
         <Suspense fallback={null}>
-        {/* <Rig> */}
           {itemList}
   
-        {/* </Rig> */}
-          {/* <EffectComposer>
-            <Bloom luminanceThreshold={0} luminanceSmoothing={0.4} intensity={0.6} />
-          </EffectComposer> */}
         </Suspense>
 
           )}
