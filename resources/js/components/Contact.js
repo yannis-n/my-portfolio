@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import * as THREE from 'three'
 
-export function Contact(props) {
+function Contact(props) {
     let section = useRef(null)
     let [onScreen, setOnScreen] = useState(false)
     let threshold = 1
@@ -42,3 +42,5 @@ export function Contact(props) {
     </section>
   );
 }
+
+export default Contact;

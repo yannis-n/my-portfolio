@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Project } from './Project'
+import { Suspense, useState, useRef, useEffect, lazy } from 'react';
+const Project = lazy(() => import('./Project'));
 
-export function Projects(props) {
+function Projects(props) {
     let items = [
         {
             title: 'Jetpack VC',
@@ -29,7 +29,7 @@ export function Projects(props) {
     let projects = []
     items.forEach((element, i) => {
         projects.push(
-            <Project key={i} info={element} isMobile={props.isMobile}/>
+                <Project key={i} info={element} isMobile={props.isMobile}/>
         )
     });
     
@@ -66,8 +66,13 @@ export function Projects(props) {
             </div>
 
             <div className='section-container'>
+                <Suspense>
                 {projects}
+
+                </Suspense>
             </div>
         </section>
     );
   }
+
+  export default Projects;

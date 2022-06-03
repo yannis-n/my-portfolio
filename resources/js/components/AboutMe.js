@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-export function AboutMe(props) {
+function AboutMe(props) {
     let section = useRef(null)
     let portrait = useRef(null)
     let skillList = useRef(null)
@@ -127,3 +127,5 @@ export function AboutMe(props) {
         </section>
     );
   }
+
+  export default AboutMe

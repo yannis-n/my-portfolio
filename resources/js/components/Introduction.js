@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 
-export function Introduction(props) {
+function Introduction(props) {
     let section = useRef(null)
     useEffect(() => {
         if (!props.siteEntered) return
@@ -46,3 +46,5 @@ export function Introduction(props) {
         </section>
     );
   }
+
+  export default Introduction;

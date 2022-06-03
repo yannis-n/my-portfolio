@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-export function Project(props) {
+function Project(props) {
     let project = useRef(null)
     
     let [onScreen, setOnScreen] = useState(false)
@@ -55,3 +55,5 @@ export function Project(props) {
                 </div>
     );
   }
+
+  export default Project;

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Logo } from './Logo'
 
-export function Navbar(props) {
+function Navbar(props) {
   const [menuToggled, setMenuToggled] = useState(false);
   let navBar = useRef([])
 
@@ -27,7 +27,7 @@ export function Navbar(props) {
   let navList=[];
 
   for (let index = 0; index < links.length; index++) {
-    navList.push( <li key={index} className="mx-5"><a href={links[index].link}>{links[index].name}</a></li> )
+    navList.push( <li key={index} onClick={() => {toggleMenu()}} className="mx-5"><a href={links[index].link}>{links[index].name}</a></li> )
   }
 
   useEffect(() => {
@@ -95,3 +95,5 @@ export function Navbar(props) {
       </header>
     );
   }
+
+  export default Navbar;

@@ -1,14 +1,17 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { StrictMode, useState, useRef, useEffect, lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom';
 
 import { HomeCanvas } from './HomeCanvas'
-import { Navbar } from './Navbar'
-import { Introduction } from './Introduction'
-import { Projects } from './Projects'
-import { AboutMe } from './AboutMe'
-import { SocialLinksNav } from './SocialLinksNav'
-import { Contact } from './Contact'
 
+const Introduction = lazy(() => import('./Introduction'));
+const Navbar = lazy(() => import('./Navbar'));
+const Projects = lazy(() => import('./Projects'));
+const AboutMe = lazy(() => import('./AboutMe'));
+const SocialLinksNav = lazy(() => import('./SocialLinksNav'));
+const Contact = lazy(() => import('./Contact'))
+
+
+const Spinner = () => <div className="spinner"></div>
 
 function App() {
   const [gradientOn, setGradientOn] = useState(false);
@@ -33,6 +36,7 @@ function App() {
   }
 
     function changeIntro(){
+      if (!intro) return;
       setIntro(false)
 
       enterTag.current.classList.remove('cursor-pointer')
@@ -65,15 +69,20 @@ function App() {
     })
   return (
     <div className={"app-container relative w-full "+(siteEntered ? '' : 'h-screen')}>
-      <Navbar isMobile={isMobileFunction(windowDimensions)} topOfPage={topOfPage} gradientOn={siteEntered}/>
-      <SocialLinksNav visible={siteEntered && topOfPage}/>
+      <Suspense fallback={<Spinner/>}>
+        <Navbar isMobile={isMobileFunction(windowDimensions)} topOfPage={topOfPage} gradientOn={siteEntered}/>
+      </Suspense>
+      <Suspense fallback={<Spinner/>}>      
+        <SocialLinksNav visible={siteEntered && topOfPage}/>
+      </Suspense>
       {/* <Controls gradientOn={siteEntered} topOfPage={topOfPage} /> */}
-      <main className=''>
+      <main className=''                 onClick={changeIntro} 
+>
       <div id="home" className={"fixed w-screen min-h-screen h-screen" + (siteEntered ? '' : ' z-10')}>
         <div className="canvas-container">
-        <React.StrictMode>
+        <StrictMode>
           <HomeCanvas loop={intro} toggleGradient={toggleGradient} gradientOn={siteEntered} />
-          </React.StrictMode>
+          </StrictMode>
           <div             
             className={
               siteEntered ? 'gradient gradientOn' : 'gradient gradientOff'
@@ -83,14 +92,22 @@ function App() {
       </div>
       <button ref={enterTag} 
       id ="enter-button"
-                onClick={changeIntro} 
                 className={"container z-20 animate-pulse cursor-pointer absolute flex w-fit top-2/3 left-1/2 transform -translate-x-1/2 " + (!intro ? 'faded' : '' )}>
           Enter
         </button>
-      <Introduction siteEntered={siteEntered}/>
-      <AboutMe siteEntered={siteEntered} isMobile={isMobileFunction(windowDimensions)}/>
-      <Projects siteEntered={siteEntered} isMobile={isMobileFunction(windowDimensions)}/>
-      <Contact siteEntered={siteEntered}/>
+       <Suspense fallback={<Spinner/>}>
+        <Introduction siteEntered={siteEntered}/>
+       </Suspense>
+        <Suspense fallback={<Spinner/>}>
+          <AboutMe siteEntered={siteEntered} isMobile={isMobileFunction(windowDimensions)}/>
+        </Suspense>
+        <Suspense fallback={<Spinner/>}>
+          <Projects siteEntered={siteEntered} isMobile={isMobileFunction(windowDimensions)}/>
+        </Suspense>
+
+        <Suspense fallback={<Spinner/>}>
+          <Contact siteEntered={siteEntered}/>
+         </Suspense>
       </main>
     </div>
   );
