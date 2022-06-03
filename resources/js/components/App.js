@@ -21,7 +21,6 @@ function App() {
   const [topOfPage, setTopOFPage] = useState(true);
   const [bottomOfPage, setBottomOfPage] = useState(false);
 
-
   const toggleGradient = function(){
     // setGradientOn(!gradientOn)
     setsiteEntered(!gradientOn)
@@ -80,8 +79,8 @@ function App() {
 >
       <div id="home" className={"fixed w-screen min-h-screen h-screen" + (siteEntered ? '' : ' z-10')}>
         <div className="canvas-container">
-        <StrictMode>
-          <HomeCanvas loop={intro} toggleGradient={toggleGradient} gradientOn={siteEntered} />
+          <StrictMode>
+            <HomeCanvas loop={intro} toggleGradient={toggleGradient} gradientOn={siteEntered} />
           </StrictMode>
           <div             
             className={
@@ -98,16 +97,19 @@ function App() {
        <Suspense fallback={<Spinner/>}>
         <Introduction siteEntered={siteEntered}/>
        </Suspense>
-        <Suspense fallback={<Spinner/>}>
-          <AboutMe siteEntered={siteEntered} isMobile={isMobileFunction(windowDimensions)}/>
-        </Suspense>
-        <Suspense fallback={<Spinner/>}>
-          <Projects siteEntered={siteEntered} isMobile={isMobileFunction(windowDimensions)}/>
-        </Suspense>
+       <>
+        { intro ? null : (
+          <Suspense fallback={<Spinner/>}>
 
-        <Suspense fallback={<Spinner/>}>
+          <AboutMe siteEntered={siteEntered} isMobile={isMobileFunction(windowDimensions)}/>
+          <Projects siteEntered={siteEntered} isMobile={isMobileFunction(windowDimensions)}/>
+
           <Contact siteEntered={siteEntered}/>
-         </Suspense>
+          </Suspense>
+
+          )}
+        </>
+        
       </main>
     </div>
   );

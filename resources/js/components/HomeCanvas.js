@@ -1,5 +1,5 @@
 import React, { useRef, Suspense } from 'react';
-import { Canvas, useThree, useFrame } from 'react-three-fiber';
+import { Canvas, useFrame } from 'react-three-fiber';
 import * as THREE from 'three'
 
 import { Sphere } from './Sphere'
@@ -43,7 +43,6 @@ export function HomeCanvas(props) {
       camera={{ position: [0, 0, cameraZ], fov: 50 }} 
       dpr={window.devicePixelRatio}
     > 
-  {/* <fogExp2 attach="fog" color="#e2e8f0" density={0.3} /> */}
 
     <rectAreaLight
       width={5}
@@ -55,17 +54,20 @@ export function HomeCanvas(props) {
       penumbra={1}
       castShadow
     />
+    <>
+        { props.LOOP ? null : (
+        <Suspense fallback={null}>
+        {/* <Rig> */}
+          {itemList}
+  
+        {/* </Rig> */}
+          {/* <EffectComposer>
+            <Bloom luminanceThreshold={0} luminanceSmoothing={0.4} intensity={0.6} />
+          </EffectComposer> */}
+        </Suspense>
 
-
-      <Suspense fallback={null}>
-      {/* <Rig> */}
-        {itemList}
-
-      {/* </Rig> */}
-        {/* <EffectComposer>
-          <Bloom luminanceThreshold={0} luminanceSmoothing={0.4} intensity={0.6} />
-        </EffectComposer> */}
-      </Suspense>
+          )}
+        </>
     
     {!props.gradientOn && (
       <Suspense>
