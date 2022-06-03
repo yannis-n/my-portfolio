@@ -76,7 +76,13 @@ function App() {
               siteEntered ? 'gradient gradientOn' : 'gradient gradientOff'
             }>      
           </div>
-        </div>      
+        </div>  
+
+        <button onClick={changeIntro}
+      id ="enter-button"
+                className={" absolute flex w-fit top-2/3 left-1/2 transform -translate-x-1/2 hidden" }>
+          Enter
+        </button>    
       </div>
      
        <Suspense fallback={<Spinner/>}>
