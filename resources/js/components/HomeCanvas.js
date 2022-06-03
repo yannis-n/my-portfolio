@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import { Suspense, lazy } from 'react';
 import { Canvas } from 'react-three-fiber';
 
 import { Sphere } from './Sphere'
