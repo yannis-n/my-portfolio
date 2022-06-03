@@ -1,6 +1,6 @@
 
 
-import React, { useRef } from 'react';
+import { useRef, StrictMode } from 'react';
 
 const links = [
   {
@@ -41,9 +41,9 @@ function SocialLinksNav(props) {
 
   return (
     <ul ref={socialLinkNav} className={"social-links-nav fixed flex flex-col md:flex-row z-10 bottom-custom-gap w-auto list-none " + (props.visible ? '' : 'faded-right')}>
-      <React.StrictMode>
+      <StrictMode>
         {itemList}
-      </React.StrictMode>
+      </StrictMode>
 
     </ul>
   );

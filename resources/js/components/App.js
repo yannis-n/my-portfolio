@@ -36,21 +36,7 @@ function App() {
     function changeIntro(){
       if (!intro) return;
       setIntro(false)
-
-      enterTag.current.classList.remove('cursor-pointer')
-      setTimeout(() => {
-        enterTag.current.classList.remove('animate-pulse')
-      }, 1000);
-
     }
-
-    let enterTag = useRef(null)
-
-    useEffect(() => {
-        setTimeout(() => {
-          enterTag.current.classList.remove('faded')
-        }, 300);
-      }, []);
 
     useEffect(() => {
       function handleResize() {
@@ -92,11 +78,7 @@ function App() {
           </div>
         </div>      
       </div>
-      <button ref={enterTag} 
-      id ="enter-button"
-                className={"container z-20 animate-pulse cursor-pointer absolute flex w-fit top-2/3 left-1/2 transform -translate-x-1/2 " + (!intro ? 'faded' : '' )}>
-          Enter
-        </button>
+     
        <Suspense fallback={<Spinner/>}>
         <Introduction siteEntered={siteEntered}/>
        </Suspense>

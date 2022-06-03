@@ -1,10 +1,9 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 function Introduction(props) {
     let section = useRef(null)
     useEffect(() => {
         if (!props.siteEntered) return
-
 
         for (let i = 0; i < section.current.children.length; i++) {
             let timeOut = (i < 2) ? 400 : 400 * (i-1)

@@ -177,31 +177,12 @@ body{
     }
    }
 
+#home{
+  cursor: pointer;
+}
 
   //  Logo
-  //  svg {
-  //   width: 20px;
-  //   height: 40px;
-  //   max-height: 80vh;
-  //   overflow: visible;
-  // }
-  // .eins {
-  //   transform-origin: 60px 60px;
-  //   transform: rotateZ(60deg);
-  // }
-  // .zwei {
-  //   transform-origin: 60px 60px;
-  //   transform: rotateZ(-60deg);
-  // }
-  // .all {
-  //   transform-origin: 60px 60px;
-  //   transform: scaleX(.32);
-  // }
-  // .group {
-  //   animation: turnIt 5s linear infinite;
-  //   transform-origin: 60px 60px;
-  //   transform-box: content-box;
-  // }
+ 
   .atom {
     position: fixed;
     z-index: 5;

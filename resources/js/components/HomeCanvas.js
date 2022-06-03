@@ -40,16 +40,12 @@ export function HomeCanvas(props) {
       penumbra={1}
       castShadow
     />
-    <>
-        { props.loop ? null : (
+  
         <Suspense fallback={null}>
           {itemList}
   
         </Suspense>
 
-          )}
-        </>
-    
     {!props.gradientOn && (
       <Suspense>
         <Sphere position={[0, 0, 0]} />

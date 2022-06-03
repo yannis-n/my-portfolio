@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
-import * as THREE from 'three'
+import { useState, useRef, useEffect } from 'react';
 
 function Contact(props) {
     let section = useRef(null)

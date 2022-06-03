@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 function AboutMe(props) {
     let section = useRef(null)
@@ -9,7 +9,7 @@ function AboutMe(props) {
     let threshold = window.innerHeight
     let thresholdForList = (props.isMobile) ? window.innerHeight / 8 : window.innerHeight / 4
     
-    function handleScroll(){        
+    function handleScroll(){  
         let distance = Math.abs( window.pageYOffset - section.current.offsetTop )
         if (distance < threshold){        
             setOnScreen(true)

@@ -1,5 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Logo } from './Logo'
+import { useState, useRef, useEffect, lazy } from 'react';
+
+const Logo = lazy(() => import('./Logo'));
 
 function Navbar(props) {
   const [menuToggled, setMenuToggled] = useState(false);
