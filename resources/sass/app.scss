@@ -261,49 +261,13 @@ body{
     position: absolute;
     top: 50%;
     margin-top: calc(var(--electron-orbit-size) / -2);
-    animation: var(--electron-speed) electron-orbit infinite linear;
 }
 .atom > .electron-alpha {
     transform: rotate(60deg);
-    animation: var(--electron-speed-alpha) electron-orbit infinite linear;
 }
 .atom > .electron-omega {
     transform: rotate(-60deg);
-    animation: var(--electron-speed-omega) electron-orbit infinite linear;
 }
-@keyframes electron-orbit {
-    0% {
-        border-top: solid rgba(var(--atom-color-rgb), .45) 1px;
-        border-right: solid rgba(var(--atom-color-rgb), .35) 2px;
-        border-bottom: solid rgba(var(--atom-color-rgb), .3) 4px;
-        border-left: solid rgba(var(--atom-color-rgb), 0) 2px;
-    }
-    25% {
-        border-top: solid rgba(var(--atom-color-rgb), .35) 1px;
-        border-right: solid rgba(var(--atom-color-rgb), .3) 2px;
-        border-bottom: solid rgba(var(--atom-color-rgb), 0) 4px;
-        border-left: solid rgba(var(--atom-color-rgb), .45) 2px;
-    }
-    50% {
-        border-top: solid rgba(var(--atom-color-rgb), .3) 1px;
-        border-right: solid rgba(var(--atom-color-rgb), 0) 2px;
-        border-bottom: solid rgba(var(--atom-color-rgb), .45) 4px;
-        border-left: solid rgba(var(--atom-color-rgb), .35) 2px;
-    }
-    75% {
-        border-top: solid rgba(var(--atom-color-rgb), 0) 1px;
-        border-right: solid rgba(var(--atom-color-rgb), .45) 2px;
-        border-bottom: solid rgba(var(--atom-color-rgb), .35) 4px;
-        border-left: solid rgba(var(--atom-color-rgb), .3) 2px;
-    }
-    100% {
-        border-top: solid rgba(var(--atom-color-rgb), .45) 1px;
-        border-right: solid rgba(var(--atom-color-rgb), .35) 2px;
-        border-bottom: solid rgba(var(--atom-color-rgb), .3) 4px;
-        border-left: solid rgba(var(--atom-color-rgb), 0) 2px;
-    }
-}
-
 /* Electron Unit */
 .atom [class^="electron"]::after {
     content: '';
@@ -323,39 +287,30 @@ body{
 .atom .electron-omega::after { animation: calc(var(--electron-speed-omega) * 2) electron infinite ease-in-out; }
 @keyframes electron {
     0% {
-        left: calc(var(--electron-size) / -1);
         transform: scale(1);
     }
     12.5% {
-        top: 100%;
         transform: scale(1.5);
     }
     25% {
-        left: 100%;
         transform: scale(1);
     }
     37.5% {
-        top: 0%;
         transform: scale(.25);
     }
     50% {
-        left: calc(var(--electron-size) / -1);
         transform: scale(1);
     }
     62.5% {
-        top: 100%;
         transform: scale(1.5);
     }
     75% {
-        left: 100%;
         transform: scale(1);
     }
     87.5% {
-        top: 0%;
         transform: scale(.25);
     }
     100% {
-        left: calc(var(--electron-size) / -1);
         transform: scale(1);
     }
 }
