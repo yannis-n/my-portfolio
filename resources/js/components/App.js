@@ -43,7 +43,9 @@ function App() {
         let dimensions = getWindowDimensions();
         setWindowDimensions(dimensions);
       }
-
+      setTimeout(() => {
+        changeIntro()
+      }, 1000);
       window.addEventListener('resize', handleResize);
       return () => window.removeEventListener('resize', handleResize);
     }, []);
@@ -64,8 +66,7 @@ function App() {
           )}
       </>
 
-      {/* <Controls gradientOn={siteEntered} topOfPage={topOfPage} /> */}
-      <main className='' onClick={changeIntro}>
+      <main className=''>
       <div id="home" className={"fixed w-screen min-h-screen h-screen" + (siteEntered ? '' : ' z-10')}>
         <div className="canvas-container">
           <StrictMode>
@@ -77,12 +78,7 @@ function App() {
             }>      
           </div>
         </div>  
-
-        <button onClick={changeIntro}
-      id ="enter-button"
-                className={" absolute flex w-fit top-2/3 left-1/2 transform -translate-x-1/2 hidden" }>
-          Enter
-        </button>    
+  
       </div>
      
        <Suspense fallback={<Spinner/>}>
