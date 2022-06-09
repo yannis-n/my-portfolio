@@ -28,7 +28,7 @@ function Navbar(props) {
   let navList=[];
 
   for (let index = 0; index < links.length; index++) {
-    navList.push( <li key={index} onClick={() => {toggleMenu()}} className="mx-5"><a href={links[index].link}>{links[index].name}</a></li> )
+    navList.push( <li key={index} aria-label={links[index].name + ' Link'} onClick={() => {toggleMenu()}} className="mx-5"><a href={links[index].link}>{links[index].name}</a></li> )
   }
 
   useEffect(() => {
@@ -80,17 +80,17 @@ function Navbar(props) {
     }
   });
     return (
-      <header>
-        <nav className={"links-nav z-20 flex list-none "+ (props.gradientOn ? '' : 'md:faded-right opacity-0') + (menuToggled ? 'open' : '')  + ((!props.isMobile && !props.topOfPage) ? 'background' : '')}>
+      <header aria-label="header">
+        <nav aria-label="navigation bar" className={"links-nav z-20 flex list-none "+ (props.gradientOn ? '' : 'md:faded-right opacity-0') + (menuToggled ? 'open' : '')  + ((!props.isMobile && !props.topOfPage) ? 'background' : '')}>
         <Logo />
-        <button onClick={() => {toggleMenu()}} className={"menu-toggle md:hidden "+ (menuToggled ? 'toggled' : '')}>
+        <button aria-label="mobile navigation toggler" onClick={() => {toggleMenu()}} className={"menu-toggle md:hidden "+ (menuToggled ? 'toggled' : '')}>
           <span className="menu-toggle-bar"></span>
           <span className="menu-toggle-bar"></span>
           <span className="menu-toggle-bar"></span>
         </button>
-        <ul ref={navBar} className={"flex flex-col md:flex-row md:items-center "+ (menuToggled ? 'open' : '')}>
+        <ul ref={navBar} arial-label="List of Links" className={"flex flex-col md:flex-row md:items-center "+ (menuToggled ? 'open' : '')}>
           {navList}
-          <li className="mx-5 resume"><a href="/storage/pdf/Yannis_Nikolaidis_CV.pdf">Resume</a></li> 
+          <li aria-label="Resume Link" className="mx-5 resume"><a href="/storage/pdf/Yannis_Nikolaidis_CV.pdf">Resume</a></li> 
         </ul>
       </nav>
       </header>

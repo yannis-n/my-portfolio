@@ -82,7 +82,7 @@ function AboutMe(props) {
         
     
     return (
-        <section tabindex="0" id="about-me" ref={section} className={"relative flex justify-center flex-col items-start"+(props.siteEntered ? '' : ' opacity-0')}>
+        <section tabIndex="0" id="about-me" ref={section} className={"relative flex justify-center flex-col items-start"+(props.siteEntered ? '' : ' opacity-0')}>
             <div  className="section-heading faded-left">
                 About Me
             </div>

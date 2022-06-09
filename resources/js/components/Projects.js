@@ -5,21 +5,25 @@ function Projects(props) {
     let items = [
         {
             title: 'Jetpack VC',
-            description: 'My best work yet My best work yet My best work yet  My best work yet  My best work yet My best work yet  My best work yet  My best work yet ',
+            description: `A simple one-page web app deticaed to the company profile of my longest-standing partnership.
+                            `,
+            technologies: ['PHP', 'Jquery', 'HandleBar'],
             image: 'jeptack.svg',
             link: "https://jetpack.vc/",
             alt: 'jetpack site homepage'
         },
         {
             title: 'Athens Rhythm Hop',
-            description: 'My best work yet My best work yet My best work yet  My best work yet  My best work yet My best work yet  My best work yet  My best work yet ',
+            description: 'A simple Wordpress app deticated the portfolio of a dancing studio.',
+            technologies: ['Wordpress', 'Javascript', 'Sass'],
             image: 'arh.svg',
             link: "https://athensrhythmhop.com",
             alt: 'athensrhythmhop site homepage'
         },
         {
             title: 'Rhythm Hoppers',
-            description: 'My best work yet My best work yet My best work yet  My best work yet  My best work yet My best work yet  My best work yet  My best work yet ',
+            description: 'A web app designed for the registration and the administration of an Athenian dance festival.',
+            technologies: ['Wordpress', 'Javascript', 'Sass'],
             image: 'rhythmhoppers.svg',
             link: "https://rhythmhoppers.com/",
             alt: 'rhythmhoppers site homepage'

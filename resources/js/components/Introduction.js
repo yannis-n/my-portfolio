@@ -22,7 +22,7 @@ function Introduction(props) {
 
     
     return (
-        <section id="introduction" ref={section} className={" relative flex justify-center flex-col items-start"+(props.siteEntered ? ' moved-in' : ' opacity-0')}>
+        <section arial-label="Introduction" id="introduction" ref={section} className={" relative flex justify-center flex-col items-start"+(props.siteEntered ? ' moved-in' : ' opacity-0')}>
             <h1 className="w-full  text-4xl md:text-6xl font-bold faded-right details-color">
                 Hi,
             </h1>

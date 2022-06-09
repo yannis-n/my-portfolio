@@ -30,7 +30,9 @@ $mobileGap : 24px;
 // $detailsColor: #EC255A;
 // $secondaryColor: #292C6D;
 // $subdetails: #0027ff;
-$detailsColor: #E42C64;
+// $detailsColor: #E42C64;
+$detailsColor: #ff4c82;
+
 $detailsColorRgb: '228, 44, 100';
 $secondaryColor: #121B74;
 $subdetails: #070608;
@@ -721,6 +723,28 @@ body{
             opacity: 0
           }
         }
+
+        ul{
+          display: flex;
+          margin-bottom: 20px;
+        }
+
+        li {
+          padding: 0 20px;
+          position: relative;
+          &::before{
+            content:'∴'; 
+             position: absolute;
+            left: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: $detailsColor;
+            line-height: 12px;
+  
+          
+          }
+        }
+  
       &:nth-of-type(even){
             
           

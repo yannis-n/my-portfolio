@@ -27,6 +27,13 @@ function Project(props) {
         }
     },[onScreen])
         
+    let technologies = []
+    props.info.technologies.forEach((element, i) => {
+        technologies.push(
+            <li key={i}><span className="inline-block">{element}</span></li>
+        )
+    });
+
     return (
         <div ref={project} className={'section-container--project' + (props.isMobile && !onScreen ? ' faded-project-container' : '')}>
                     <div className='image-container'>
@@ -44,6 +51,10 @@ function Project(props) {
                         <div className='section-container--project-info--description'>
                             {props.info.description}
                         </div>
+                        <ul> 
+
+                        {technologies}
+                                                   </ul>
 
                         <a href={props.info.link} target="_blank" className='section-container--project-info--link'>
                         <img 

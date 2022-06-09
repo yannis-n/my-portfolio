@@ -1,4 +1,4 @@
-import { StrictMode, useState, useRef, useEffect, lazy, Suspense } from 'react';
+import { StrictMode, useState, useEffect, lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom';
 
 import { HomeCanvas } from './HomeCanvas'
@@ -57,18 +57,16 @@ function App() {
     <div className={"app-container relative w-full "+(siteEntered ? '' : 'h-screen')}>
 
       <>
-        { intro ? null : (
           <Suspense fallback={<Spinner/>}>
           <Navbar isMobile={isMobileFunction(windowDimensions)} topOfPage={topOfPage} gradientOn={siteEntered}/>
  
           <SocialLinksNav visible={siteEntered && topOfPage}/>
           </Suspense>
-          )}
       </>
 
       <main className=''>
-      <div id="home" className={"fixed w-screen min-h-screen h-screen" + (siteEntered ? '' : ' z-10')}>
-        <div className="canvas-container">
+      <div id="home" aria-hidden='true' className={"fixed w-screen min-h-screen h-screen" + (siteEntered ? '' : ' z-10')}>
+        <div aria-label="Animation Container" className="canvas-container">
           <StrictMode>
             <HomeCanvas loop={intro} toggleGradient={toggleGradient} gradientOn={siteEntered} />
           </StrictMode>
