@@ -177,7 +177,13 @@ body{
     to {
       transform: translateX(50%)
     }
-   }
+  }
+
+  @-webkit-keyframes colorChange {
+    to {
+      -webkit-transform: translateX(50%)
+    }
+  }
 
 #home{
   cursor: pointer;
@@ -211,6 +217,18 @@ body{
     100% {  transform: rotate(-360deg) scale(1); }
 }
 
+@-webkit-keyframes atom {
+  0% {    -webkit-transform: rotate(0deg) scale(1); }
+  12.5% { -webkit-transform: rotate(-45deg) scale(.9); }
+  25% {   -webkit-transform: rotate(-90deg) scale(1); }
+  37.5% { -webkit-transform: rotate(-135deg) scale(.9); }
+  50% {   -webkit-transform: rotate(-180deg) scale(1); }
+  62.5% { -webkit-transform: rotate(-225deg) scale(.9); }
+  75% {   -webkit-transform: rotate(-270deg) scale(1); }
+  87.5% { -webkit-transform: rotate(-315deg) scale(.9); }
+  100% {  -webkit-transform: rotate(-360deg) scale(1); }
+}
+
 /* Nucleus */
 .atom::before {
     content: '';
@@ -233,6 +251,14 @@ body{
     50% { transform: scale(1); }
     75% { transform: scale(.85); }
     100% { transform: scale(1); }
+}
+
+@-webkit-keyframes nucleus {
+  0% { -webkit-transform: scale(1); }
+  25% { -webkit-transform: scale(.9); }
+  50% { -webkit-transform: scale(1); }
+  75% { -webkit-transform: scale(.85); }
+  100% { -webkit-transform: scale(1); }
 }
 
 /* Electron Orbit */
@@ -301,7 +327,35 @@ body{
     }
 }
 
-
+@-webkit-keyframes electron {
+  0% {
+      -webkit-transform: scale(1);
+  }
+  12.5% {
+      -webkit-transform: scale(1.5);
+  }
+  25% {
+      -webkit-transform: scale(1);
+  }
+  37.5% {
+      -webkit-transform: scale(.25);
+  }
+  50% {
+      -webkit-transform: scale(1);
+  }
+  62.5% {
+      -webkit-transform: scale(1.5);
+  }
+  75% {
+      -webkit-transform: scale(1);
+  }
+  87.5% {
+      -webkit-transform: scale(.25);
+  }
+  100% {
+      -webkit-transform: scale(1);
+  }
+}
 
 
   .go {
@@ -313,6 +367,14 @@ body{
   
     }
   }
+
+  @-webkit-keyframes turnIt {
+    100% {
+      -webkit-transform: rotate3d(1, 1, 1, 360deg);
+  
+    }
+  }
+  
   
   .container{
     transition: all 1s ease-in-out;
@@ -727,6 +789,10 @@ body{
         ul{
           display: flex;
           margin-bottom: 20px;
+
+          @media screen and (max-width: 780px) {
+            margin-top: 20px;
+          }
         }
 
         li {
@@ -920,12 +986,18 @@ body{
       }
     }
   }
-
+  @-webkit-keyframes flicker{
+    $steps:20;
+    @for $i from 0 through $steps{
+      #{percentage($i*(calc(1/$steps)))}{
+        -webkit-opacity:random();
+      }
+    }
+  }
   
 @keyframes turn-on{
   0%{
     transform:scale(1,0.8) translate3d(0,0,0);
-    -webkit-filter:brightness(30);
     filter:brightness(30);
     opacity:1;
   }
@@ -940,7 +1012,6 @@ body{
   
   9%{
     transform:scale(1.3,0.6) translate3d(0,100%,0);
-    -webkit-filter:brightness(30);
     filter:brightness(30);
     opacity:0;
   }
@@ -949,16 +1020,49 @@ body{
   
   11%{
     transform:scale(1,1) translate3d(0,0,0);
-    -webkit-filter:contrast(0) brightness(0) ;
     filter:contrast(0) brightness(0);
     opacity:0;
   }
   
   100%{
     transform:scale(1,1) translate3d(0,0,0);
-    -webkit-filter:contrast(1) brightness(1.2) saturate(1.3);
     filter:contrast(1) brightness(1.2) saturate(1.3);
     opacity:1;
+  }
+}
+
+@-webkit-keyframes turn-on{
+  0%{
+    -webkit-transform:scale(1,0.8) translate3d(0,0,0);
+    -webkit-filter:brightness(30);
+    -webkit-filter:brightness(30);
+    -webkit-opacity:1;
+  }
+  3.5%{
+    -webkit-transform:scale(1,0.8) translate3d(0,100%,0);
+  }
+  
+  3.6%{
+    -webkit-transform:scale(1,0.8) translate3d(0,-100%,0);
+    -webkit-opacity:1;
+  } 
+  
+  9%{
+    -webkit-transform:scale(1.3,0.6) translate3d(0,100%,0);
+    -webkit-filter:brightness(30);
+    -webkit-opacity:0;
+  }
+  
+  11%{
+    -webkit-transform:scale(1,1) translate3d(0,0,0);
+    -webkit-filter:contrast(0) brightness(0) ;
+    -webkit-opacity:0;
+  }
+  
+  100%{
+    -webkit-transform:scale(1,1) translate3d(0,0,0);
+    -webkit-filter:contrast(1) brightness(1.2) saturate(1.3);
+    -webkit-opacity:1;
   }
 }
 
@@ -972,6 +1076,17 @@ body{
       opacity: 0;
     }
   }
+  
+  @-webkit-keyframes expand {
+    100% {
+      -webkit-max-height: 400px;
+      -webkit-opacity: 0.5;
+    }
+    0% {
+      -webkit-max-height: 0;
+      -webkit-opacity: 0;
+    }
+  }
 
   @keyframes travel {
     0% {
@@ -979,7 +1094,6 @@ body{
     }
     100% {
       transform: scale(4) translateX(30%)
-
     }
   }
 
@@ -989,3 +1103,17 @@ body{
     }
   }
 
+  @-webkit-keyframes travel {
+    0% {
+      -webkit-transform: scale(4) translateX(-30%)
+    }
+    100% {
+      -webkit-transform: scale(4) translateX(30%)
+    }
+  }
+
+  @-webkit-keyframes rotate {
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }

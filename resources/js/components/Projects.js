@@ -5,7 +5,7 @@ function Projects(props) {
     let items = [
         {
             title: 'Jetpack VC',
-            description: `A simple one-page web app deticaed to the company profile of my longest-standing partnership.
+            description: `A one-page web app deticaed to the company profile of my longest-standing partnership.
                             `,
             technologies: ['PHP', 'Jquery', 'HandleBar'],
             image: 'jeptack.svg',
@@ -14,7 +14,7 @@ function Projects(props) {
         },
         {
             title: 'Athens Rhythm Hop',
-            description: 'A simple Wordpress app deticated the portfolio of a dancing studio.',
+            description: 'A web app designed for the registration and the administration of an Athenian dance festival.',
             technologies: ['Wordpress', 'Javascript', 'Sass'],
             image: 'arh.svg',
             link: "https://athensrhythmhop.com",
@@ -22,7 +22,7 @@ function Projects(props) {
         },
         {
             title: 'Rhythm Hoppers',
-            description: 'A web app designed for the registration and the administration of an Athenian dance festival.',
+            description: 'A simple Wordpress application deticated to the portfolio of a local dancing studio.',
             technologies: ['Wordpress', 'Javascript', 'Sass'],
             image: 'rhythmhoppers.svg',
             link: "https://rhythmhoppers.com/",
