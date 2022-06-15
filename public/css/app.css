@@ -943,132 +943,132 @@ section p {
 
 @keyframes flicker {
   0% {
-    opacity: 0.8805596048;
+    opacity: 0.1259862436;
   }
   5% {
-    opacity: 0.5105634964;
+    opacity: 0.9652089612;
   }
   10% {
-    opacity: 0.4918077133;
+    opacity: 0.4383787696;
   }
   15% {
-    opacity: 0.1510479273;
+    opacity: 0.7187960442;
   }
   20% {
-    opacity: 0.8711216755;
+    opacity: 0.461682885;
   }
   25% {
-    opacity: 0.4011848721;
+    opacity: 0.399325449;
   }
   30% {
-    opacity: 0.7473366293;
+    opacity: 0.5888490112;
   }
   35% {
-    opacity: 0.1674774826;
+    opacity: 0.477233236;
   }
   40% {
-    opacity: 0.6685930782;
+    opacity: 0.0690573441;
   }
   45% {
-    opacity: 0.3643175199;
+    opacity: 0.2803297722;
   }
   50% {
-    opacity: 0.0767581341;
+    opacity: 0.8341875915;
   }
   55% {
-    opacity: 0.0234558922;
+    opacity: 0.537611736;
   }
   60% {
-    opacity: 0.7954075179;
+    opacity: 0.5612636597;
   }
   65% {
-    opacity: 0.8015837672;
+    opacity: 0.5626227362;
   }
   70% {
-    opacity: 0.3768226387;
+    opacity: 0.2176182457;
   }
   75% {
-    opacity: 0.9898136035;
+    opacity: 0.0591646026;
   }
   80% {
-    opacity: 0.2335587325;
+    opacity: 0.1883555691;
   }
   85% {
-    opacity: 0.6270286321;
+    opacity: 0.4610710484;
   }
   90% {
-    opacity: 0.6118134297;
+    opacity: 0.8510417491;
   }
   95% {
-    opacity: 0.737334073;
+    opacity: 0.2036765348;
   }
   100% {
-    opacity: 0.2672988643;
+    opacity: 0.0129274049;
   }
 }
 @-webkit-keyframes flicker {
   0% {
-    -webkit-opacity: 0.8714442438;
+    -webkit-opacity: 0.0596531891;
   }
   5% {
-    -webkit-opacity: 0.1886750065;
+    -webkit-opacity: 0.2602771887;
   }
   10% {
-    -webkit-opacity: 0.4478433868;
+    -webkit-opacity: 0.8432390216;
   }
   15% {
-    -webkit-opacity: 0.3402644498;
+    -webkit-opacity: 0.3729020106;
   }
   20% {
-    -webkit-opacity: 0.8867095445;
+    -webkit-opacity: 0.3338535865;
   }
   25% {
-    -webkit-opacity: 0.0863426495;
+    -webkit-opacity: 0.9825811319;
   }
   30% {
-    -webkit-opacity: 0.5302117408;
+    -webkit-opacity: 0.0002319435;
   }
   35% {
-    -webkit-opacity: 0.2869394835;
+    -webkit-opacity: 0.6971202241;
   }
   40% {
-    -webkit-opacity: 0.0216841452;
+    -webkit-opacity: 0.2650769882;
   }
   45% {
-    -webkit-opacity: 0.8963421181;
+    -webkit-opacity: 0.7127554751;
   }
   50% {
-    -webkit-opacity: 0.0621132772;
+    -webkit-opacity: 0.929244768;
   }
   55% {
-    -webkit-opacity: 0.5121912256;
+    -webkit-opacity: 0.6482543938;
   }
   60% {
-    -webkit-opacity: 0.3172031482;
+    -webkit-opacity: 0.4847048763;
   }
   65% {
-    -webkit-opacity: 0.6951654422;
+    -webkit-opacity: 0.0009357752;
   }
   70% {
-    -webkit-opacity: 0.7380146217;
+    -webkit-opacity: 0.9950569284;
   }
   75% {
-    -webkit-opacity: 0.0544863944;
+    -webkit-opacity: 0.9955970051;
   }
   80% {
-    -webkit-opacity: 0.7490123579;
+    -webkit-opacity: 0.343631666;
   }
   85% {
-    -webkit-opacity: 0.5635702769;
+    -webkit-opacity: 0.3709149323;
   }
   90% {
-    -webkit-opacity: 0.1566535271;
+    -webkit-opacity: 0.548795643;
   }
   95% {
-    -webkit-opacity: 0.2299757612;
+    -webkit-opacity: 0.2262015247;
   }
   100% {
-    -webkit-opacity: 0.5697646752;
+    -webkit-opacity: 0.5821930322;
   }
 }
 @keyframes turn-on {

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="/css/app.css" rel="stylesheet">
-        <link rel="icon" href="{{ url('icons/favicon.svg') }}?v={{ date('YmdHis') }}">
+        <link rel="icon" href="{{ url('icons/favicon.png') }}?v={{ date('YmdHis') }}">
         <link rel="canonical" href="https://yannisnikolaidis.com/"/>
 
         <link href="{{ asset('css/tw.css') }}" rel="stylesheet">
