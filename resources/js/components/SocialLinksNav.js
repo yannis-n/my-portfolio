@@ -34,13 +34,13 @@ function SocialLinksNav(props) {
 
   for (let index = 0; index < links.length; index++) {
     itemList.push( 
-    <li key={index} className="px-3"><a  arial-label={links[index]['name']}  target="_blank"href={links[index]['link']}>{links[index]['image']}</a></li>
+    <li key={index} className="px-3"><a  aria-label={links[index]['name']}  target="_blank"href={links[index]['link']}>{links[index]['image']}</a></li>
       )
   
   }
 
   return (
-    <ul  arial-label="Social Media Links List"  ref={socialLinkNav}className={"social-links-nav fixed flex flex-col md:flex-row z-10 bottom-custom-gap w-auto list-none " + (props.visible ? '' : 'faded-right')}>
+    <ul  aria-label="Social Media Links List"  ref={socialLinkNav}className={"social-links-nav fixed flex flex-col md:flex-row z-10 bottom-custom-gap w-auto list-none " + (props.visible ? '' : 'faded-right')}>
       <StrictMode>
         {itemList}
       </StrictMode>

@@ -88,7 +88,7 @@ function Navbar(props) {
           <span className="menu-toggle-bar"></span>
           <span className="menu-toggle-bar"></span>
         </button>
-        <ul ref={navBar} arial-label="List of Links" className={"flex flex-col md:flex-row md:items-center "+ (menuToggled ? 'open' : '')}>
+        <ul ref={navBar} aria-label="List of Links" className={"flex flex-col md:flex-row md:items-center "+ (menuToggled ? 'open' : '')}>
           {navList}
           <li aria-label="Resume Link" className="mx-5 resume"><a href="/storage/pdf/Yannis_Nikolaidis_CV.pdf">Resume</a></li> 
         </ul>
