@@ -9,9 +9,7 @@ export function Dolly(props) {
      if (props.loop){
         camera.position.z = 50 + Math.sin(clock.getElapsedTime()) * 30
      }
-     if (camera.position.z < 0 && !props.gradientOn) {
-      props.toggleGradient()
-     }
+     
  
      if(camera.position.z < 0){
        camera.position.z = -.1

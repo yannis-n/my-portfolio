@@ -119,7 +119,7 @@ function AboutMe(props) {
                             height="200" 
                             data-main-image="" sizes="(min-width: 200px) 200px, 100vw" 
                             alt="photo of me"
-                            src={'../../storage/images/portrait.svg'}/>
+                            src={'../../storage/images/portrait.webp'}/>
                         </div>
                     </div>
             </div>

@@ -1,6 +1,3 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
 // Bootstrap
@@ -107,28 +104,6 @@ body{
   overflow: overlay;
 }
 
-/* width */
-::-webkit-scrollbar {
-  width: $scrollbar-size;
-  background-color:transparent;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  border-radius: $scrollbar-size;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: $detailsColor; 
-  border-radius: $scrollbar-size;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: $detailsColor; 
-}
-
 
   #app{
     overflow:hidden
@@ -185,10 +160,37 @@ body{
     }
   }
 
-#home{
-  cursor: pointer;
+  
+@keyframes fadeAway
+ {
+  0% {    opacity: 1;filter:blur(0) }
+  100% {  opacity: 0;filter:blur(20px) }
 }
 
+@-webkit-keyframes fadeAway 
+  {
+    0% {    opacity: 1;filter:blur(0) }
+    100% {  opacity: 0;filter:blur(20px) }
+  }
+
+
+.mask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  z-index: 30;
+      animation: fadeAway 1s forwards ease-in;
+
+  .svs{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+}
   //  Logo
  
   .atom {
@@ -603,9 +605,6 @@ body{
   .heading{
     font-size: clamp(40px, 8vw, 80px);
     line-height: 1;
-    @media screen and (min-width: 481px) {
-
-    }
   }
 
   section{
@@ -789,9 +788,10 @@ body{
         ul{
           display: flex;
           margin-bottom: 20px;
+          margin-top: 20px;
 
-          @media screen and (max-width: 780px) {
-            margin-top: 20px;
+          @media screen and (min-width: 780px) {
+            margin-top: 0;
           }
         }
 
@@ -1117,3 +1117,7 @@ body{
       -webkit-transform: rotate(360deg);
     }
   }
+
+
+
+  

@@ -1,9 +1,9 @@
 import { StrictMode, useState, useEffect, lazy, Suspense } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from "react-dom/client";
 
-import { HomeCanvas } from './HomeCanvas'
 
 const Introduction = lazy(() => import('./Introduction'));
+// const HomeCanvas = lazy(() => import('./HomeCanvas'));
 const Navbar = lazy(() => import('./Navbar'));
 const Projects = lazy(() => import('./Projects'));
 const AboutMe = lazy(() => import('./AboutMe'));
@@ -14,8 +14,8 @@ const Spinner = () => <div className="spinner"></div>
 
 function App() {
   const [gradientOn, setGradientOn] = useState(false);
-  const [siteEntered, setsiteEntered] = useState(false);
-  const [intro, setIntro] = useState(true); // this is to determine if the enter screen will appear
+  const [siteEntered, setsiteEntered] = useState(true);
+  const [intro, setIntro] = useState(false); // this is to determine if the enter screen will appear
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
   const [topOfPage, setTopOFPage] = useState(true);
   const [bottomOfPage, setBottomOfPage] = useState(false);
@@ -66,10 +66,10 @@ function App() {
 
       <main className=''>
       <div id="home" aria-hidden='true' className={"fixed w-screen min-h-screen h-screen" + (siteEntered ? '' : ' z-10')}>
-        <div aria-label="Animation Container" className="canvas-container">
-          <StrictMode>
+        <div aria-label="Animation Container"  id="canvas-container" className="canvas-container">
+          {/* <StrictMode>
             <HomeCanvas loop={intro} toggleGradient={toggleGradient} gradientOn={siteEntered} />
-          </StrictMode>
+          </StrictMode> */}
           <div             
             className={
               siteEntered ? 'gradient gradientOn' : 'gradient gradientOff'
@@ -103,7 +103,14 @@ function App() {
 export default App;
 
 if (document.getElementById('app')) {
-    ReactDOM.render(<App />, document.getElementById('app'));
+    const rootElement = document.getElementById("app");
+    const root = createRoot(rootElement);
+    
+    root.render(
+      <StrictMode>
+        <App />
+      </StrictMode>
+    );
 }
 
 function getWindowDimensions() {

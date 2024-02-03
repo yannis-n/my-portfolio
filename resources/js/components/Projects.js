@@ -8,7 +8,7 @@ function Projects(props) {
             description: `A one-page web app deticaed to the company profile of my longest-standing partnership.
                             `,
             technologies: ['PHP', 'Jquery', 'HandleBar'],
-            image: 'jeptack.svg',
+            image: 'jeptack.webp',
             link: "https://jetpack.vc/",
             alt: 'jetpack site homepage'
         },
@@ -16,7 +16,7 @@ function Projects(props) {
             title: 'Athens Rhythm Hop',
             description: 'A web app designed for the registration and the administration of an Athenian dance festival.',
             technologies: ['Wordpress', 'Javascript', 'Sass'],
-            image: 'arh.svg',
+            image: 'arh.webp',
             link: "https://athensrhythmhop.com",
             alt: 'athensrhythmhop site homepage'
         },
@@ -24,7 +24,7 @@ function Projects(props) {
             title: 'Rhythm Hoppers',
             description: 'A simple Wordpress application deticated to the portfolio of a local dancing studio.',
             technologies: ['Wordpress', 'Javascript', 'Sass'],
-            image: 'rhythmhoppers.svg',
+            image: 'rhythmhoppers.webp',
             link: "https://rhythmhoppers.com/",
             alt: 'rhythmhoppers site homepage'
         },

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[128],{128:(e,s,a)=>{a.r(s),a.d(s,{default:()=>n});var c=a(893);const n=function(e){return(0,c.jsx)("div",{className:"atom",children:(0,c.jsx)("div",{className:"electron"})})}}}]);
+//# sourceMappingURL=128.js.map

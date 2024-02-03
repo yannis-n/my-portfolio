@@ -12,6 +12,8 @@ const tailwindcss = require('tailwindcss'); /* Add this line at the top */
  |
  */
 
+    
+
 mix.js('resources/js/app.js', 'public/js')
 
     .react()
@@ -22,9 +24,11 @@ mix.js('resources/js/app.js', 'public/js')
     // .postCss('resources/css/tw.css', 'public/css', [
     //     require('tailwindcss'),
     // ])
-    .version()
     .copy('resources/fonts', 'public/fonts')
     .copy('resources/icons', 'public/icons')
-    .sourceMaps();
-
     ;
+
+
+    if (mix.inProduction()) {
+        mix.disableNotifications().sourceMaps();
+     }

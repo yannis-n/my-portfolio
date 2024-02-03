@@ -1,65 +1,102 @@
-import { Suspense, lazy } from 'react';
-import { Canvas } from 'react-three-fiber';
+import { useEffect } from 'react';
+import * as THREE from 'three';
 
-import { Sphere } from './Sphere'
-import { Dolly } from './Dolly'
-import { Ring } from './Ring'
+export default function HomeCanvas(){
+ 
+  useEffect(() => {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1200);
+    const renderer = new THREE.WebGLRenderer();
 
-const Star = lazy(() => import('./Star'));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('canvas-container').appendChild(renderer.domElement);
 
-function getRandomInt(min, max) {
-min = Math.ceil(min);
-max = Math.floor(max);
-return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+    const stars = Array(200).fill().map(() => {
+      const starGeometry = new THREE.SphereGeometry(0.1, 6, 6);
+      const starMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+      const star = new THREE.Mesh(starGeometry, starMaterial);
 
-let itemList=[];
+      let x, y, z;
+      do {
+        // Initialize positions ensuring stars do not spawn too close to the camera
+        x = THREE.MathUtils.randFloatSpread(200);
+        y = THREE.MathUtils.randFloatSpread(200);
+        z = THREE.MathUtils.randFloatSpread(200);
+      } while (Math.abs(z) < 20); // Adjust the minimum distance from the camera
 
-for (let index = 0; index < 200; index++) {
-itemList.push( <Star key={index}    
-    position={[getRandomInt(-100,100), getRandomInt(-40,40), getRandomInt(-400,-50)]} />)
+      star.position.set(x, y, z);
 
-}
+      // Set initial random change in each position
+      const changeX = Math.random();
+      const changeY = Math.random();
+      const changeZ = Math.random();
 
-export function HomeCanvas(props) {
-  let cameraZ = (props.intro) ? 100 : 0;
-  return (
-    <Canvas 
-      pixelRatio={window.devicePixelRatio}  
-      camera={{ position: [0, 0, cameraZ], fov: 50 }} 
-      dpr={window.devicePixelRatio}
-    > 
+      star.changeX = changeX;
+      star.changeY = changeY;
+      star.changeZ = changeZ;
 
-    <rectAreaLight
-      width={5}
-      height={5}
-      color='#fff'
-      intensity={6}
-      position={[-2, 0, 5]}
-      lookAt={[0, 0, 0]}
-      penumbra={1}
-      castShadow
-    />
-  
-        <Suspense fallback={null}>
-          {itemList}
-  
-        </Suspense>
+      scene.add(star);
 
-    {!props.gradientOn && (
-      <Suspense>
-        <Sphere position={[0, 0, 0]} />
-            <Ring 
-              position={[0, 0, 0]}  
-              args={[2.2, 2.4, 300]} 
-              dx={.01}
-            />
-      </Suspense>
-            
+      return star;
+    });
 
-      )}
-    <Dolly toggleGradient={props.toggleGradient} loop={props.loop} gradientOn={props.gradientOn} />
+    camera.position.z = 15;
 
-    </Canvas>
-  );
-}
+    const animate = () => {
+      requestAnimationFrame(animate);
+
+      stars.forEach((star) => {
+        // Change positions slightly
+        star.position.x += star.changeX * 0.05;
+        star.position.y += star.changeY * 0.05;
+        star.position.z += star.changeZ * 0.05;
+        // // Check if star is too close or too far from the camera
+        const isInFrustum = isObjectInCameraFrustum(star, camera);
+        const isTooNear = isObjectTooNear(star, camera, 15); // Adjust the minimum distance as needed
+
+        if (!isInFrustum || isTooNear) {
+          // Reverse the direction of change
+          star.position.x = THREE.MathUtils.randFloatSpread(200);
+          star.position.y = THREE.MathUtils.randFloatSpread(200);
+          star.position.z = THREE.MathUtils.randFloatSpread(200);    
+
+        }
+        
+        
+      });
+
+      renderer.render(scene, camera);
+    };
+
+    const isObjectInCameraFrustum = (object, camera) => {
+      const frustum = new THREE.Frustum();
+      const cameraViewProjectionMatrix = new THREE.Matrix4();
+    
+      // Get the camera's view projection matrix
+      camera.updateMatrixWorld();
+      cameraViewProjectionMatrix.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse);
+    
+      // Set the frustum's matrix
+      frustum.setFromProjectionMatrix(cameraViewProjectionMatrix);
+    
+      // Check if the object's position is in the frustum
+      return frustum.intersectsObject(object);
+    };
+    
+        // Function to check if an object is too near the camera
+    const isObjectTooNear = (object, camera, minDistance) => {
+      const distance = object.position.distanceTo(camera.position);
+      return distance < minDistance;
+    };
+
+    animate();
+
+    // Handle cleanup
+    return () => {
+      document.getElementById('canvas-container').removeChild(renderer.domElement);
+    };
+  }, []); // Run only once on mount
+
+  return null; // No need to render anything in React
+};
+
