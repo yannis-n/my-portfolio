@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 
 
 const Introduction = lazy(() => import('./Introduction'));
-// const HomeCanvas = lazy(() => import('./HomeCanvas'));
+const HomeCanvas = lazy(() => import('./HomeCanvas'));
 const Navbar = lazy(() => import('./Navbar'));
 const Projects = lazy(() => import('./Projects'));
 const AboutMe = lazy(() => import('./AboutMe'));
@@ -67,9 +67,9 @@ function App() {
       <main className=''>
       <div id="home" aria-hidden='true' className={"fixed w-screen min-h-screen h-screen" + (siteEntered ? '' : ' z-10')}>
         <div aria-label="Animation Container"  id="canvas-container" className="canvas-container">
-          {/* <StrictMode>
+          <StrictMode>
             <HomeCanvas loop={intro} toggleGradient={toggleGradient} gradientOn={siteEntered} />
-          </StrictMode> */}
+          </StrictMode>
           <div             
             className={
               siteEntered ? 'gradient gradientOn' : 'gradient gradientOff'

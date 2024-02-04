@@ -1,33 +1,13 @@
-import { useRef, useEffect } from 'react';
-
 function Introduction(props) {
-    let section = useRef(null)
-    useEffect(() => {
-        if (!props.siteEntered) return
-
-        for (let i = 0; i < section.current.children.length; i++) {
-            let timeOut = (i < 2) ? 400 : 400 * (i-1)
-            setTimeout(() => {
-                let element = section.current.children[i];
-                if (i < 2){
-                    element.classList.remove('faded-right')  
-                    element.classList.remove('faded-left')  
-
-                }else{
-                    element.classList.remove('faded')  
-                }
-            }, timeOut);
-        }
-    },[props.siteEntered])
-
+ 
     
     return (
-        <section aria-label="Introduction" id="introduction" ref={section} className={" relative flex justify-center flex-col items-start"+(props.siteEntered ? ' moved-in' : ' opacity-0')}>
-            <h1 className="w-full  text-4xl md:text-6xl font-bold -right details-color">
+        <section aria-label="Introduction" id="introduction" className={" relative flex justify-center flex-col items-start"+(props.siteEntered ? ' moved-in' : ' opacity-0')}>
+            <h1 className="w-full  text-4xl md:text-6xl font-bold  details-color">
                 Hi,
             </h1>
 
-            <h2  className="w-full text-4xl md:text-6xl -left font-bold whitespace-nowrap details-color">
+            <h2  className="w-full text-4xl md:text-6xl  font-bold whitespace-nowrap details-color">
                 I am Yannis.
             </h2>
 

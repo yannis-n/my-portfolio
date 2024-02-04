@@ -163,14 +163,16 @@ body{
   
 @keyframes fadeAway
  {
-  0% {    opacity: 1;filter:blur(0) }
-  100% {  opacity: 0;filter:blur(20px) }
+  0% {    visibility: visible;opacity: 1; }
+  90% {  opacity: 0 }
+  100% {opacity: 0;visibility: hidden;}
 }
 
 @-webkit-keyframes fadeAway 
   {
-    0% {    opacity: 1;filter:blur(0) }
-    100% {  opacity: 0;filter:blur(20px) }
+    0% {    visibility: visible;opacity: 1; }
+    90% {  opacity: 0 }
+    100% {opacity: 0;visibility: hidden;}
   }
 
 
