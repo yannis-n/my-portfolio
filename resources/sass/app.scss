@@ -2,26 +2,6 @@
 @import 'variables';
 // Bootstrap
 
-@font-face {
-  font-family: 'OpenSans';
-  src: url("../fonts/OpenSans-Medium.ttf");
-  font-weight: 500;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'OpenSans';
-  src: url("../fonts/OpenSans-Regular.ttf");
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'OpenSans';
-  src: url("../fonts/OpenSans-Bold.ttf");
-  font-weight: 700;
-  font-display: swap;
-}
 
 $mobileGap : 24px;
 // $detailsColor: #EC255A;
@@ -96,8 +76,9 @@ $scrollbar-size:6px;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'OpenSans';
-    color: #FAEDF0;
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+    helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
+      color: #FAEDF0;
 }
 
 body{
@@ -184,7 +165,7 @@ body{
   height: 100vh;
   background-color: #000000;
   z-index: 30;
-      animation: fadeAway 1 forwards ease-in;
+      animation: fadeAway 1s forwards ease-in;
 
   .svs{
     position: absolute;

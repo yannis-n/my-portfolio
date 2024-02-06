@@ -7,9 +7,9 @@ function Introduction(props) {
                 I am Yannis.
             </h1>
 
-            <h3 className="heading  font-bold flex h-fit ">
+            <h2 className="heading  font-bold flex h-fit ">
                 I build stuff for<br/>the web.
-            </h3>
+            </h2>
             <p className="">
             I work as a Full Stack Developer, expanding the skills attained through rigorous training and hands-on experience as well as various courses. 
 
