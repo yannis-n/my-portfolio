@@ -15,7 +15,7 @@
 
         <title>Yannis Nikolaidis</title>
         <style>
-.mask{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #000000; z-index: 30;     animation: fadeAway 1s forwards ease-in;}
+.mask{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #000000; z-index: 30;     animation: fadeAway 1 forwards ease-in;}
  .svs{   position: absolute;   top: 50%;   left: 50%;   transform: translate(-50%,-50%); }
 
         </style>
