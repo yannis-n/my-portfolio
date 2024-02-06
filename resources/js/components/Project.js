@@ -41,7 +41,7 @@ function Project(props) {
                             width="100%" 
                             height="200" 
                             data-main-image="" alt="project-image" sizes="(min-width: 200px) 200px, 100vw" 
-                            src={'../../storage/images/'+props.info.image}/>
+                            src={'https://thisisyannis.ams3.cdn.digitaloceanspaces.com/images/'+props.info.image}/>
                     </div>
                     <div className={'section-container--project-info' + (props.isMobile && !onScreen ? '' : ' faded-project')}>
                         <div className='section-container--project-info--title'>
