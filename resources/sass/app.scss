@@ -164,15 +164,15 @@ body{
 @keyframes fadeAway
  {
   0% {    visibility: visible;opacity: 1; }
-  90% {  opacity: 0 }
-  100% {opacity: 0;visibility: hidden;}
+  90% {  opacity: 0;filter:blur(10px) }
+  100% {opacity: 0;filter:blur(10px);visibility: hidden;}
 }
 
 @-webkit-keyframes fadeAway 
   {
     0% {    visibility: visible;opacity: 1; }
-    90% {  opacity: 0 }
-    100% {opacity: 0;visibility: hidden;}
+    90% {  opacity: 0;filter:blur(10px) }
+    100% {opacity: 0;filter:blur(10px);visibility: hidden;}
   }
 
 
@@ -184,7 +184,7 @@ body{
   height: 100vh;
   background-color: #000000;
   z-index: 30;
-      animation: fadeAway 1s forwards ease-in;
+      animation: fadeAway 1.5s forwards ease-in;
 
   .svs{
     position: absolute;
