@@ -4,6 +4,14 @@ const Project = lazy(() => import('./Project'));
 function Projects(props) {
     let items = [
         {
+            title: 'My Brainforce',
+            description: 'a brain training program designed to improve cognitive abilities through a variety of online games and exercises.',
+            technologies: ['Laravel', 'React', 'Sass', 'Tailwind'],
+            image: 'mybrainforce.webp',
+            link: "https://mybrainforce.com/",
+            alt: 'mybrainforce site homepage'
+        },
+        {
             title: 'Jetpack VC',
             description: `A one-page web app deticaed to the company profile of my longest-standing partnership.
                             `,
@@ -11,22 +19,6 @@ function Projects(props) {
             image: 'jeptack.webp',
             link: "https://jetpack.vc/",
             alt: 'jetpack site homepage'
-        },
-        {
-            title: 'Athens Rhythm Hop',
-            description: 'A web app designed for the registration and the administration of an Athenian dance festival.',
-            technologies: ['Wordpress', 'Javascript', 'Sass'],
-            image: 'arh.webp',
-            link: "https://athensrhythmhop.com",
-            alt: 'athensrhythmhop site homepage'
-        },
-        {
-            title: 'Rhythm Hoppers',
-            description: 'A simple Wordpress application deticated to the portfolio of a local dancing studio.',
-            technologies: ['Wordpress', 'Javascript', 'Sass'],
-            image: 'rhythmhoppers.webp',
-            link: "https://rhythmhoppers.com/",
-            alt: 'rhythmhoppers site homepage'
         },
     ]
 
