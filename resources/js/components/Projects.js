@@ -5,7 +5,7 @@ function Projects(props) {
     let items = [
         {
             title: 'My Brainforce',
-            description: 'a brain training program designed to improve cognitive abilities through a variety of online games and exercises.',
+            description: 'A brain training program designed to improve cognitive abilities through a variety of online games and exercises.',
             technologies: ['Laravel', 'React', 'Sass', 'Tailwind'],
             image: 'mybrainforce.webp',
             link: "https://mybrainforce.com/",
