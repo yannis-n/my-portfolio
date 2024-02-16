@@ -90,7 +90,7 @@ function Navbar(props) {
         </button>
         <ul ref={navBar} aria-label="List of Links" className={"flex flex-col md:flex-row md:items-center "+ (menuToggled ? 'open' : '')}>
           {navList}
-          <li aria-label="Resume Link" className="mx-5 resume"><a href="/storage/pdf/Yannis_Nikolaidis_CV.pdf">Resume</a></li> 
+          <li aria-label="Resume Link" className="mx-5 resume" target="_blank"><a href="https://thisisyannis.ams3.cdn.digitaloceanspaces.com/Yannis_Nikolaidis_CV.pdf">Resume</a></li> 
         </ul>
       </nav>
       </header>
