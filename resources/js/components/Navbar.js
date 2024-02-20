@@ -36,17 +36,16 @@ function Navbar(props) {
 
     let links = navBar.current.children
     if (!props.gradientOn) return 
-    if (!props.isMobile){
+
+    if (!props.isMobile && props.resized){
       for (let i = 0; i < links.length; i++) {
         const element = links[i];
         element.style.opacity = 1
         element.style.transform = 'none'
       }
-        navBar.current.style.transition = 'none'
       return
-    }else{
-        navBar.current.style.transition = 'all 1s ease-in-out'
     }
+    
     if (menuToggled){
         for (let i = 0; i < links.length; i++) {
           setTimeout(() => {
@@ -55,7 +54,7 @@ function Navbar(props) {
           element.style.transform = 'none'
         }, i * 200 + 600);
       }
-    }else{
+    }else if(props.isMobile){
       timeouts = []
       for (let i = 0; i < links.length; i++) {
         const element = links[i];

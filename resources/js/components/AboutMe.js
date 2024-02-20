@@ -65,7 +65,7 @@ function AboutMe(props) {
 
     ]
     let itemNames = [
-        'JavaScript (ES6+)',
+        'JavaScript',
         'Laravel',
         'Jquery',
         'PHP',

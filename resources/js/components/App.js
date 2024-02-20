@@ -14,6 +14,7 @@ const Spinner = () => <div className="spinner"></div>
 
 function App() {
   const [gradientOn, setGradientOn] = useState(false);
+  const [resized, setResized] = useState(false);
   const [siteEntered, setsiteEntered] = useState(true);
   const [intro, setIntro] = useState(false); // this is to determine if the enter screen will appear
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
@@ -40,6 +41,7 @@ function App() {
 
     useEffect(() => {
       function handleResize() {
+        setResized(true)
         let dimensions = getWindowDimensions();
         setWindowDimensions(dimensions);
       }
@@ -58,7 +60,7 @@ function App() {
 
       <>
           <Suspense fallback={<Spinner/>}>
-          <Navbar isMobile={isMobileFunction(windowDimensions)} topOfPage={topOfPage} gradientOn={siteEntered}/>
+          <Navbar resized={resized} isMobile={isMobileFunction(windowDimensions)} topOfPage={topOfPage} gradientOn={siteEntered}/>
  
           <SocialLinksNav visible={siteEntered && topOfPage}/>
           </Suspense>
